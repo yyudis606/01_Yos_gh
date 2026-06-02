@@ -1,0 +1,193 @@
+const diceRow = document.getElementById('dice-row');
+const betForm = document.getElementById('bet-form');
+const betType = document.getElementById('bet-type');
+const betValueContainer = document.getElementById('bet-value-container');
+const betAmount = document.getElementById('bet-amount');
+const rollButton = document.getElementById('roll-button');
+const resultPanel = document.getElementById('result');
+const historyPanel = document.getElementById('history');
+const balanceLabel = document.getElementById('balance');
+const totalLabel = document.getElementById('total');
+
+let balance = 1000;
+const history = [];
+const diceCount = 3;
+
+function renderDice() {
+  diceRow.innerHTML = '';
+  for (let i = 0; i < diceCount; i += 1) {
+    const die = document.createElement('div');
+    die.className = 'dice';
+    die.textContent = '1';
+    die.id = `dice-${i + 1}`;
+    diceRow.appendChild(die);
+  }
+}
+
+function getDiceElements() {
+  return Array.from(diceRow.children);
+}
+
+function createBetValueInput() {
+  const minTotal = diceCount;
+  const maxTotal = diceCount * 6;
+  betValueContainer.innerHTML = '';
+
+  if (betType.value === 'total') {
+    betValueContainer.innerHTML = `
+      <label>
+        Pilih total (${minTotal}-${maxTotal})
+        <input type="number" id="bet-value" min="${minTotal}" max="${maxTotal}" value="${Math.round((minTotal + maxTotal) / 2)}">
+      </label>
+    `;
+  } else if (betType.value === 'parity') {
+    betValueContainer.innerHTML = `
+      <label>
+        Pilih hasil
+        <select id="bet-value">
+          <option value="odd">Ganjil</option>
+          <option value="even">Genap</option>
+        </select>
+      </label>
+    `;
+  } else {
+    betValueContainer.innerHTML = `
+      <label>
+        Pilih triple
+        <select id="bet-value">
+          <option value="any">Triple apa saja</option>
+          <option value="1">Triple 1</option>
+          <option value="2">Triple 2</option>
+          <option value="3">Triple 3</option>
+          <option value="4">Triple 4</option>
+          <option value="5">Triple 5</option>
+          <option value="6">Triple 6</option>
+        </select>
+      </label>
+    `;
+  }
+}
+
+function updateBalance() {
+  balanceLabel.textContent = balance;
+}
+
+function renderHistory() {
+  historyPanel.innerHTML = '';
+  history.slice(-6).reverse().forEach(entry => {
+    const item = document.createElement('div');
+    item.innerHTML = `
+      <strong>${entry.status}</strong> — ${entry.message}
+    `;
+    historyPanel.appendChild(item);
+  });
+}
+
+function rollDice(count) {
+  return Array.from({ length: count }, () => Math.floor(Math.random() * 6) + 1);
+}
+
+function isTriple(values) {
+  return values.length >= 3 && values.every(value => value === values[0]);
+}
+
+function getPayout(type, betValue, diceTotal, diceValues) {
+  if (type === 'total') {
+    return diceTotal === Number(betValue) ? 5 : 0;
+  }
+
+  if (type === 'parity') {
+    const parity = diceTotal % 2 === 0 ? 'even' : 'odd';
+    return parity === betValue ? 1 : 0;
+  }
+
+  if (type === 'triple') {
+    if (!isTriple(diceValues)) return 0;
+    if (betValue === 'any') return 8;
+    return diceValues[0] === Number(betValue) ? 40 : 0;
+  }
+
+  return 0;
+}
+
+function showResult(resultText, win) {
+  resultPanel.innerHTML = `<p>${resultText}</p>`;
+  resultPanel.style.color = win ? '#7bef8d' : '#ff7c7c';
+}
+
+function getBetValue() {
+  const betValue = document.getElementById('bet-value');
+  return betValue ? betValue.value : null;
+}
+
+betType.addEventListener('change', createBetValueInput);
+createBetValueInput();
+updateBalance();
+renderHistory();
+
+betForm.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const amount = Number(betAmount.value);
+  const type = betType.value;
+  const value = getBetValue();
+
+  const minTotal = diceCount;
+  const maxTotal = diceCount * 6;
+
+  if (!amount || amount <= 0) {
+    showResult('Masukkan jumlah taruhan yang valid.', false);
+    return;
+  }
+
+  if (amount > balance) {
+    showResult('Saldo tidak cukup.', false);
+    return;
+  }
+
+  if (type === 'total' && (Number(value) < minTotal || Number(value) > maxTotal)) {
+    showResult(`Pilih total antara ${minTotal} dan ${maxTotal}.`, false);
+    return;
+  }
+
+  balance -= amount;
+  updateBalance();
+
+  const diceValues = rollDice(diceCount);
+  const total = diceValues.reduce((sum, die) => sum + die, 0);
+  totalLabel.textContent = total;
+
+  const diceElements = getDiceElements();
+  diceElements.forEach((die, index) => {
+    die.textContent = '';
+    die.classList.add('rolling');
+  });
+
+  setTimeout(() => {
+    diceElements.forEach((die, index) => {
+      die.classList.remove('rolling');
+      die.textContent = diceValues[index];
+    });
+
+    const payoutMultiplier = getPayout(type, value, total, diceValues);
+    const win = payoutMultiplier > 0;
+    const payout = amount * payoutMultiplier;
+    let message;
+
+    if (win) {
+      balance += amount + payout;
+      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Menang ${payout} koin!`;
+    } else {
+      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Kalah.`;
+    }
+
+    updateBalance();
+    showResult(message, win);
+
+    history.push({
+      status: win ? 'Menang' : 'Kalah',
+      message,
+    });
+    renderHistory();
+  }, 700);
+});

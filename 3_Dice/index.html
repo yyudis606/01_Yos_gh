@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permainan 3 Dadu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Permainan 3 Dadu</h1>
+      <p>Taruhan pada total, ganjil/genap, atau triple.</p>
+    </header>
+
+    <section class="dice-board">
+      <div class="dice-row" id="dice-row">
+        <div class="dice" id="dice-1">1</div>
+        <div class="dice" id="dice-2">1</div>
+        <div class="dice" id="dice-3">1</div>
+      </div>
+      <div class="total-panel">Jumlah: <strong id="total">3</strong></div>
+    </section>
+
+    <section class="bet-card">
+      <div class="balance-panel">Saldo: <strong id="balance">1000</strong> koin</div>
+
+      <form id="bet-form">
+        <label>
+          Jumlah taruhan
+          <input type="number" id="bet-amount" min="1" value="20">
+        </label>
+
+        <label>
+          Tipe taruhan
+          <select id="bet-type">
+            <option value="total">Total tepat</option>
+            <option value="parity">Ganjil / Genap</option>
+            <option value="triple">Triple</option>
+          </select>
+        </label>
+
+        <div id="bet-value-container"></div>
+
+        <button type="submit" id="roll-button">Lempar Dadu</button>
+      </form>
+
+      <div class="result-card" id="result"></div>
+      <div class="history-card" id="history"></div>
+    </section>
+  </div>
+
+  <footer class="page-footer">Upin & Ipin</footer>
+  <script src="game.js"></script>
+</body>
+</html>
