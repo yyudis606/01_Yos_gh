@@ -1,6 +1,7 @@
 const diceRow = document.getElementById('dice-row');
 const betForm = document.getElementById('bet-form');
 const betType = document.getElementById('bet-type');
+const gameMode = document.getElementById('game-mode');
 const betValueContainer = document.getElementById('bet-value-container');
 const betAmount = document.getElementById('bet-amount');
 const rollButton = document.getElementById('roll-button');
@@ -87,6 +88,66 @@ function rollDice(count) {
   return Array.from({ length: count }, () => Math.floor(Math.random() * 6) + 1);
 }
 
+function generateWinningDice(type, betValue) {
+  if (type === 'total') {
+    const target = Number(betValue);
+    const dice = [1, 1, 1];
+    let remaining = target - 3;
+    for (let i = 0; i < dice.length && remaining > 0; i += 1) {
+      const add = Math.min(6 - dice[i], remaining);
+      dice[i] += add;
+      remaining -= add;
+    }
+    return dice;
+  }
+
+  if (type === 'parity') {
+    return betValue === 'even' ? [1, 1, 2] : [1, 1, 3];
+  }
+
+  if (type === 'triple') {
+    if (betValue === 'any') {
+      return [2, 2, 2];
+    }
+    const value = Number(betValue);
+    return [value, value, value];
+  }
+
+  return rollDice(diceCount);
+}
+
+function generateLosingDice(type, betValue) {
+  if (type === 'total') {
+    const target = Number(betValue);
+    const losingTotal = target === diceCount ? target + 1 : diceCount;
+    const dice = [1, 1, 1];
+    let remaining = losingTotal - 3;
+    for (let i = 0; i < dice.length && remaining > 0; i += 1) {
+      const add = Math.min(6 - dice[i], remaining);
+      dice[i] += add;
+      remaining -= add;
+    }
+    return dice;
+  }
+
+  if (type === 'parity') {
+    return betValue === 'even' ? [1, 1, 3] : [1, 1, 2];
+  }
+
+  if (type === 'triple') {
+    if (betValue === 'any') {
+      return [1, 1, 2];
+    }
+    const target = Number(betValue);
+    if (target === 1) {
+      return [2, 2, 3];
+    }
+    return [1, 1, 2];
+  }
+
+  return rollDice(diceCount);
+}
+
 function isTriple(values) {
   return values.length >= 3 && values.every(value => value === values[0]);
 }
@@ -153,7 +214,14 @@ betForm.addEventListener('submit', event => {
   balance -= amount;
   updateBalance();
 
-  const diceValues = rollDice(diceCount);
+  const mode = gameMode.value;
+  let diceValues = rollDice(diceCount);
+  if (mode === 'menang') {
+    diceValues = generateWinningDice(type, value);
+  } else if (mode === 'kalah') {
+    diceValues = generateLosingDice(type, value);
+  }
+
   const total = diceValues.reduce((sum, die) => sum + die, 0);
   totalLabel.textContent = total;
 
