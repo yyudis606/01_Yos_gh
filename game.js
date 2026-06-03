@@ -222,7 +222,29 @@ betForm.addEventListener('submit', event => {
     diceValues = generateLosingDice(type, value);
   }
 
-  const total = diceValues.reduce((sum, die) => sum + die, 0);
+  let total = diceValues.reduce((sum, die) => sum + die, 0);
+  let payoutMultiplier = getPayout(type, value, total, diceValues);
+
+  if (mode === 'menang') {
+    let attempts = 0;
+    while (payoutMultiplier === 0 && attempts < 5) {
+      diceValues = generateWinningDice(type, value);
+      total = diceValues.reduce((sum, die) => sum + die, 0);
+      payoutMultiplier = getPayout(type, value, total, diceValues);
+      attempts += 1;
+    }
+  }
+
+  if (mode === 'kalah') {
+    let attempts = 0;
+    while (payoutMultiplier > 0 && attempts < 5) {
+      diceValues = generateLosingDice(type, value);
+      total = diceValues.reduce((sum, die) => sum + die, 0);
+      payoutMultiplier = getPayout(type, value, total, diceValues);
+      attempts += 1;
+    }
+  }
+
   totalLabel.textContent = total;
 
   const diceElements = getDiceElements();
@@ -237,7 +259,6 @@ betForm.addEventListener('submit', event => {
       die.textContent = diceValues[index];
     });
 
-    const payoutMultiplier = getPayout(type, value, total, diceValues);
     const win = payoutMultiplier > 0;
     const payout = amount * payoutMultiplier;
     let message;
