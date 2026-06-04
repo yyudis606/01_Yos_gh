@@ -191,9 +191,17 @@ button:disabled {
   line-height: 1.5;
 }
 
+.warning-card p {
+  margin: 0;
+  font-style: italic;
+  color: #d8dcff;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 .page-footer {
   position: fixed;
-  left: 16px;
+  right: 16px;
   bottom: 16px;
   color: #a9b2ff;
   font-size: 0.9rem;
