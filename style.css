@@ -162,7 +162,7 @@ button:disabled {
 }
 
 .result-card {
-  font-size: 2.2rem;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 640px) {
