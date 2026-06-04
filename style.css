@@ -36,13 +36,22 @@ p {
   color: #a9b2ff;
 }
 
-.dice-board,
+.dice-board {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+}
+
 .bet-card {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
   padding: 24px;
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+  display: grid;
+  gap: 16px;
 }
 
 .dice-row {

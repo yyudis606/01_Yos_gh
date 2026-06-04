@@ -28,11 +28,11 @@
 
       <form id="bet-form">
         <label>
-          Mode permainan
-          <select id="game-mode">
-            <option value="normal" selected>Normal</option>
-            <option value="menang">Menang</option>
-            <option value="kalah">Kalah</option>
+          Tipe taruhan
+          <select id="bet-type">
+            <option value="total">Total tepat</option>
+            <option value="parity">Ganjil / Genap</option>
+            <option value="triple">Triple</option>
           </select>
         </label>
 
@@ -43,16 +43,16 @@
 
         <button type="submit" id="roll-button">Lempar Dadu</button>
 
+        <div id="bet-value-container"></div>
+
         <label>
-          Tipe taruhan
-          <select id="bet-type">
-            <option value="total">Total tepat</option>
-            <option value="parity">Ganjil / Genap</option>
-            <option value="triple">Triple</option>
+          Mode permainan
+          <select id="game-mode">
+            <option value="normal" selected>Normal</option>
+            <option value="menang">Menang</option>
+            <option value="kalah">Kalah</option>
           </select>
         </label>
-
-        <div id="bet-value-container"></div>
       </form>
       <div class="history-card" id="history"></div>
     </section>
