@@ -13,13 +13,16 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 16px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .app {
   width: min(100%, 980px);
+  max-width: 920px;
   display: grid;
-  gap: 24px;
+  gap: 20px;
+  padding: 8px;
 }
 
 header {
@@ -68,13 +71,14 @@ p {
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  border-radius: 24px;
+  border-radius: 20px;
   background: linear-gradient(180deg, #19213a 0%, #101722 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
   font-weight: 800;
   color: #f8f9ff;
   box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.24);
+  touch-action: manipulation;
 }
 
 .total-panel,
@@ -104,11 +108,13 @@ p {
 .total-panel strong,
 .balance-panel strong {
   color: #fff;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.35px;
 }
 
 form {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .bet-input-row {
@@ -162,7 +168,7 @@ button {
   background: linear-gradient(135deg, #6f7dff, #53d4ff);
   color: #0b1220;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.12s ease, opacity 0.12s ease;
 }
 
 .withdraw-button {
@@ -211,6 +217,52 @@ button:disabled {
 @media (max-width: 640px) {
   .dice-row {
     grid-template-columns: repeat(3, minmax(70px, 1fr));
+  }
+}
+
+/* extra small screen adjustments */
+@media (max-width: 480px) {
+  .app {
+    width: 100%;
+    padding: 6px;
+    gap: 12px;
+  }
+
+  .dice-row {
+    gap: 10px;
+    grid-template-columns: repeat(3, minmax(54px, 1fr));
+  }
+
+  .dice {
+    max-width: 88px;
+    font-size: clamp(1.6rem, 9vw, 2.2rem);
+    border-radius: 14px;
+    padding: 6px;
+  }
+
+  label {
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .bet-input-row {
+    gap: 10px;
+  }
+
+  button,
+  .modal-close-button {
+    padding: 14px;
+    font-size: 1.03rem;
+  }
+
+  /* make primary controls full-width on small screens */
+  button {
+    width: 100%;
+  }
+
+  .modal-card {
+    width: min(360px, calc(100% - 32px));
+    padding: 20px;
   }
 }
 

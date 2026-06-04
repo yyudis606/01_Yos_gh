@@ -17,6 +17,13 @@ let balance = 1000;
 const history = [];
 const diceCount = 3;
 
+// format numbers: use dot as thousand separator and return string
+function formatNumber(value) {
+  const n = Number(value) || 0;
+  // use de-DE locale to get dot as thousand separator
+  return n.toLocaleString('de-DE');
+}
+
 function renderDice() {
   diceRow.innerHTML = '';
   for (let i = 0; i < diceCount; i += 1) {
@@ -73,7 +80,7 @@ function createBetValueInput() {
 }
 
 function updateBalance() {
-  balanceLabel.textContent = balance;
+  balanceLabel.textContent = formatNumber(balance);
 }
 
 function renderHistory() {
@@ -202,6 +209,14 @@ withdrawModal.addEventListener('click', event => {
   }
 });
 
+// close modal on Escape key for accessibility
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && withdrawModal.classList.contains('visible')) {
+    withdrawModal.classList.remove('visible');
+    withdrawModal.setAttribute('aria-hidden', 'true');
+  }
+});
+
 createBetValueInput();
 updateBalance();
 renderHistory();
@@ -265,7 +280,7 @@ betForm.addEventListener('submit', event => {
     }
   }
 
-  totalLabel.textContent = total;
+  totalLabel.textContent = formatNumber(total);
 
   const diceElements = getDiceElements();
   diceElements.forEach((die, index) => {
@@ -285,9 +300,9 @@ betForm.addEventListener('submit', event => {
 
     if (win) {
       balance += amount + payout;
-      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Menang ${payout} koin! 🎉`;
+      message = `Dadu: ${diceValues.join(', ')}. Total ${formatNumber(total)}. Menang ${formatNumber(payout)} koin! 🎉`;
     } else {
-      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Kalah. 😌`;
+      message = `Dadu: ${diceValues.join(', ')}. Total ${formatNumber(total)}. Kalah. 😌`;
     }
 
     updateBalance();
