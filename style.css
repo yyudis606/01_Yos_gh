@@ -171,6 +171,26 @@ button:disabled {
   }
 }
 
+.warning-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  margin-top: 10px;
+}
+
+.warning-card p {
+  margin: 0;
+  font-style: italic;
+  color: #d8dcff;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 .page-footer {
   position: fixed;
   left: 16px;
