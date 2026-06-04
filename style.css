@@ -134,10 +134,7 @@ button:disabled {
 }
 
 .result-card {
-  min-height: 92px;
-  display: grid;
-  place-items: center;
-  text-align: center;
+  font-size: 1.1rem;
 }
 
 .history-card {
