@@ -27,23 +27,25 @@
       <div class="balance-panel">Saldo: <strong id="balance">1000</strong> koin</div>
 
       <form id="bet-form">
-        <label>
-          Tipe taruhan
-          <select id="bet-type">
-            <option value="total">Total tepat</option>
-            <option value="parity">Ganjil / Genap</option>
-            <option value="triple">Triple</option>
-          </select>
-        </label>
+        <div class="bet-input-row">
+          <label>
+            Tipe taruhan
+            <select id="bet-type">
+              <option value="total">Total tepat</option>
+              <option value="parity">Ganjil / Genap</option>
+              <option value="triple">Triple</option>
+            </select>
+          </label>
 
-        <label>
-          Jumlah taruhan
-          <input type="number" id="bet-amount" min="1" value="20">
-        </label>
+          <label>
+            Jumlah taruhan
+            <input type="number" id="bet-amount" min="1" value="20">
+          </label>
+
+          <div id="bet-value-container" class="bet-value-container"></div>
+        </div>
 
         <button type="submit" id="roll-button">Lempar Dadu</button>
-
-        <div id="bet-value-container"></div>
 
         <label>
           Mode permainan

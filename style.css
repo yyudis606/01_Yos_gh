@@ -111,6 +111,20 @@ form {
   gap: 16px;
 }
 
+.bet-input-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bet-value-container {
+  display: grid;
+}
+
+.bet-value-container > label {
+  height: 100%;
+}
+
 label {
   display: grid;
   gap: 8px;
@@ -131,6 +145,12 @@ select {
   background: transparent;
   color: #eef2ff;
   font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .bet-input-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 button {
