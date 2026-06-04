@@ -265,9 +265,9 @@ betForm.addEventListener('submit', event => {
 
     if (win) {
       balance += amount + payout;
-      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Menang ${payout} koin!`;
+      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Menang ${payout} koin! �`;
     } else {
-      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Kalah.`;
+      message = `Dadu: ${diceValues.join(', ')}. Total ${total}. Kalah. 😌`;
     }
 
     updateBalance();
