@@ -5,6 +5,9 @@ const gameMode = document.getElementById('game-mode');
 const betValueContainer = document.getElementById('bet-value-container');
 const betAmount = document.getElementById('bet-amount');
 const rollButton = document.getElementById('roll-button');
+const withdrawButton = document.getElementById('withdraw-button');
+const withdrawModal = document.getElementById('withdraw-modal');
+const closeModal = document.getElementById('close-modal');
 const resultPanel = document.getElementById('result');
 const historyPanel = document.getElementById('history');
 const balanceLabel = document.getElementById('balance');
@@ -182,6 +185,23 @@ function getBetValue() {
 }
 
 betType.addEventListener('change', createBetValueInput);
+withdrawButton.addEventListener('click', () => {
+  withdrawModal.classList.add('visible');
+  withdrawModal.setAttribute('aria-hidden', 'false');
+});
+
+closeModal.addEventListener('click', () => {
+  withdrawModal.classList.remove('visible');
+  withdrawModal.setAttribute('aria-hidden', 'true');
+});
+
+withdrawModal.addEventListener('click', event => {
+  if (event.target === withdrawModal) {
+    withdrawModal.classList.remove('visible');
+    withdrawModal.setAttribute('aria-hidden', 'true');
+  }
+});
+
 createBetValueInput();
 updateBalance();
 renderHistory();
