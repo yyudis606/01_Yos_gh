@@ -76,14 +76,51 @@ body {
 .card {
   position: relative;
   z-index: 1;
-  max-width: 480px;
+  max-width: 490px;
   width: 100%;
-  background: var(--card-bg);
+  background: linear-gradient(180deg, rgba(8, 12, 25, 0.95), rgba(10, 14, 30, 0.92));
   border-radius: var(--radius-lg);
-  padding: 22px 20px 26px;
+  padding: 24px 24px 30px;
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(245, 199, 107, 0.25);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.08), transparent 18%),
+    radial-gradient(circle at 75% 20%, rgba(245, 199, 107, 0.08), transparent 16%),
+    radial-gradient(circle at 50% 80%, rgba(88, 166, 255, 0.06), transparent 22%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-note,
+.mood-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.hero-note p,
+.mood-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.mood-card {
+  background: linear-gradient(135deg, rgba(245, 199, 107, 0.12), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(245, 199, 107, 0.18);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.06);
 }
 
 /* Setiap section di dalam kartu dipisahkan oleh margin bawah */
@@ -277,14 +314,15 @@ body {
 }
 
 .btn.primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, #f5c76b, #ffd88b);
   color: #1b1305;
-  box-shadow: 0 10px 25px rgba(245, 199, 107, 0.45);
+  box-shadow: 0 12px 28px rgba(245, 199, 107, 0.42);
 }
 
 .btn.secondary {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .btn.outline {

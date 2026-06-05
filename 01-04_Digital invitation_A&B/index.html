@@ -10,12 +10,6 @@
   <!-- Background glow and visual overlay -->
   <div class="bg-overlay"></div>
 
-  <!-- Audio player untuk musik latar -->
-  <audio id="bg-music" loop>
-    <source src="../assets/music/bg-music.mp3" type="audio/mpeg" />
-    Browser kamu tidak mendukung audio.
-  </audio>
-
   <!-- Header undangan: judul dan tanggal acara -->
   <header class="header">
     <p class="subtitle">Undangan Digital Ara &amp; Bima</p>
@@ -29,6 +23,10 @@
       <p class="text-center">
         Dengan penuh syukur kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.
       </p>
+    </section>
+
+    <section class="section hero-note">
+      <p>Terima kasih atas doa dan kehadiran Anda dalam merayakan awal perjalanan baru kami.</p>
     </section>
 
     <!-- Countdown timer menuju acara -->
@@ -120,17 +118,16 @@
       </div>
     </section>
 
-    <section class="section photo-section">
-      <div class="photo-frame">
-        <img src="../assets/images/foto-pasangan.jpg" alt="Foto pasangan" />
+    <section class="section mood-section">
+      <div class="mood-card">
+        <p>Semoga setiap langkah kami selalu mendapat berkah dan doa dari keluarga serta sahabat terkasih.</p>
       </div>
     </section>
 
-    <!-- Tombol aksi utama: musik, peta, streaming -->
+    <!-- Tombol aksi utama: peta & streaming -->
     <section class="section actions">
-      <button id="music-toggle" class="btn primary">🎵 Putar Musik</button>
-      <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Maharaja+No.+25+Jakarta" target="_blank" class="btn secondary">Buka Maps</a>
-      <a href="#" class="btn outline">Live Streaming</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Maharaja+No.+25+Jakarta" target="_blank" class="btn primary">Buka Maps</a>
+      <a href="#" class="btn secondary">Live Streaming</a>
     </section>
 
     <section class="section footer-text">
@@ -154,11 +151,6 @@
     const shareButton = document.getElementById('share-button');
     const nativeShare = document.getElementById('native-share');
     const shareNote = document.getElementById('share-note');
-    // Musik latar
-    const music = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('music-toggle');
-    let isPlaying = false;
-
     function formatNumber(value) {
       return value.toString().padStart(2, '0');
     }
@@ -188,8 +180,8 @@
     function getShareMessage() {
       const name = guestNameEl.value.trim() || 'Bapak/Ibu/Saudara/i';
       const attendance = attendanceEl.value;
-      const url = window.location.href;
-      return `Salam hormat kepada ${name}, kami mengundang anda Sekeluarga ke pernikahan Ara & Bima pada Sabtu, 15 Juni 2024 pukul 10.00 WIB di The Grand Atrium, Jl. Maharaja No. 25, Jakarta Selatan. Status kehadiran: ${attendance}. Akses undangan digital di sini: ${url}`;
+      const url = window.location.protocol === 'file:' ? '' : window.location.href;
+      return `Salam hormat kepada ${name}, kami mengundang Anda sekeluarga ke pernikahan Ara & Bima pada Sabtu, 15 Juni 2024 pukul 10.00 WIB di The Grand Atrium, Jl. Maharaja No. 25, Jakarta Selatan. Status kehadiran: ${attendance}.${url ? ` Akses undangan digital di sini: ${url}` : ''}`;
     }
 
     // Kirim pesan undangan ke WhatsApp menggunakan URL API WhatsApp
@@ -221,23 +213,6 @@
     nativeShare.addEventListener('click', shareNative);
     setInterval(updateCountdown, 1000);
     updateCountdown();
-
-    // Tombol kontrol untuk memutar / menghentikan musik latar
-    toggleBtn.addEventListener('click', async () => {
-      try {
-        if (!isPlaying) {
-          await music.play();
-          isPlaying = true;
-          toggleBtn.textContent = '⏸ Hentikan Musik';
-        } else {
-          music.pause();
-          isPlaying = false;
-          toggleBtn.textContent = '🎵 Putar Musik';
-        }
-      } catch (e) {
-        console.log('Gagal memutar musik:', e);
-      }
-    });
   </script>
 </body>
 </html>
