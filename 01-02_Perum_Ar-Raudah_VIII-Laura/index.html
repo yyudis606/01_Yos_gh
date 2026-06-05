@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Perumahan Ar-Raudah VIII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">Ar-Raudah VIII</a>
+      <nav class="nav" id="mainNav">
+        <a href="#home">Beranda</a>
+        <a href="#rumah">Data Rumah</a>
+        <a href="#warga">Warga</a>
+        <a href="#fasilitas">Fasilitas</a>
+        <a href="#gotong">Gotong Royong</a>
+        <a href="#events">Acara</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Perumahan Ar-Raudah VIII</span>
+          <h1>Komunitas Hunian Nyaman untuk Seluruh Warga</h1>
+          <p>Informasi lengkap tentang rumah, warga, fasilitas, jadwal gotong royong, dan acara khusus di Perumahan Ar-Raudah VIII.</p>
+          <div class="hero-actions">
+            <a href="#rumah" class="btn btn-primary">Lihat Data Rumah</a>
+            <a href="#events" class="btn btn-ghost">Jadwal Acara</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="stats-card">
+            <h2>Statistik Komunitas</h2>
+            <div class="stats-grid">
+              <div><strong>42</strong><span>Unit Rumah</span></div>
+              <div><strong>128</strong><span>Warga</span></div>
+              <div><strong>9</strong><span>Fasilitas Umum</span></div>
+            </div>
+          </div>
+          <div class="card highlight-card">
+            <h3>Dengan Semangat Gotong Royong</h3>
+            <p>Perumahan Ar-Raudah VIII menjunjung kekeluargaan dan gotong royong sebagai kebersamaan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="rumah">
+      <div class="container">
+        <div class="section-heading">
+          <span>Data Rumah</span>
+          <h2>Profil Rumah di Komplek</h2>
+        </div>
+        <div class="cards-grid" id="houseList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="warga">
+      <div class="container">
+        <div class="section-heading">
+          <span>Data Warga</span>
+          <h2>Warga dan Familia</h2>
+        </div>
+        <div class="resident-summary">
+          <div class="info-card">
+            <h3>Jumlah Warga</h3>
+            <p><strong id="residentCount">0</strong> orang aktif</p>
+          </div>
+          <div class="info-card">
+            <h3>Perempuan & Laki-laki</h3>
+            <p><strong>64</strong> perempuan, <strong>64</strong> laki-laki</p>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Nama</th><th>Unit</th><th>Peran</th></tr>
+            </thead>
+            <tbody id="residentList"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="fasilitas">
+      <div class="container">
+        <div class="section-heading">
+          <span>Fasilitas Umum</span>
+          <h2>Kenyamanan & Kemudahan Warga</h2>
+        </div>
+        <div class="features-grid" id="facilityList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="gotong">
+      <div class="container">
+        <div class="section-heading">
+          <span>Gotong Royong</span>
+          <h2>Jadwal Kerja Bakti dan Kebersihan</h2>
+        </div>
+        <div class="timeline" id="gotongSchedule"></div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="events">
+      <div class="container">
+        <div class="section-heading">
+          <span>Acara Khusus</span>
+          <h2>Kegiatan Komunitas Yang Akan Datang</h2>
+        </div>
+        <div class="cards-grid" id="eventList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Ar-Raudah VIII</h3>
+        <p>Komplek yang rukun, aman, dan selalu mengedepankan gotong royong.</p>
+      </div>
+      <div>
+        <h4>Kontak Pengelola</h4>
+        <p>Email: info@arraudah8.com</p>
+        <p>Telepon: 0812-3456-7890</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scrip.js"></script>
+</body>
+</html>
