@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musholla Ar-Raudah VIII</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-title">Ar-Raudah VIII</div>
+
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#jadwal">Jadwal</a></li>
+        <li><a href="#pengurus">Pengurus</a></li>
+      </ul>
+    </nav>
+
+    <!-- HEADER TANPA FOTO -->
+    <div class="header" id="home">
+      <h1>Musholla Ar-Raudah VIII</h1>
+      <p>Tempat ibadah & kegiatan warga sekitar</p>
+    </div>
+
+    <div class="container">
+      <!-- PROFIL -->
+      <div class="card">
+        <h2>Profil Musholla</h2>
+        <p>
+          Musholla Ar-Raudah VIII adalah tempat ibadah dan kegiatan keagamaan
+          warga sekitar, dengan suasana tenang dan nyaman untuk sholat, mengaji,
+          dan kegiatan sosial.
+        </p>
+      </div>
+
+      <!-- ALAMAT -->
+      <div class="card">
+        <h2>Alamat</h2>
+        <p>
+          Jl. Sukamaju Perumahan Ar-Raudah VIII,RT 4,RW 1,Kelurahan Landasan Ulin Utara,Kecamatan Lianganggang,Banjarbaru,
+          Kalimantan Selatan
+        </p>
+      </div>
+
+      <!-- JADWAL SHOLAT -->
+      <div class="card" id="jadwal">
+        <h2>Jadwal Sholat Hari Ini</h2>
+        <p><b>Kota:</b> Banjarbaru (Landasan Ulin)</p>
+
+        <ul id="jadwal-sholat">
+          <li>Subuh: <span id="subuh">...</span></li>
+          <li>Dzuhur: <span id="dzuhur">...</span></li>
+          <li>Ashar: <span id="ashar">...</span></li>
+          <li>Maghrib: <span id="maghrib">...</span></li>
+          <li>Isya: <span id="isya">...</span></li>
+        </ul>
+        <p><b>Jam sekarang:</b> <span id="jam-digital">00:00:00</span></p>
+        <p>
+          <b>Menuju sholat berikutnya:</b>
+          <span id="countdown">menghitung...</span>
+        </p>
+      </div>
+
+      <!-- PENGURUS -->
+      <div class="card" id="pengurus">
+        <h2>Pengurus Musholla</h2>
+        <ul>
+          <li>Ketua Pengurus Musholla : Bapak Amrullah Haki</li>
+          <li>Ketua Komplek Ar-Raudah VIII : Bapak Chandra Maureksa</li>
+          <li>Kaum : Bapak Muliadi</li>
+        </ul>
+
+        <h3>Hubungi Pengurus</h3>
+
+        <div class="wa-buttons">
+          <a href="https://wa.me/6281347146630" target="_blank" class="wa-btn"
+            >💬 WhatsApp Ketua Pengurus Musholla</a
+          >
+          <a href="https://wa.me/6285249234697" target="_blank" class="wa-btn"
+            >💬 WhatsApp Ketua Komplek Ar-Raudah VIII</a
+          >
+          <a href="https://wa.me/6282255940405" target="_blank" class="wa-btn"
+            >💬 WhatsApp Kaum</a
+          >
+        </div>
+      </div>
+
+      <!-- GALERI FOTO -->
+      <div class="card">
+        <h2>Galeri Foto Musholla</h2>
+
+        <div class="gallery">
+          <img src="image/image01.png" alt="Foto Musholla 1" />
+        </div>
+      </div>
+
+      <!-- PENGUMUMAN -->
+      <div class="card">
+        <h2>Pengumuman</h2>
+        <p>
+          Acara rutin pengajian setiap hari Jumat pukul 08.30 WITA di musholla.
+        </p>
+        <p>
+          InsyaAllah akan diadakan gotong royong membersihkan musholla/komplek
+          pada hari Minggu pukul 09.00 WITA.
+        </p>
+      </div>
+
+      <!-- MAP MINIMALIS -->
+      <div class="card">
+        <h2>Lokasi Musholla</h2>
+
+        <div class="map-minimal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.91825425679582!2d114.7237866057042!3d-3.424966499315615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de683004eead4fb%3A0x747e80a949d1abe5!2sMusholla%20Ar-Raudah!5e0!3m2!1sid!2sid!4v1779774408975!5m2!1sid!2sid"
+            width="100%"
+            height="200"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      &copy; 2026 Musholla Ar-Raudah VIII Laura — Created by Yos
+    </div>
+
+    <!-- SCRIPT MENU HP -->
+    <script>
+      function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("show");
+      }
+    </script>
+
+    <!-- PANGGIL SCRIPT TERPISAH -->
+    <script src="script.js"></script>
+  </body>
+</html>
