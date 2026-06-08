@@ -138,4 +138,14 @@
     });
 
     resetBtn.addEventListener('click', () => {
-      input.value
+      input.value = "";
+      localStorage.removeItem('invitationGuest');
+    });
+
+    // Enter = klik tombol
+    input.addEventListener('keydown', e => {
+      if (e.key === "Enter") goBtn.click();
+    });
+  </script>
+</body>
+</html>
