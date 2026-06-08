@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masukkan Nama - Undangan Batman & Batgirl</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050814;
+      --accent: #f5c76b;
+      --accent-soft: rgba(245,199,107,0.25);
+      --text: #ffffff;
+      --text-muted: #c7c7d9;
+      --radius: 18px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Poppins, system-ui;
+      background: radial-gradient(circle at top, #1b2340 0, #050814 55%, #000000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 28px;
+      border-radius: var(--radius);
+      text-align: center;
+      backdrop-filter: blur(12px);
+    }
+
+    h2 {
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    p.small {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #ffd88b);
+      color: #1b1305;
+      font-weight: 600;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>Masukkan Nama Anda</h2>
+    <p class="small">Nama akan diteruskan ke halaman undangan utama.</p>
+
+    <input id="guestInput" placeholder="Masukkan nama Anda" autocomplete="off" />
+
+    <button class="btn btn-primary" id="goBtn">Buka Undangan</button>
+    <button class="btn btn-secondary" id="resetBtn">Reset</button>
+
+    <p class="small">
+      Atau <a href="invitation.html">buka undangan</a> langsung (tanpa nama).
+    </p>
+  </div>
+
+  <script>
+    const input = document.getElementById('guestInput');
+    const goBtn = document.getElementById('goBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    // Prefill jika ada data tersimpan
+    const stored = localStorage.getItem('invitationGuest');
+    if (stored) input.value = stored;
+
+    goBtn.addEventListener('click', () => {
+      const name = input.value.trim();
+
+      if (!name) {
+        alert("Masukkan nama terlebih dahulu");
+        return;
+      }
+
+      localStorage.setItem('invitationGuest', name);
+
+      const url = "invitation.html?guest=" + encodeURIComponent(name);
+      window.location.href = url;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      input.value

@@ -1,86 +1,99 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Undangan Digital - Batman & Batgirl</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root{--primary:#1a1a2e;--accent:#e94560;--gold:#d4af37;--text-light:#f0f0f0}
-    body{font-family:Poppins,system-ui;margin:0;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:var(--text-light)}
-    .container{max-width:720px;margin:0 auto;padding:20px}
-    .header{text-align:center;padding:36px 12px}
-    h1{font-family:Cormorant Garamond,serif;font-size:2.8rem;margin:8px 0;color:var(--gold)}
-    .subtitle{color:var(--gold);letter-spacing:2px}
-    .card{background:rgba(255,255,255,0.04);padding:24px;border-radius:14px;margin-bottom:20px}
-    .couple-display{display:flex;gap:16px}
-    .couple-display img{width:100%;max-width:320px;border-radius:12px;border:2px solid var(--gold)}
-    .music-player{margin:20px 0}
-    .attendance-section,.share-link-section{margin:20px 0}
-    .attendance-buttons{display:flex;gap:10px}
-    .attendance-btn{flex:1;padding:10px;border-radius:8px;border:2px solid var(--gold);background:transparent;color:var(--text-light);cursor:pointer}
-    .attendance-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .stats{display:flex;gap:12px;justify-content:space-between;margin-top:12px}
-    .stat{flex:1;text-align:center}
-    .stat .count{font-size:1.4rem;color:var(--gold);font-weight:700}
-    .share-link{display:flex;gap:8px}
-    .link-input{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:var(--text-light)}
-    .btn{padding:10px 14px;border-radius:8px;border:none;cursor:pointer}
-    .btn-primary{background:linear-gradient(135deg,var(--accent) 0%,#ff6b9d 100%);color:#fff}
-    @media(max-width:600px){.couple-display{flex-direction:column}.stats{flex-direction:column}}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Batman & Batgirl</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- Background Glow -->
+  <div class="bg-overlay"></div>
+
   <div class="container">
     <header class="header">
       <p class="subtitle">✨ Undangan Digital ✨</p>
-      <h1>Batman &amp; Batgirl</h1>
-      <p id="eventDate">Sabtu, 15 Juni 2024 · 19.00 WIB</p>
+      <h1 class="names">Batman & Batgirl</h1>
+      <p class="date-label">Sabtu, 15 Juni 2024 · 19.00 WIB</p>
     </header>
 
     <main class="card">
-      <p style="font-size:1.05rem">Kepada: <strong id="guestName">Tamu Istimewa</strong></p>
 
-      <section class="couple-display">
-        <div>
-          <img src="image/batgirl-design-fan-art-v0-yp53l9zpnfda1.jpeg" alt="Batgirl">
-        </div>
-        <div>
-          <img src="image/San_Diego_Comic-Con_2024_Masquerade_-_Cosplay_of_Batman_3.jpeg" alt="Batman">
+      <!-- Guest Name -->
+      <section class="guest-card section">
+        <div class="guest-header">
+          <h2>Kepada:</h2>
+          <p><strong id="guestName">Tamu Istimewa</strong></p>
         </div>
       </section>
 
-      <section class="card">
-        <h3>⏰ Hitung Mundur</h3>
-        <div style="display:flex;gap:12px;"> 
-          <div style="flex:1;text-align:center"><div id="days" style="font-size:2rem;color:var(--gold)">00</div><div>Hari</div></div>
-          <div style="flex:1;text-align:center"><div id="hours" style="font-size:2rem;color:var(--gold)">00</div><div>Jam</div></div>
-          <div style="flex:1;text-align:center"><div id="minutes" style="font-size:2rem;color:var(--gold)">00</div><div>Menit</div></div>
-          <div style="flex:1;text-align:center"><div id="seconds" style="font-size:2rem;color:var(--gold)">00</div><div>Detik</div></div>
+      <!-- Photo -->
+      <section class="photo-section section">
+        <div class="photo-frame">
+          <img src="image/batgirl.jpeg" alt="Batgirl">
         </div>
       </section>
 
-      <section class="card music-player">
-        <h3>🎵 Musik</h3>
-        <audio id="bgMusicDigital" controls autoplay loop playsinline>
-          <source src="music/Andra_BackBone_-_sempurna_(mp3.pm).mp3" type="audio/mpeg">
+      <section class="photo-section section">
+        <div class="photo-frame">
+          <img src="image/batman.jpeg" alt="Batman">
+        </div>
+      </section>
+
+      <!-- Countdown -->
+      <section class="countdown-card section">
+        <h2>Hitung Mundur</h2>
+        <div class="countdown-grid">
+          <div class="countdown-item"><span id="days">00</span><small>Hari</small></div>
+          <div class="countdown-item"><span id="hours">00</span><small>Jam</small></div>
+          <div class="countdown-item"><span id="minutes">00</span><small>Menit</small></div>
+          <div class="countdown-item"><span id="seconds">00</span><small>Detik</small></div>
+        </div>
+      </section>
+
+      <!-- Music -->
+      <section class="section">
+        <h2 class="text-center">🎵 Musik</h2>
+        <audio id="bgMusic" controls autoplay loop playsinline>
+          <source src="music/sempurna.mp3" type="audio/mpeg">
         </audio>
       </section>
 
-      <section class="card">
-        <h3>📍 Lokasi</h3>
-        <p>Gedung Serbaguna — Jalan Utama No. 123, Kota</p>
-        <a id="mapsLinkDigital" href="https://www.google.com/maps/search/Gedung+Serbaguna" target="_blank" class="btn">Buka di Google Maps</a>
+      <!-- Info Grid -->
+      <section class="info-grid section">
+        <div class="info-item">
+          <h2>Tanggal</h2>
+          <p>Sabtu, 15 Juni 2024</p>
+        </div>
+        <div class="info-item">
+          <h2>Waktu</h2>
+          <p>19.00 WIB</p>
+        </div>
+        <div class="info-item">
+          <h2>Lokasi</h2>
+          <p>Gedung Serbaguna, Jalan Utama No. 123</p>
+        </div>
+        <div class="info-item">
+          <h2>Maps</h2>
+          <a class="btn primary wide" href="https://www.google.com/maps?q=Gedung+Serbaguna+Jalan+Utama+123" target="_blank">Buka Google Maps</a>
+        </div>
       </section>
 
-      <section class="attendance-section card">
-        <h3>📋 Konfirmasi Kehadiran</h3>
-        <div class="attendance-buttons">
-          <button class="attendance-btn" id="btnAttending">Hadir</button>
-          <button class="attendance-btn" id="btnMaybe">Ragu</button>
-          <button class="attendance-btn" id="btnNot">Tidak Hadir</button>
+      <!-- RSVP -->
+      <section class="section">
+        <h2 class="text-center">Konfirmasi Kehadiran</h2>
+
+        <div class="actions">
+          <button class="btn outline attendance-btn" id="btnAttending">Hadir</button>
+          <button class="btn outline attendance-btn" id="btnMaybe">Ragu</button>
+          <button class="btn outline attendance-btn" id="btnNot">Tidak Hadir</button>
         </div>
+
         <div class="stats">
           <div class="stat"><div class="count" id="attendingCount">0</div><div>Hadir</div></div>
           <div class="stat"><div class="count" id="maybeCount">0</div><div>Ragu</div></div>
@@ -88,67 +101,9 @@
         </div>
       </section>
 
-      <section class="share-link-section card">
-        <h3>🔗 Link Undangan</h3>
-        <div class="share-link">
-          <input class="link-input" id="shareLinkDigital" readonly value="">
-          <button class="btn" id="copyBtn">Salin</button>
-        </div>
-        <p style="margin-top:12px;color:rgba(255,255,255,0.8);font-size:0.95rem">Bagikan link ini agar tamu lain langsung membuka undangan dengan nama masing-masing (tambahkan ?guest=Nama pada URL).</p>
-      </section>
-
-    </main>
-  </div>
-
-  <script>
-    function getQueryGuest(){
-      const params = new URLSearchParams(window.location.search);
-      return params.get('guest');
-    }
-
-    function readGuest(){
-      const q = getQueryGuest();
-      if(q) return decodeURIComponent(q);
-      const stored = localStorage.getItem('invitationGuest');
-      return stored || 'Tamu Istimewa';
-    }
-
-    function saveGuest(guest){ localStorage.setItem('invitationGuest', guest); }
-
-    function updateGuestDisplay(){
-      const g = readGuest();
-      document.getElementById('guestName').textContent = g;
-      saveGuest(g);
-    }
-
-    // attendance
-    function loadAttendance(){ return JSON.parse(localStorage.getItem('undanganAttendance')||'{}'); }
-    function saveAttendance(a){ localStorage.setItem('undanganAttendance', JSON.stringify(a)); }
-    function setAttendanceStatus(guest,status){ const a=loadAttendance(); a[guest]=status; saveAttendance(a); updateStats(); }
-    function updateStats(){ const a=loadAttendance(); let at=0,mb=0,no=0; Object.values(a).forEach(s=>{if(s==='attending') at++; if(s==='maybe') mb++; if(s==='not-attending') no++;}); document.getElementById('attendingCount').textContent=at; document.getElementById('maybeCount').textContent=mb; document.getElementById('notCount').textContent=no; }
-
-    document.addEventListener('DOMContentLoaded',()=>{
-      updateGuestDisplay();
-      updateStats();
-
-      // attach attendance buttons
-      document.getElementById('btnAttending').addEventListener('click',()=>{ setAttendanceStatus(readGuest(),'attending'); alert('Terima kasih, terdaftar hadir'); });
-      document.getElementById('btnMaybe').addEventListener('click',()=>{ setAttendanceStatus(readGuest(),'maybe'); alert('Terima kasih atas konfirmasi'); });
-      document.getElementById('btnNot').addEventListener('click',()=>{ setAttendanceStatus(readGuest(),'not-attending'); alert('Terima kasih sudah memberi kabar'); });
-
-      // share link
-      const base = window.location.origin + window.location.pathname;
-      document.getElementById('shareLinkDigital').value = base + '?guest=' + encodeURIComponent(readGuest());
-      document.getElementById('copyBtn').addEventListener('click', ()=>{ navigator.clipboard.writeText(document.getElementById('shareLinkDigital').value).then(()=>alert('Link disalin')); });
-
-      // countdown
-      const target = new Date('2024-06-15T19:00:00+07:00');
-      function tick(){ const now=new Date(); const d=target-now; if(d<=0){document.getElementById('days').textContent='00';document.getElementById('hours').textContent='00';document.getElementById('minutes').textContent='00';document.getElementById('seconds').textContent='00'; return;} const days=Math.floor(d/86400000); const hours=Math.floor((d%86400000)/3600000); const minutes=Math.floor((d%3600000)/60000); const seconds=Math.floor((d%60000)/1000); document.getElementById('days').textContent=String(days).padStart(2,'0'); document.getElementById('hours').textContent=String(hours).padStart(2,'0'); document.getElementById('minutes').textContent=String(minutes).padStart(2,'0'); document.getElementById('seconds').textContent=String(seconds).padStart(2,'0'); }
-      tick(); setInterval(tick,1000);
-
-      // try autoplay
-      const audio=document.getElementById('bgMusicDigital'); audio.volume=0.5; audio.muted=false; audio.play().catch(()=>{});
-    });
-  </script>
-</body>
-</html>
+      <!-- Share Link -->
+      <section class="map-card section">
+        <div class="map-info">
+          <h2>Bagikan Link Undangan</h2>
+          <input class="link-input" id="shareLink" readonly>
+          <button class="btn primary wide" id="copyBtn">Salin Link</button>

@@ -1,4 +1,6 @@
-/* Variabel global untuk warna, radius, dan tipografi */
+/* ================================
+   🎨 GLOBAL VARIABLES
+================================ */
 :root {
   --bg-color: #050814;
   --accent: #f5c76b;
@@ -12,6 +14,9 @@
   --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* ================================
+   RESET
+================================ */
 *,
 *::before,
 *::after {
@@ -20,6 +25,9 @@
   padding: 0;
 }
 
+/* ================================
+   BODY & BACKGROUND
+================================ */
 body {
   min-height: 100vh;
   font-family: var(--font-main);
@@ -30,7 +38,7 @@ body {
   justify-content: center;
   padding: 24px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .bg-overlay {
@@ -43,6 +51,9 @@ body {
   z-index: 0;
 }
 
+/* ================================
+   HEADER
+================================ */
 .header {
   text-align: center;
   margin-bottom: 18px;
@@ -63,6 +74,12 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,100% { text-shadow: 0 0 8px rgba(245,199,107,0.4); }
+  50% { text-shadow: 0 0 18px rgba(245,199,107,0.8); }
 }
 
 .date-label {
@@ -72,207 +89,36 @@ body {
   font-size: 0.95rem;
 }
 
-/* Kartu utama undangan: latar, border, dan efek blur */
+/* ================================
+   CARD WRAPPER
+================================ */
 .card {
   position: relative;
   z-index: 1;
-  max-width: 490px;
+  max-width: 500px;
   width: 100%;
   background: linear-gradient(180deg, rgba(8, 12, 25, 0.95), rgba(10, 14, 30, 0.92));
   border-radius: var(--radius-lg);
-  padding: 24px 24px 30px;
+  padding: 26px;
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(245, 199, 107, 0.25);
   backdrop-filter: blur(20px);
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.08), transparent 18%),
-    radial-gradient(circle at 75% 20%, rgba(245, 199, 107, 0.08), transparent 16%),
-    radial-gradient(circle at 50% 80%, rgba(88, 166, 255, 0.06), transparent 22%);
-  pointer-events: none;
-  z-index: 0;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.hero-note,
-.mood-section {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-md);
-  padding: 18px 20px;
-  text-align: center;
-  color: var(--text-muted);
-}
-
-.hero-note p,
-.mood-card p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-.mood-card {
-  background: linear-gradient(135deg, rgba(245, 199, 107, 0.12), rgba(255, 255, 255, 0.03));
-  border: 1px solid rgba(245, 199, 107, 0.18);
-  border-radius: 24px;
-  padding: 20px;
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.06);
-}
-
-/* Setiap section di dalam kartu dipisahkan oleh margin bawah */
 .section {
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
-.text-center {
-  text-align: center;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-}
-
-.countdown-card,
-.guest-card,
-.map-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-md);
-  padding: 20px;
-}
-
-.countdown-card h2,
-.guest-header h2,
-.map-info h2 {
-  font-size: 1rem;
-  margin-bottom: 12px;
-  color: var(--accent);
-}
-
-.countdown-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.countdown-item {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(245, 199, 107, 0.18);
-  border-radius: 18px;
-  padding: 18px 12px;
-  text-align: center;
-}
-
-.countdown-item span {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.countdown-item small {
-  display: block;
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.guest-header p {
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.input-group {
-  display: grid;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.input-group span {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.input-group input,
-.input-group select {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 14px;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text-main);
-  font-size: 0.95rem;
-}
-
-.guest-actions {
-  display: grid;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.share-note {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Grid responsive untuk detail informasi event */
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.info-item {
-  padding: 16px 18px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(245, 199, 107, 0.06));
-  border: 1px solid rgba(245, 199, 107, 0.18);
-}
-
-.info-item h2 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-.info-item p {
-  font-size: 0.95rem;
-  color: var(--text-main);
-  line-height: 1.5;
-}
-
-.map-card {
-  display: grid;
-  gap: 16px;
-}
-
-.map-info p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--text-main);
-}
-
-.map-frame {
-  width: 100%;
-  min-height: 220px;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.map-frame iframe {
-  width: 100%;
-  height: 220px;
-  border: 0;
-}
-
+/* ================================
+   PHOTO FRAME
+================================ */
 .photo-section {
   display: flex;
   justify-content: center;
@@ -294,89 +140,24 @@ body::before {
   object-fit: cover;
 }
 
-/* Styling untuk bar tombol aksi utama */
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.btn {
-  border: none;
-  border-radius: 999px;
-  padding: 12px 20px;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
-  text-decoration: none;
-  text-align: center;
-}
-
-.btn.primary {
-  background: linear-gradient(135deg, #f5c76b, #ffd88b);
-  color: #1b1305;
-  box-shadow: 0 12px 28px rgba(245, 199, 107, 0.42);
-}
-
-.btn.secondary {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.btn.outline {
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid rgba(245, 199, 107, 0.3);
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-}
-
-.wide {
-  width: 100%;
-}
-
-.footer-text {
-  text-align: center;
-}
-
-.save-the-date {
+/* ================================
+   COUNTDOWN
+================================ */
+.countdown-card h2 {
   font-size: 1rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  margin-bottom: 12px;
   color: var(--accent);
 }
 
-.btn-link {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 0.9rem;
-  color: var(--accent);
-  text-decoration: none;
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
-@media (min-width: 640px) {
-  .info-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .guest-card,
-  .map-card,
-  .countdown-card {
-    padding: 24px;
-  }
-
-  .card {
-    padding: 26px 26px 30px;
-  }
-}
-
-@media (max-width: 520px) {
-  .countdown-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+.countdown-item {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(245,199,107,0.18);
+  border-radius: 18px;
+  padding: 18px 12px;
+  text
