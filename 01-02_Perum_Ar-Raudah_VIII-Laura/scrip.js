@@ -1,9 +1,9 @@
 const houses = [
-  {type:'Tipe 36', address:'Jalan Mawar No. 1', status:'Terisi'},
-  {type:'Tipe 36', address:'Jalan Melati No. 3', status:'Terjual'},
-  {type:'Tipe 36', address:'Jalan Flamboyan No. 7', status:'Terisi'},
-  {type:'Tipe 36', address:'Jalan Kenanga No. 10', status:'Tersedia'},
-  {type:'Tipe 36', address:'Jalan Bougenville No. 12', status:'Terisi'}
+  {type:'Jalur Utama', address:'11 Rumah', status:'2 Rumah Kosong'},
+  {type:'Blok 1', address:'6 Rumah', status:'3 Rumah Kosong'},
+  {type:'Blok 2', address:'6 Rumah', status:'Terisi'},
+  {type:'Blok 3', address:'6 Rumah', status:'2 Rumah Kosong'},
+  {type:'Blok 4', address:'6 Rumah', status:'Terisi'}
 ];
 
 const residents = [
