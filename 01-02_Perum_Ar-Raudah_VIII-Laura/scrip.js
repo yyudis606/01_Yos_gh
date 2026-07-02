@@ -8,11 +8,35 @@ const houses = [
 
 const residents = [
   {name:'Chandra Maureksa', unit:'No. 1', role:'Ketua Komplek'},
-  {name:'Siti Aisyah', unit:'No. 3', role:'Bendahara'},
-  {name:'Hendra Pratama', unit:'No. 7', role:'Warga'},
-  {name:'Rina Setiawati', unit:'No. 10', role:'Warga'},
-  {name:'Dewi Anggraini', unit:'No. 12', role:'Warga'},
-  {name:'Budi Santoso', unit:'No. 15', role:'Warga'}
+  {name:'Siti Aisyah', unit:'No. 2', role:'Bendahara'},
+  {name:'Hendra Pratama', unit:'No. 3', role:'Warga'},
+  {name:'Rina Setiawati', unit:'No. 4', role:'Warga'},
+  {name:'Dewi Anggraini', unit:'No. 5', role:'Warga'},
+  {name:'Budi Santoso', unit:'No. 6', role:'Warga'},
+  {name:'Fajar Nugroho', unit:'No. 7', role:'Warga'},
+  {name:'Lina Marlina', unit:'No. 8', role:'Warga'},
+  {name:'Agus Prasetyo', unit:'No. 9', role:'Warga'},
+  {name:'Rizky Ramadhan', unit:'No. 10', role:'Warga'},
+  {name:'----------', unit:'No. 11', role:'Warga'},
+  {name:'----------', unit:'No. 12', role:'Warga'},
+  {name:'----------', unit:'No. 13', role:'Warga'},
+  {name:'----------', unit:'No. 14', role:'Warga'},
+  {name:'----------', unit:'No. 15', role:'Warga'},
+  {name:'----------', unit:'No. 16', role:'Warga'},
+  {name:'----------', unit:'No. 17', role:'Warga'},
+  {name:'----------', unit:'No. 18', role:'Warga'},
+  {name:'----------', unit:'No. 19', role:'Warga'},
+  {name:'----------', unit:'No. 20', role:'Warga'},
+  {name:'----------', unit:'No. 21', role:'Warga'},
+  {name:'----------', unit:'No. 22', role:'Warga'},
+  {name:'----------', unit:'No. 23', role:'Warga'},
+  {name:'----------', unit:'No. 24', role:'Warga'},
+  {name:'----------', unit:'No. 25', role:'Warga'},
+  {name:'----------', unit:'No. 26', role:'Warga'},
+  {name:'----------', unit:'No. 27', role:'Warga'},
+  {name:'----------', unit:'No. 28', role:'Warga'},
+  {name:'----------', unit:'No. 29', role:'Warga'},
+  {name:'----------', unit:'No. 30', role:'Warga'}
 ];
 
 const facilities = [
