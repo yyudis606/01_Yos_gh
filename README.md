@@ -1,6 +1,6 @@
 01_Yos_gh
 
-| No | Sub | Subject | Status |
+| Code | No | Subject | Status |
 |----|----|------------|---------|
 | 01 | 01 | 3 Dice | ✅ |
 | 01 | 02 | Perum_Ar-Raudah_VIII-Laura | ✅ |
