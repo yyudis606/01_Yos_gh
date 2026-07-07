@@ -121,7 +121,7 @@ while (true) {
   currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 // end code 1
-
+// Numbering of the board positions for reference
 // -------------------
 // | 0,0 | 0,1 | 0,2 |
 // -------------------
