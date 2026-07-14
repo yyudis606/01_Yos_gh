@@ -10,6 +10,6 @@
 | 01 | 06 | Play-a-tic-tac-toe-game | ✅ |
 | 01 | 07 | Print calender | ✅ |
 | 01 | 08 | Calculate age | ✅ |
-| -- | -- | -- | -- |
+| -- | -- | images | ✅ |
 | -- | -- | -- | -- |
 | -- | -- | -- | -- |
