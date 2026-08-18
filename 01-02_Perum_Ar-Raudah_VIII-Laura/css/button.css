@@ -1,0 +1,33 @@
+/*
+  button.css
+  Mengelola tombol utama seperti CTA dan aksi navigasi.
+  Disarankan untuk memakai kelas button yang konsisten agar mudah diganti di masa depan.
+*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.95rem 1.5rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  box-shadow: 0 18px 32px rgba(15, 118, 110, 0.2);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-primary);
+  border-color: rgba(15, 118, 110, 0.2);
+}

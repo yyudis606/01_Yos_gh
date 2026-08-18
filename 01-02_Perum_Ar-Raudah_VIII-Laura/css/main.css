@@ -1,0 +1,24 @@
+/*
+  main.css
+  File entry point utama untuk semua styling halaman Ar-Raudah VIII.
+  Gunakan file ini sebagai pusat pengaturan tema dan import modul CSS agar perubahan skema visual lebih mudah dikelola.
+*/
+
+@import url("./variables.css");
+@import url("./reset.css");
+@import url("./typography.css");
+@import url("./base.css");
+@import url("./grid.css");
+@import url("./nav.css");
+@import url("./button.css");
+@import url("./visibility.css");
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.1), transparent 28%),
+    linear-gradient(180deg, #f6fbf9 0%, var(--color-bg) 100%);
+}

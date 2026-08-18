@@ -1,0 +1,132 @@
+/*
+  nav.css
+  Menyusun tampilan navigasi header dan menu mobile.
+  Untuk perubahan menu atau penamaan navigasi, ubah link di HTML dan sesuaikan style di file ini.
+*/
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  max-width: var(--container-width);
+  width: min(var(--container-width), calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.25rem;
+  min-width: 4.25rem;
+  height: 2.5rem;
+  padding: 0 0.25rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--color-muted);
+  font-weight: 600;
+  padding: 0.65rem 0.8rem;
+  border-radius: 999px;
+  transition: 0.2s ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-toggle-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 710px) {
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .nav {
+    display: none;
+    width: 100%;
+    margin-top: 0.8rem;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .nav.is-open {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,54 @@
+/*
+  typography.css
+  Mengatur gaya teks umum seperti heading, paragraph, dan label.
+  Jika ingin merubah tampilan judul website atau nama warga, lakukan di sini terlebih dahulu.
+*/
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: var(--color-text);
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+p {
+  color: var(--color-muted);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.77rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+}
+
+.section-heading span {
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  margin-top: 0.7rem;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}

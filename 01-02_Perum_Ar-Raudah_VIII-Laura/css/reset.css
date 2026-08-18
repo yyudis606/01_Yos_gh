@@ -1,0 +1,44 @@
+/*
+  reset.css
+  Reset dasar agar layout konsisten di berbagai browser.
+  Kalaupun ada perubahan struktur HTML/menggunakan framework baru, file ini tetap jadi fondasi umum.
+*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+figure,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}

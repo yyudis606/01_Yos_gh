@@ -4,24 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Perumahan Ar-Raudah VIII</title>
+  <meta name="description" content="Website profil komunitas Perumahan Ar-Raudah VIII, data rumah, warga, fasilitas, dan kegiatan gotong royong.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#home">Ar-Raudah VIII</a>
-      <nav class="nav" id="mainNav">
+      <a class="brand" href="#home" aria-label="Logo Ar-Raudah VIII">
+        <span class="brand-mark">AR-VIII</span>
+        <span>Ar-Raudah VIII</span>
+      </a>
+      <nav class="nav" id="mainNav" aria-label="Navigasi utama">
         <a href="#home">Beranda</a>
         <a href="#rumah">Data Rumah</a>
         <a href="#warga">Warga</a>
+        <a href="#board">Pengurus</a>
         <a href="#fasilitas">Fasilitas</a>
         <a href="#gotong">Gotong Royong</a>
         <a href="#events">Acara</a>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false">
+        <img src="image/icon-hamburger.svg" alt="" aria-hidden="true" class="nav-toggle-icon">
+      </button>
     </div>
   </header>
 
@@ -40,11 +47,10 @@
         <div class="hero-panel">
           <div class="stats-card">
             <h2>Statistik Komunitas</h2>
-            <div class="stats-grid">
-              <div><strong>42</strong><span>Unit Rumah</span></div>
-              <div><strong>128</strong><span>Warga</span></div>
-              <div><strong>9</strong><span>Fasilitas Umum</span></div>
-            </div>
+            <div class="stats-grid" id="communityStats"></div>
+          </div>
+          <div class="image-frame hero-image">
+            <img src="image/Gate_Komp_Ar-Raudah_VIII.png" alt="Pintu gerbang Perumahan Ar-Raudah VIII">
           </div>
           <div class="card highlight-card">
             <h3>Dengan Semangat Gotong Royong</h3>
@@ -77,17 +83,40 @@
           </div>
           <div class="info-card">
             <h3>Perempuan & Laki-laki</h3>
-            <p><strong>64</strong> perempuan, <strong>64</strong> laki-laki</p>
+            <p id="genderSummary">0 perempuan, 0 laki-laki</p>
           </div>
         </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr><th>Nama</th><th>Unit</th><th>Peran</th></tr>
-            </thead>
-            <tbody id="residentList"></tbody>
-          </table>
+        <div class="resident-accordion" id="residentAccordion"></div>
+
+        <div class="resident-accordion iuran-accordion-wrapper" id="iuranAccordion">
+          <div class="resident-accordion-item">
+            <button class="resident-accordion-toggle iuran-toggle" type="button" aria-expanded="false" aria-controls="iuran-content">
+              <span class="person">
+                <strong>Iuran Komplek Bulanan</strong>
+                <small>Rp 15.000 / bulan</small>
+              </span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <div class="resident-accordion-content iuran-content" id="iuran-content">
+              <div class="resident-accordion-body iuran-body">
+                <p>Scan QRIS berikut untuk pembayaran iuran komplek bulanan.</p>
+                <div class="qris-wrapper">
+                  <img src="image/Qris.jpeg" alt="QRIS pembayaran iuran komplek bulanan">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="board">
+      <div class="container">
+        <div class="section-heading">
+          <span>Pengurus Komplek</span>
+          <h2>Tim Pemimpin dan Pengelola Warga</h2>
+        </div>
+        <div class="board-grid" id="boardList"></div>
       </div>
     </section>
 
@@ -108,6 +137,16 @@
           <h2>Jadwal Kerja Bakti dan Kebersihan</h2>
         </div>
         <div class="timeline" id="gotongSchedule"></div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <span>Galeri</span>
+          <h2>Dokumentasi Area Komplek</h2>
+        </div>
+        <div class="gallery-grid" id="galleryList"></div>
       </div>
     </section>
 
@@ -136,6 +175,12 @@
     </div>
   </footer>
 
+  <script src="data-warga/data-warga.js"></script>
+  <script src="data-warga/data-rumah.js"></script>
+  <script src="data-warga/pengurus-komplek.js"></script>
+  <script src="data-warga/jadwal-komunitas.js"></script>
+  <script src="data-warga/fasilitas-umum.js"></script>
+  <script src="data-warga/foto-galeri.js"></script>
   <script src="scrip.js"></script>
 </body>
 </html>

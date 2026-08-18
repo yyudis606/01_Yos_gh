@@ -1,0 +1,466 @@
+/*
+  base.css
+  Kumpulan gaya dasar untuk layout halaman dan komponen utama.
+  File ini cocok diubah saat ingin memperbarui estetika umum website tanpa menata ulang tata letak.
+*/
+body {
+  background: linear-gradient(180deg, #f7faf9 0%, var(--color-bg) 100%);
+}
+
+.container {
+  width: min(var(--container-width), calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-soft {
+  background: #f7fbfa;
+}
+
+.site-footer {
+  background: #0f1e1d;
+  color: #ebf7f5;
+  padding: 3rem 0 2rem;
+}
+
+.site-footer p,
+.site-footer h4,
+.site-footer h3 {
+  color: inherit;
+}
+
+.site-footer .container {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.card,
+.info-card,
+.timeline-card,
+.board-member-card,
+.stats-card,
+.feature-card,
+.gallery-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.card,
+.info-card,
+.timeline-card,
+.feature-card {
+  padding: 1.5rem;
+}
+
+.card h3,
+.info-card h3,
+.feature-card h3,
+.timeline-card h3,
+.board-member-card h3,
+.gallery-copy h3 {
+  color: var(--color-text);
+  margin-bottom: 0.7rem;
+}
+
+.card p,
+.info-card p,
+.feature-card p,
+.timeline-card p,
+.gallery-copy p {
+  margin: 0;
+}
+
+.gallery-card {
+  overflow: hidden;
+}
+
+.gallery-image-wrap {
+  height: 220px;
+  overflow: hidden;
+  background: #edf5f4;
+}
+
+.gallery-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-copy {
+  padding: 1.1rem 1rem 1.2rem;
+}
+
+.gallery-copy h3 {
+  margin: 0 0 0.6rem;
+}
+
+.gallery-copy p {
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.status--filled {
+  color: var(--color-success);
+  background: rgba(22, 163, 74, 0.12);
+}
+
+.status--empty {
+  color: var(--color-warning);
+  background: rgba(217, 119, 6, 0.12);
+}
+
+.board-grid {
+  margin-top: 1rem;
+}
+
+.board-member-card {
+  padding: 1.5rem;
+}
+
+.board-member-card .member-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #9a5d00;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.board-member-card .member-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.resident-accordion {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.resident-accordion-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.resident-accordion-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-text);
+}
+
+.resident-accordion-toggle .person {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.resident-accordion-toggle .person strong {
+  font-size: 1rem;
+}
+
+.resident-accordion-toggle .chevron {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('../image/icon-chevron-down.svg') center/contain no-repeat;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.resident-accordion-item.open .resident-accordion-toggle .chevron {
+  transform: rotate(180deg);
+}
+
+.resident-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+  background: rgba(15, 118, 110, 0.02);
+}
+
+.resident-accordion-body {
+  padding: 0 1.1rem 1.1rem;
+  color: var(--color-muted);
+}
+
+.resident-accordion-body p {
+  margin-top: 0.6rem;
+}
+
+.iuran-accordion-wrapper {
+  margin-top: 1rem;
+}
+
+.iuran-toggle .person {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.iuran-toggle .person small {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.iuran-body {
+  padding-top: 0.4rem;
+}
+
+.qris-wrapper {
+  margin-top: 1rem;
+  max-width: 240px;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.qris-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+
+.resident-list-header,
+.resident-list-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.resident-list-header {
+  padding: 0.8rem 0.6rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resident-list {
+  display: grid;
+}
+
+.resident-list-row {
+  padding: 0.8rem 0.6rem;
+  border-bottom: 1px solid rgba(18, 49, 45, 0.08);
+}
+
+.resident-list-row:last-child {
+  border-bottom: none;
+}
+
+.resident-list-name,
+.resident-list-unit,
+.resident-list-role {
+  color: var(--color-text);
+}
+
+#residentList tr {
+  transition: background 0.2s ease;
+}
+
+#residentList tr:hover {
+  background: rgba(15, 118, 110, 0.03);
+}
+
+.resident-name {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.resident-role {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .resident-list-header {
+    display: none;
+  }
+
+  .resident-list-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .resident-list-name {
+    font-weight: 700;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.table-mobile-hidden {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .table-mobile-hidden {
+    display: none;
+  }
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  text-align: left;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table-wrapper thead {
+  background: rgba(15, 118, 110, 0.05);
+}
+
+.table-wrapper th {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.hero {
+  position: relative;
+  padding: 4.5rem 0 4rem;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.06), rgba(255, 255, 255, 0.7));
+}
+
+.hero-copy {
+  max-width: 620px;
+}
+
+.hero-copy h1 {
+  margin-top: 1rem;
+  font-size: clamp(2.6rem, 5vw, 4.25rem);
+  line-height: 1.04;
+}
+
+.hero-copy p {
+  margin-top: 1rem;
+  max-width: 40rem;
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.stats-card {
+  padding: 1.5rem;
+}
+
+.stats-card h2 {
+  margin-bottom: 1rem;
+}
+
+.highlight-card {
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.06), rgba(245, 158, 11, 0.08));
+  padding: 1.5rem;
+  border: 1px solid rgba(15, 118, 110, 0.08);
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.resident-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.info-card {
+  padding: 1.25rem 1.4rem;
+}
+
+.info-card strong {
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.event-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--color-primary-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.image-frame {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

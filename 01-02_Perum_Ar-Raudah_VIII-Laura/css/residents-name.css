@@ -1,0 +1,22 @@
+/*
+  residents-name.css
+  Mengatur tampilan daftar nama warga dan item data penghunian.
+  Nama warga bisa diperbarui di data JS tanpa mengubah file ini.
+*/
+#residentList tr {
+  transition: background 0.2s ease;
+}
+
+#residentList tr:hover {
+  background: rgba(15, 118, 110, 0.03);
+}
+
+.resident-name {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.resident-role {
+  color: var(--color-primary);
+  font-weight: 600;
+}
