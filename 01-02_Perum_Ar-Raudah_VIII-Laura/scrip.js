@@ -1,3 +1,4 @@
+// Data diambil dari file data-warga/*.js yang dimuat sebelum script ini.
 const houses = window.housesData || [];
 
 const community = window.communityData || {
@@ -21,17 +22,11 @@ function createHouseCard(house){
   return `<article class="card"><h3>${house.type}</h3><p>${house.address}</p><div class="status ${statusClass}">${house.status}</div></article>`;
 }
 
-function createResidentRow(resident){
-  return `<tr><td>${resident.name}</td><td>${resident.unit}</td><td>${resident.role}</td></tr>`;
-}
-
-function createResidentAccordionItem(resident, index){
+function createResidentAccordionItem(resident){
   const safeResident = {
     name: resident.name || 'Nama Warga',
     unit: resident.unit || 'Unit belum tersedia',
-    role: resident.role || 'Warga',
-    block: resident.block || 'Belum ditentukan',
-    note: resident.note || 'Detail belum tersedia.'
+    role: resident.role || 'Warga'
   };
 
   return `
@@ -124,8 +119,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const qrisPreview = document.querySelector('.qris-preview-button');
   const qrisModal = document.getElementById('qrisModal');
 
-  const residentSource = residents.length ? residents : (window.communityData ? window.communityData.residents : []);
+  // Gunakan array yang sudah dinormalisasi agar halaman aman saat data warga kosong.
+  const residentSource = residents;
 
+  // Render semua bagian dinamis setelah DOM siap.
   if(houseList) houseList.innerHTML = houses.map(createHouseCard).join('');
   if(residentAccordion) residentAccordion.innerHTML = createResidentMasterAccordion(residentSource);
   if(residentCount) residentCount.textContent = residentSource.length;
@@ -157,6 +154,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   }
 
+  // Accordion daftar warga dan iuran memakai pola tinggi dinamis agar animasinya tetap halus.
   if(residentAccordion){
     const residentToggle = residentAccordion.querySelector('.resident-accordion-toggle');
     const residentItem = residentAccordion.querySelector('.resident-accordion-item');
@@ -201,6 +199,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   }
 
+  // Modal QRIS dikontrol terpisah agar tombol download tetap berupa link biasa.
   if(qrisPreview && qrisModal){
     const closeQrisModal = () => {
       qrisModal.hidden = true;
