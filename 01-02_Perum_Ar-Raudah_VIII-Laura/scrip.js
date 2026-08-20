@@ -27,7 +27,7 @@ function createResidentRow(resident){
 
 function createResidentAccordionItem(resident, index){
   const safeResident = {
-    name: resident.name || 'Nama warga',
+    name: resident.name || 'Nama Warga',
     unit: resident.unit || 'Unit belum tersedia',
     role: resident.role || 'Warga',
     block: resident.block || 'Belum ditentukan',
@@ -48,10 +48,10 @@ function createResidentMasterAccordion(residentSource){
   const contentId = 'resident-master-content';
 
   return `
-    <div class="resident-accordion-item open">
-      <button class="resident-accordion-toggle" type="button" aria-expanded="true" aria-controls="${contentId}">
+    <div class="resident-accordion-item">
+      <button class="resident-accordion-toggle" type="button" aria-expanded="false" aria-controls="${contentId}">
         <span class="person">
-          <strong>Nama warga</strong>
+          <strong>Nama Warga</strong>
         </span>
         <span class="chevron" aria-hidden="true"></span>
       </button>
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const residentContent = residentAccordion.querySelector('.resident-accordion-content');
 
     if (residentToggle && residentItem && residentContent) {
-      residentContent.style.maxHeight = residentContent.scrollHeight + 'px';
+      residentContent.style.maxHeight = null;
 
       residentToggle.addEventListener('click', () => {
         const isOpened = residentItem.classList.contains('open');
