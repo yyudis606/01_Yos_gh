@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const eventList = document.getElementById('eventList');
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
+  const qrisPreview = document.querySelector('.qris-preview-button');
+  const qrisModal = document.getElementById('qrisModal');
 
   const residentSource = residents.length ? residents : (window.communityData ? window.communityData.residents : []);
 
@@ -197,6 +199,26 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
       });
     }
+  }
+
+  if(qrisPreview && qrisModal){
+    const closeQrisModal = () => {
+      qrisModal.hidden = true;
+      document.body.classList.remove('modal-open');
+    };
+
+    qrisPreview.addEventListener('click', () => {
+      qrisModal.hidden = false;
+      document.body.classList.add('modal-open');
+    });
+
+    qrisModal.querySelectorAll('[data-qris-close]').forEach((closeButton) => {
+      closeButton.addEventListener('click', closeQrisModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if(event.key === 'Escape' && !qrisModal.hidden) closeQrisModal();
+    });
   }
 });
 
