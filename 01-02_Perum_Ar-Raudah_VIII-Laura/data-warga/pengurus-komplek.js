@@ -24,14 +24,4 @@ window.boardData = [
     role: 'Penasehat 2',
     description: 'Memberikan nasihat dan bimbingan kepada pengurus dan warga.'
   },
-//   {
-//     name: 'Dewi Anggraini',
-//     role: 'Koordinator Kebersihan',
-//     description: 'Mengoordinasikan kerja bakti, pemeliharaan taman, dan kebersihan blok.'
-//   },
-//   {
-//     name: 'Budi Santoso',
-//     role: 'Koordinator Kegiatan',
-//     description: 'Merancang acara komunitas, silaturahmi, dan program sosial warga.'
-//   }
 ];
