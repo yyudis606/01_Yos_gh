@@ -3,9 +3,11 @@
 Semua data utama undangan berada di [data/undangan.js](data/undangan.js). Ubah nilai berikut jika ada perubahan:
 
 - `bride` dan `groom`: nama mempelai
-- `date`, `day`, dan `time`: tanggal, hari, dan waktu acara
+- `date`, `day`, `time`, dan `endTime`: tanggal, hari, waktu mulai, dan waktu selesai acara
 - `venue` dan `address`: tempat dan alamat acara
 - `mapsUrl`: tautan Google Maps lokasi acara
+- `mapEmbedUrl`: tautan embed untuk peta kecil di halaman
+- `qrisUrl`: tautan atau file QRIS yang dibuka tombol hadiah digital
 - `musicTitle`, `musicArtist`, dan `musicFile`: musik undangan
 - `eventDate`: tanggal countdown dalam format ISO, termasuk zona waktu
 

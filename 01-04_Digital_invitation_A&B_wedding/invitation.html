@@ -39,7 +39,7 @@
       </section>
       <section class="section" id="musicSection">
         <div class="music-row"><span class="music-icon">♪</span><div><strong>Putar musik</strong><small><span id="musicTitle">Sempurna</span> · <span id="musicArtist">Andra & The Backbone</span></small></div><button id="musicBtn" class="music-btn" type="button">Play</button></div>
-        <audio id="bgMusic" preload="auto" loop playsinline><source src="music/wedding-song.mp3" type="audio/mpeg"></audio>
+        <audio id="bgMusic" autoplay preload="auto" loop playsinline><source src="music/wedding-song.mp3" type="audio/mpeg"></audio>
       </section>
       <section class="info-grid section" id="locationSection">
         <div class="info-item"><p class="eyebrow">Tanggal</p><p><span id="infoDay">Selasa</span>, <span id="infoDate">15 Juni 2027</span></p></div>
@@ -47,12 +47,33 @@
         <div class="info-item"><p class="eyebrow">Lokasi</p><p><span id="venueName">Gedung Serbaguna</span><br><span id="venueAddress">Jalan Utama No. 123</span></p></div>
         <div class="info-item"><p class="eyebrow">Navigasi</p><a class="btn primary wide" id="mapsLink" href="https://www.google.com/maps?q=Gedung+Serbaguna+Jalan+Utama+123" target="_blank" rel="noreferrer">Lihat lokasi</a></div>
       </section>
+      <section class="section location-map-section">
+        <p class="eyebrow">Peta lokasi</p>
+        <a class="map-preview" id="mapPreviewLink" href="https://www.google.com/maps?q=Gedung+Serbaguna+Jalan+Utama+123" target="_blank" rel="noreferrer" aria-label="Buka lokasi di Google Maps">
+          <iframe id="mapFrame" title="Peta lokasi acara" src="https://www.google.com/maps?q=Gedung+Serbaguna+Jalan+Utama+123&output=embed" loading="lazy"></iframe>
+          <span class="map-overlay">Buka di Google Maps ↗</span>
+        </a>
+      </section>
+      <section class="section qris-section" id="qrisSection">
+        <div class="qris-icon"><img src="image/icon-QRIS- Black .svg" alt="QRIS"></div>
+        <div class="qris-copy"><p class="eyebrow">Tanda kasih</p><h2>Berikan hadiah digital</h2><p>Scan dan buka QRIS untuk mengirim tanda kasih.</p></div>
+        <a class="btn qris-btn" id="qrisLink" href="#" target="_blank" rel="noreferrer">Buka QRIS</a>
+      </section>
       <section class="section rsvp-section">
         <p class="eyebrow">Mohon konfirmasi</p><h2>Konfirmasi Kehadiran</h2>
         <div class="actions"><button class="btn outline attendance-btn" id="btnAttending">Hadir</button><button class="btn outline attendance-btn" id="btnMaybe">Ragu</button><button class="btn outline attendance-btn" id="btnNot">Tidak hadir</button></div>
         <div class="stats"><div class="stat"><div class="count" id="attendingCount">0</div><div>Hadir</div></div><div class="stat"><div class="count" id="maybeCount">0</div><div>Ragu</div></div><div class="stat"><div class="count" id="notCount">0</div><div>Tidak hadir</div></div></div>
       </section>
-      <section class="share-card section"><p class="eyebrow">Sampaikan kabar bahagia</p><h2>Bagikan undangan</h2><input class="link-input" id="shareLink" readonly><div class="share-actions"><button class="btn primary" id="copyBtn">Salin link</button><button class="btn whatsapp" id="whatsappBtn">WhatsApp</button></div><p class="share-note" id="copyStatus" aria-live="polite"></p></section>
+      <section class="section wishes-section" id="wishesSection">
+        <p class="eyebrow">Doa dan harapan</p><h2>Ucapan tamu</h2>
+        <form class="wish-form" id="wishForm">
+          <input id="wishName" name="name" placeholder="Nama Anda" autocomplete="name" required>
+          <textarea id="wishMessage" name="message" rows="4" placeholder="Tulis ucapan untuk kedua mempelai..." required></textarea>
+          <button class="btn primary wide" type="submit">Kirim ucapan</button>
+        </form>
+        <p class="wish-status" id="wishStatus" aria-live="polite"></p>
+        <div class="wish-list" id="wishList" aria-live="polite"></div>
+      </section>
     </main>
   </div>
   <nav class="bottom-nav" aria-label="Navigasi undangan">
