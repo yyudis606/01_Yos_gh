@@ -13,6 +13,7 @@ image.src = data.heroImage;
 const music = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 music.src = data.musicFile;
+music.load();
 musicToggle.addEventListener('click', async () => {
   if (music.paused) { try { await music.play(); } catch (error) { musicToggle.setAttribute('aria-label', 'Musik belum tersedia'); } }
   else { music.pause(); }
@@ -21,4 +22,9 @@ musicToggle.addEventListener('click', async () => {
 function updateMusicState() { const playing = !music.paused; musicToggle.classList.toggle('is-playing', playing); musicToggle.setAttribute('aria-label', playing ? `Matikan ${data.musicTitle}` : `Putar ${data.musicTitle}`); }
 music.addEventListener('play', updateMusicState);
 music.addEventListener('pause', updateMusicState);
+function startMusic() {
+  music.play().then(updateMusicState).catch(updateMusicState);
+}
+startMusic();
+document.addEventListener('pointerdown', startMusic, { once: true });
 updateMusicState();
