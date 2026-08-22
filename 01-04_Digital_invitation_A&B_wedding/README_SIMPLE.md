@@ -1,3 +1,15 @@
+## Mengubah Data Undangan
+
+Semua data utama undangan berada di [data/undangan.js](data/undangan.js). Ubah nilai berikut jika ada perubahan:
+
+- `bride` dan `groom`: nama mempelai
+- `date`, `day`, dan `time`: tanggal, hari, dan waktu acara
+- `venue` dan `address`: tempat dan alamat acara
+- `mapsUrl`: tautan Google Maps lokasi acara
+- `musicTitle`, `musicArtist`, dan `musicFile`: musik undangan
+- `eventDate`: tanggal countdown dalam format ISO, termasuk zona waktu
+
+Tidak perlu mengubah `invitation.html` atau `script.js` untuk perubahan data tersebut.
 # 🎭 Undangan Digital Batman & Batgirl - Versi Cepat
 
 Undangan digital super mudah! Cukup input 1 nama dan musik langsung otomatis menyala! 🎵✨

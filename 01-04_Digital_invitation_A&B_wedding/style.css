@@ -1,0 +1,70 @@
+:root {
+  --ink: #171b1a;
+  --paper: #f5f1e9;
+  --sage: #d8ddd5;
+  --gold: #b78b4a;
+  --muted: #66706b;
+  --line: rgba(23, 27, 26, .16);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-height: 100vh; background: var(--sage); color: var(--ink); font-family: var(--sans); overflow-x: hidden; }
+.bg-overlay { position: fixed; inset: 0; pointer-events: none; background: linear-gradient(120deg, rgba(255,255,255,.28), transparent 42%), radial-gradient(circle at 90% 8%, rgba(183,139,74,.2), transparent 30%); }
+.container { position: relative; width: min(100%, 620px); margin: auto; padding: 48px 18px 110px; }
+.header { text-align: center; margin-bottom: 28px; }
+.subtitle, .eyebrow { margin: 0; color: var(--gold); font-size: .69rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.names { margin: 12px 0 8px; font: 600 clamp(2.4rem, 9vw, 4.7rem)/.98 var(--serif); letter-spacing: -.04em; }
+.names span { color: var(--gold); font-style: italic; }
+.date-label { margin: 0; color: var(--muted); font-size: .86rem; }
+.card { position: relative; background: var(--paper); padding: 30px; border: 1px solid rgba(23,27,26,.1); box-shadow: 14px 18px 0 rgba(23,27,26,.09); animation: rise .7s ease both; }
+.section { margin-bottom: 28px; }
+.guest-card { padding: 2px 0 22px; border-bottom: 1px solid var(--line); }
+h2 { margin: 7px 0 4px; font: 600 1.35rem var(--serif); }
+.guest-card strong { font: 600 1.8rem var(--serif); }
+.photo-section { display: grid; grid-template-columns: 1.4fr .8fr; grid-template-rows: 1fr 1fr; gap: 9px; scroll-margin-top: 20px; }
+.photo-frame { overflow: hidden; background: #c8cdc5; }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.82); }
+.photo-frame-main { grid-row: span 2; height: 318px; }
+.photo-frame-side { height: 154.5px; }
+.countdown-card { padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 15px; }
+.countdown-item { padding: 15px 5px; text-align: center; border: 1px solid var(--line); background: rgba(255,255,255,.28); }
+.countdown-item span { display: block; font: 600 1.8rem var(--serif); }
+.countdown-item small { color: var(--muted); font-size: .65rem; text-transform: uppercase; letter-spacing: .08em; }
+.music-row { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.music-icon { font: 2rem var(--serif); color: var(--gold); }
+.music-row div { flex: 1; }
+.music-row strong, .music-row small { display: block; }
+.music-row small { margin-top: 3px; color: var(--muted); font-size: .72rem; }
+.music-btn, .btn { cursor: pointer; font: 700 .73rem var(--sans); letter-spacing: .06em; text-transform: uppercase; }
+.music-btn { padding: 8px 13px; border: 1px solid var(--ink); background: transparent; color: var(--ink); }
+audio { display: none; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 4px 0 8px; scroll-margin-top: 20px; }
+.info-item { padding: 15px 0; border-top: 1px solid var(--line); }
+.info-item > p:last-child { margin: 8px 0 0; font: 500 1rem var(--serif); }
+.btn { padding: 13px 16px; border: 1px solid transparent; transition: transform .2s, box-shadow .2s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 rgba(23,27,26,.16); }
+.primary { background: var(--ink); color: var(--paper); }
+.wide { display: block; width: 100%; margin-top: 11px; text-align: center; text-decoration: none; font-size: .65rem; }
+.rsvp-section { padding-top: 4px; scroll-margin-top: 20px; }
+.actions, .share-actions { display: flex; gap: 8px; margin-top: 17px; }
+.actions .btn, .share-actions .btn { flex: 1; }
+.outline { border-color: var(--line); background: transparent; color: var(--ink); font-size: .62rem; }
+.outline.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+.stats { display: flex; justify-content: space-between; margin-top: 23px; color: var(--muted); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; }
+.stat { text-align: center; flex: 1; }
+.count { margin-bottom: 3px; color: var(--ink); font: 600 1.6rem var(--serif); }
+.share-card { margin-bottom: 0; padding-top: 22px; border-top: 1px solid var(--line); }
+.link-input { width: 100%; margin-top: 13px; padding: 13px; border: 1px solid var(--line); background: transparent; color: var(--muted); font: .72rem var(--sans); }
+.whatsapp { background: #328c63; color: #fff; }
+.share-note { height: 16px; margin: 10px 0 0; color: var(--gold); font-size: .72rem; }
+.bottom-nav { position: fixed; z-index: 10; bottom: 18px; left: 50%; display: flex; align-items: center; justify-content: space-around; width: min(calc(100% - 34px), 400px); height: 56px; padding: 5px 10px; transform: translateX(-50%); border: 1px solid rgba(23,27,26,.12); border-radius: 999px; background: rgba(226,232,239,.88); box-shadow: 0 10px 28px rgba(23,27,26,.2); backdrop-filter: blur(12px); }
+.nav-item { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 9px; background: transparent; color: var(--ink); font: 700 1.6rem/1 var(--sans); text-decoration: none; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+.nav-item:hover, .nav-item:focus-visible { transform: translateY(-2px); background: rgba(255,255,255,.45); outline: none; }
+.nav-item img { width: 25px; height: 25px; object-fit: contain; display: block; }
+.nav-music.is-playing { background: #4d78dc; color: #fff; }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (max-width: 440px) { .container { padding: 26px 12px 105px; } .card { padding: 22px 18px; } .photo-frame-main { height: 250px; } .photo-frame-side { height: 120.5px; } .actions { flex-wrap: wrap; } .actions .btn { min-width: 30%; } .info-grid { gap: 12px; } .names { font-size: 2.8rem; } }
