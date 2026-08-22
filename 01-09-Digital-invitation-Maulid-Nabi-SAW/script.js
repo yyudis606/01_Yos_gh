@@ -12,6 +12,8 @@ image.src = data.heroImage;
 
 const music = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
+const audioGate = document.getElementById('audioGate');
+const openInvitation = document.getElementById('openInvitation');
 music.src = data.musicFile;
 music.load();
 musicToggle.addEventListener('click', async () => {
@@ -27,4 +29,9 @@ function startMusic() {
 }
 startMusic();
 document.addEventListener('pointerdown', startMusic, { once: true });
+openInvitation.addEventListener('click', () => {
+  startMusic();
+  audioGate.classList.add('is-hidden');
+});
+music.addEventListener('playing', () => audioGate.classList.add('is-hidden'));
 updateMusicState();
