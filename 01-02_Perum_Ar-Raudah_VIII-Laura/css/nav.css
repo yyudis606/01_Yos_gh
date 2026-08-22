@@ -86,14 +86,46 @@
 }
 
 .nav-toggle-icon {
+  position: relative;
   width: 20px;
   height: 20px;
   display: block;
-  transition: transform 0.25s ease;
 }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle-icon {
-  transform: rotate(90deg);
+.nav-toggle-icon span {
+  position: absolute;
+  left: 1px;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #a8a8a8;
+  transition: transform 0.25s ease, top 0.25s ease;
+}
+
+.nav-toggle-icon span:nth-child(1) {
+  top: 3px;
+}
+
+.nav-toggle-icon span:nth-child(2) {
+  top: 9px;
+}
+
+.nav-toggle-icon span:nth-child(3) {
+  top: 15px;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(1) {
+  top: 9px;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(2) {
+  transform: scaleX(0);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-45deg);
 }
 
 @media (max-width: 710px) {
