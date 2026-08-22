@@ -1,0 +1,154 @@
+/* Responsive layout for desktop, tablet, and mobile screens. */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+.hero-image {
+  background-color: #d8c8ab;
+  align-self: stretch;
+  background-size: 100% 100%;
+}
+
+.hero {
+  background: var(--cream);
+}
+
+.hero-copy {
+  background: var(--green);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .section-width {
+    width: min(100% - 56px, 960px);
+  }
+
+  .hero {
+    min-height: 68vh;
+  }
+
+  .hero-copy {
+    padding: 64px 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 6.5vw, 5.5rem);
+  }
+
+  .intro {
+    gap: 44px;
+    padding: 84px 0 78px;
+  }
+
+  .details {
+    padding: 82px 0;
+  }
+
+  .detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-grid article {
+    min-height: 170px;
+  }
+
+  .map-section {
+    padding-bottom: 82px;
+  }
+}
+
+@media (max-width: 760px) {
+  .section-width {
+    width: min(100% - 40px, 620px);
+  }
+
+  .hero-image {
+    aspect-ratio: 3 / 2;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .hero-copy {
+    padding: 52px 20px 62px;
+  }
+
+  .intro,
+  .details {
+    padding-top: 68px;
+    padding-bottom: 68px;
+  }
+
+  .detail-grid article {
+    overflow-wrap: anywhere;
+  }
+
+  .map-frame {
+    height: clamp(240px, 55vw, 360px);
+  }
+
+  .bottom-nav {
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 430px) {
+  .section-width {
+    width: calc(100% - 32px);
+  }
+
+  .hero-image {
+    min-height: 0;
+  }
+
+  .hero-copy {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.65rem, 14vw, 4.5rem);
+  }
+
+  .bottom-nav {
+    width: min(calc(100% - 24px), 360px);
+  }
+}
+
+@media (max-height: 540px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-image {
+    min-height: 0;
+  }
+
+  .hero-copy {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .hero h1 {
+    margin-top: 12px;
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+  }
+
+  .ornament {
+    margin: 14px 0 8px;
+  }
+}
