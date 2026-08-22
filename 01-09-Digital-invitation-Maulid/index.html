@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Undangan digital Maulid Nabi Muhammad SAW">
+  <title>Maulid Nabi Muhammad SAW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="texture" aria-hidden="true"></div>
+  <header class="hero" id="top">
+    <div class="hero-copy">
+      <p class="kicker">Undangan pengajian</p>
+      <h1 id="eventName">Maulid Nabi Muhammad SAW</h1>
+      <p class="hero-theme" id="theme">Meneladani akhlak Rasulullah SAW</p>
+      <div class="ornament" aria-hidden="true">✦</div>
+      <p class="hero-date" id="dateDetail">Kamis, 27 Agustus 2026</p>
+    </div>
+    <div class="hero-image" id="heroImage" role="img" aria-label="Foto acara Maulid"><span class="photo-label" id="photoLabel">Foto acara</span></div>
+  </header>
+
+  <main>
+    <section class="intro section-width">
+      <p class="kicker">Assalamu'alaikum warahmatullahi wabarakatuh</p>
+      <h2>Dengan hormat, kami mengundang Bapak/Ibu untuk hadir</h2>
+      <p class="body-copy">Mari bersama-sama memperingati kelahiran Nabi Muhammad SAW, mempererat silaturahmi, dan menumbuhkan cinta kepada Rasulullah SAW.</p>
+    </section>
+
+    <section class="details section-width" id="details">
+      <div class="detail-lead"><p class="kicker">Catat waktunya</p><h2>Satu malam penuh keberkahan</h2></div>
+      <div class="detail-grid">
+        <article><span class="detail-icon">◷</span><p class="kicker">Waktu</p><h3 id="time">19.30 WIB - selesai</h3></article>
+        <article><span class="detail-icon">◎</span><p class="kicker">Tempat</p><h3 id="venue">Musholla Ar-Raudah VIII</h3><p id="address">Jalan Sukamaju Perumahan Ar-Raudah VIII, RT. 04/RW. 01, Landasan Ulin Utara, Banjarbaru, Kalimantan Selatan</p></article>
+        <article><span class="detail-icon">✧</span><p class="kicker">Penceramah</p><h3 id="speaker">Ustaz / Ustazah</h3></article>
+        <article><span class="detail-icon">◇</span><p class="kicker">Busana</p><h3 id="dressCode">Busana muslim terbaik</h3></article>
+      </div>
+    </section>
+
+    <section class="map-section section-width" id="location">
+      <div class="section-heading"><div><p class="kicker">Temukan lokasi</p><h2>Datang dan bersilaturahmi</h2></div><a class="text-link" id="mapsLink" href="#" target="_blank" rel="noreferrer">Buka Maps ↗</a></div>
+      <div class="map-frame"><iframe id="mapFrame" title="Peta lokasi Musholla Ar-Raudah VIII" loading="lazy"></iframe></div>
+    </section>
+
+    <section class="closing section-width" id="rsvp">
+      <div class="closing-mark">﷽</div>
+      <p class="kicker">Kehadiran Anda adalah kehormatan</p>
+      <h2>Jazakumullahu khairan</h2>
+      <p class="body-copy">Atas perhatian dan kehadirannya, kami ucapkan terima kasih.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navigasi undangan">
+    <a href="#top" aria-label="Kembali ke atas"><img src="images/icon-home.png" alt=""></a>
+    <a href="#details" aria-label="Lihat detail acara"><img src="images/icon-event.png" alt=""></a>
+    <a href="#location" aria-label="Lihat lokasi"><img src="images/icon-map.png" alt=""></a>
+    <button id="musicToggle" type="button" aria-label="Putar musik"><img src="images/icon-audio.png" alt=""></button>
+  </nav>
+  <audio id="bgMusic" loop preload="auto"></audio>
+  <script src="data/undangan.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
