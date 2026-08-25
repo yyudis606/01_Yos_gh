@@ -19,7 +19,7 @@ window.MAULID_DATA = {
   // Gunakan format ISO untuk countdown agar akurat: '2026-08-27'
   eventDate: '2026-09-10',
   // Gunakan format waktu acara: '19.30 WIB - selesai' untuk teks, '19:30' untuk countdown
-  time: '19.30 WIB - selesai',
+  time: '19.30 WIT - selesai',
   eventTime: '19:30',
   // Tanggal Hijriah untuk ditampilkan di bawah tanggal Masehi
   date: '28 Rabiul Awal 1448 Hijriah',
