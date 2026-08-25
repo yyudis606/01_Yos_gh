@@ -1,8 +1,68 @@
 const data = window.MAULID_DATA;
-const textFields = { eventName: data.eventName, theme: data.theme, photoLabel: data.photoLabel, dateDetail: data.dateDetail, time: data.time, venue: data.venue, address: data.address, speaker: data.speaker, dressCode: data.dressCode };
-Object.entries(textFields).forEach(([id, value]) => { document.getElementById(id).textContent = value; });
+const textFields = { eventName: data.eventName, theme: data.theme, photoLabel: data.photoLabel, dateDetail: data.dateDetail, islamicDate: data.date, time: data.time, venue: data.venue, address: data.address, speaker: data.speaker, dressCode: data.dressCode };
+Object.entries(textFields).forEach(([id, value]) => { const field = document.getElementById(id); if (field) field.textContent = value; });
 document.getElementById('mapsLink').href = data.mapsUrl;
 document.getElementById('mapFrame').src = data.mapEmbedUrl || `${data.mapsUrl}&output=embed`;
+
+function getEventDateTime() {
+  const rawDate = data.eventDate || data.dateDetail;
+  const rawTime = data.eventTime || (data.time.match(/(\d{1,2})\.(\d{2})/) || ['19:30', '19', '30']).slice(1).join(':');
+
+  if (!rawDate || !rawTime) {
+    return new Date();
+  }
+
+  const isoDate = rawDate.includes('-') ? rawDate : rawDate.replace(/\D+/g, '-').replace(/^-|-$/g, '');
+  const normalizedTime = rawTime.includes(':') ? rawTime : rawTime.replace('.', ':');
+
+  const date = new Date(`${isoDate}T${normalizedTime}:00`);
+
+  if (!Number.isNaN(date.getTime())) {
+    return date;
+  }
+
+  const fallbackDate = new Date(data.dateDetail || rawDate);
+  const fallbackMatch = (data.time || rawTime).match(/(\d{1,2})\.(\d{2})/);
+  const fallbackHours = fallbackMatch ? Number(fallbackMatch[1]) : 19;
+  const fallbackMinutes = fallbackMatch ? Number(fallbackMatch[2]) : 30;
+
+  return new Date(
+    fallbackDate.getFullYear(),
+    fallbackDate.getMonth(),
+    fallbackDate.getDate(),
+    fallbackHours,
+    fallbackMinutes,
+    0,
+    0
+  );
+}
+
+function updateCountdown() {
+  const countdownTarget = getEventDateTime();
+  const timeLeft = countdownTarget.getTime() - Date.now();
+  const countdownEls = {
+    days: document.getElementById('countdown-days'),
+    hours: document.getElementById('countdown-hours'),
+    minutes: document.getElementById('countdown-minutes'),
+    seconds: document.getElementById('countdown-seconds')
+  };
+
+  if (timeLeft <= 0) {
+    Object.values(countdownEls).forEach((el) => { el.textContent = '00'; });
+    return;
+  }
+
+  const totalSeconds = Math.floor(timeLeft / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  countdownEls.days.textContent = String(days).padStart(2, '0');
+  countdownEls.hours.textContent = String(hours).padStart(2, '0');
+  countdownEls.minutes.textContent = String(minutes).padStart(2, '0');
+  countdownEls.seconds.textContent = String(seconds).padStart(2, '0');
+}
 
 const heroImage = document.getElementById('heroImage');
 const image = new Image();
@@ -34,4 +94,6 @@ openInvitation.addEventListener('click', () => {
   audioGate.classList.add('is-hidden');
 });
 music.addEventListener('playing', () => audioGate.classList.add('is-hidden'));
+updateCountdown();
+setInterval(updateCountdown, 1000);
 updateMusicState();
