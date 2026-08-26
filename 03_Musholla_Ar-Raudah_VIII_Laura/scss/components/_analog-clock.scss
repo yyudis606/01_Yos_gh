@@ -1,0 +1,124 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+// ============================================================
+// JAM ANALOG (kartu Jadwal Sholat)
+// Jarum digerakkan lewat JavaScript (lihat script.js, fungsi
+// updateJamAnalog) yang mengatur custom property --deg tiap jarum.
+// Ubah ukuran jam lewat $clock-size di bawah ini.
+//
+// GESER POSISI JAM:
+// - $clock-shift-x: geser ke kanan (+) atau kiri (-), relatif dari
+//   $clock-base-gap (jarak dasar jam dari daftar jadwal)
+// - $clock-shift-y: geser ke bawah (+) atau ke atas (-)
+// PENTING: jangan pakai margin/justify-content "auto" (mis. auto
+// margin atau space-between) berbarengan dengan shift ini, karena
+// ruang kosong otomatis akan menyerap pergeseran sehingga jam
+// terlihat tidak bergerak.
+// ============================================================
+$clock-size: 170px;
+$clock-base-gap: 110px;
+$clock-shift-x: -50px;
+$clock-shift-y: 0px;
+
+// Baris jadwal: daftar waktu sholat di kiri, jam analog menempel di kanan
+.jadwal-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+// Daftar jadwal tetap rata kiri (posisi jam diatur lewat margin-left
+// tetap/non-auto di .analog-clock, lihat $clock-base-gap di atas)
+#jadwal-sholat {
+  margin: 0;
+  text-align: left;
+}
+
+// Susun ke bawah di layar sempit agar jam tidak terpotong
+@include m.respond-down(v.$breakpoint-mobile) {
+  .jadwal-row {
+    justify-content: center;
+  }
+}
+
+.analog-clock {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 6px 0;
+  // Pakai $clock-shift-x/y di atas untuk menggeser jam secara bebas.
+  // Pakai margin (bukan transform) supaya baris ikut menyesuaikan/turun
+  // ke bawah (flex-wrap) saat ruang tidak cukup, sehingga tidak tertumpuk
+  // dengan daftar jadwal sholat. Nilai margin-left literal (bukan auto)
+  // agar $clock-shift-x benar-benar mengubah posisi, bukan diserap ruang kosong.
+  margin-left: $clock-base-gap + $clock-shift-x;
+  margin-top: 6px + $clock-shift-y;
+}
+
+.clock-face {
+  position: relative;
+  width: $clock-size;
+  height: $clock-size;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, #ffffff 0 82%, transparent 82.5% 100%),
+    repeating-conic-gradient(rgba(10, 122, 61, .35) 0deg 1.2deg, transparent 1.2deg 30deg);
+  box-shadow: v.$shadow-card, inset 0 0 0 1px v.$color-border;
+  border: 1px solid v.$color-border;
+}
+
+// Angka 12/3/6/9 sebagai penanda arah, posisi tetap (tidak perlu diubah)
+.clock-number {
+  position: absolute;
+  color: v.$color-primary;
+  font-size: .7rem;
+  font-weight: 700;
+
+  &.n12 { top: 10px; left: 50%; transform: translateX(-50%); }
+  &.n3 { right: 12px; top: 50%; transform: translateY(-50%); }
+  &.n6 { bottom: 10px; left: 50%; transform: translateX(-50%); }
+  &.n9 { left: 12px; top: 50%; transform: translateY(-50%); }
+}
+
+// Jarum jam: rotasi diatur lewat --deg dari JavaScript
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(var(--deg, 0deg));
+  border-radius: 4px;
+}
+
+.hour-hand {
+  width: 5px;
+  height: 28%;
+  background: v.$color-text;
+}
+
+.minute-hand {
+  width: 3px;
+  height: 38%;
+  background: v.$color-text;
+}
+
+.second-hand {
+  width: 2px;
+  height: 42%;
+  background: v.$color-second-hand;
+}
+
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: v.$color-primary;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px rgba(10, 122, 61, .15);
+}

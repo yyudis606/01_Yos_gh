@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "sass:build": "sass scss/style.scss:style.css --no-source-map --style=expanded",
+    "sass:watch": "npm run sass:build -- --watch"
+  },
+  "devDependencies": {
+    "sass": "^1.103.1"
+  }
+}

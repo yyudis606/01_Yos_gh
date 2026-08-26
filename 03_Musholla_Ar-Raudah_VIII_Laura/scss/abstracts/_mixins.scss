@@ -1,0 +1,15 @@
+@use "variables" as v;
+
+// Terapkan @content saat lebar layar <= breakpoint (dipakai untuk versi HP)
+@mixin respond-down($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Gaya dasar kartu (dipakai ulang oleh .card dan komponen sejenis)
+@mixin card-surface {
+  background: v.$color-card-bg;
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-card;
+}

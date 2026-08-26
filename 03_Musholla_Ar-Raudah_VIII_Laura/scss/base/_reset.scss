@@ -1,0 +1,33 @@
+@use "../abstracts/variables" as v;
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: v.$color-bg;
+  color: v.$color-text;
+  font-family: v.$font-main;
+  -webkit-font-smoothing: antialiased;
+}
+
+h2 {
+  margin: 0 0 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  margin: 20px 0 10px;
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.7;
+  color: v.$color-text;
+}

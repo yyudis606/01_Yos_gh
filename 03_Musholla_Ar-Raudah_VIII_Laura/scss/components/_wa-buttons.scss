@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as v;
+
+.wa-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wa-btn {
+  padding: 12px;
+  background: v.$color-wa;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: v.$radius-md;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: v.$color-wa-hover;
+    transform: translateY(-1px);
+  }
+}

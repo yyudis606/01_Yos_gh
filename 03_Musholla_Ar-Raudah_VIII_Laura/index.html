@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Musholla Ar-Raudah VIII</title>
 
+    <!-- Font modern (Poppins), dipakai lewat $font-main di scss/abstracts/_variables.scss -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -52,13 +59,31 @@
         <h2>Jadwal Sholat Hari Ini</h2>
         <p><b>Kota:</b> Banjarbaru (Landasan Ulin)</p>
 
-        <ul id="jadwal-sholat">
-          <li>Subuh: <span id="subuh">...</span></li>
-          <li>Dzuhur: <span id="dzuhur">...</span></li>
-          <li>Ashar: <span id="ashar">...</span></li>
-          <li>Maghrib: <span id="maghrib">...</span></li>
-          <li>Isya: <span id="isya">...</span></li>
-        </ul>
+        <!-- Baris jadwal + jam analog berdampingan agar kartu tidak tinggi -->
+        <div class="jadwal-row">
+          <ul id="jadwal-sholat">
+            <li>Subuh: <span id="subuh">...</span></li>
+            <li>Dzuhur: <span id="dzuhur">...</span></li>
+            <li>Ashar: <span id="ashar">...</span></li>
+            <li>Maghrib: <span id="maghrib">...</span></li>
+            <li>Isya: <span id="isya">...</span></li>
+          </ul>
+
+          <!-- Jam analog dengan jarum berjalan real-time, diatur oleh updateJamAnalog() di script.js -->
+          <div class="analog-clock" aria-hidden="true">
+            <div class="clock-face">
+              <span class="clock-number n12">12</span>
+              <span class="clock-number n3">3</span>
+              <span class="clock-number n6">6</span>
+              <span class="clock-number n9">9</span>
+              <div class="hand hour-hand" id="hourHand"></div>
+              <div class="hand minute-hand" id="minuteHand"></div>
+              <div class="hand second-hand" id="secondHand"></div>
+              <div class="clock-center"></div>
+            </div>
+          </div>
+        </div>
+
         <p><b>Jam sekarang:</b> <span id="jam-digital">00:00:00</span></p>
         <p>
           <b>Menuju sholat berikutnya:</b>

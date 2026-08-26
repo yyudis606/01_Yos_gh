@@ -1,37 +1,70 @@
-/* SMOOTH SCROLL */
 html {
   scroll-behavior: smooth;
 }
 
-/* NAVBAR */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f2f6f3;
+  color: #1c2b22;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h2 {
+  margin: 0 0 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  margin: 20px 0 10px;
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.7;
+  color: #1c2b22;
+}
+
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #0a7a3d;
-  padding: 12px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #0a7a3d, #12a852);
   color: white;
+  box-shadow: 0 2px 12px rgba(10, 30, 20, 0.12);
 }
 
 .nav-title {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .nav-menu {
-  list-style: none;
   display: flex;
   gap: 20px;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
 .nav-menu li a {
   color: white;
   text-decoration: none;
   font-weight: 500;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+.nav-menu li a:hover {
+  opacity: 1;
 }
 
 .hamburger {
@@ -43,84 +76,64 @@ html {
 @media (max-width: 700px) {
   .nav-menu {
     display: none;
-    flex-direction: column;
-    background: #0a7a3d;
     position: absolute;
     top: 60px;
     right: 0;
+    flex-direction: column;
     width: 180px;
     padding: 15px;
+    background: #0a7a3d;
     border-radius: 0 0 0 10px;
   }
-
   .nav-menu.show {
     display: flex;
   }
-
   .hamburger {
     display: block;
   }
 }
-
-/* HEADER TANPA FOTO */
 .header {
-  background: #0a7a3d;
+  padding: 55px 20px 60px;
+  background: linear-gradient(160deg, #0a7a3d, #12a852);
   color: white;
   text-align: center;
-  padding: 50px 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
-
+.header h1 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 .header p {
-  margin-top: -10px;
+  margin-top: 8px;
+  color: white;
   opacity: 0.9;
 }
 
-/* CONTAINER & CARD */
 .container {
   max-width: 900px;
-  margin: 20px auto;
+  margin: 24px auto;
   padding: 10px;
 }
 
 .card {
-  background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(10, 30, 20, 0.08);
+  padding: 22px;
+  margin-bottom: 22px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
-
+.card:hover {
+  box-shadow: 0 10px 28px rgba(10, 30, 20, 0.14);
+  transform: translateY(-2px);
+}
 .card h2 {
   border-left: 5px solid #0a7a3d;
-  padding-left: 10px;
-  margin-bottom: 15px;
+  padding-left: 12px;
 }
 
-/* MAP MINIMALIS */
-.map-minimal {
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.map-minimal iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.map-minimal iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-/* WHATSAPP BUTTON */
 .wa-buttons {
   display: flex;
   flex-direction: column;
@@ -128,35 +141,26 @@ html {
 }
 
 .wa-btn {
+  padding: 12px;
   background: #25d366;
   color: white;
-  padding: 12px;
   text-align: center;
-  border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
-
 .wa-btn:hover {
   background: #1ebe5d;
+  transform: translateY(-1px);
 }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 15px;
-  background: #0a7a3d;
-  color: white;
-  margin-top: 20px;
-}
-/* GALERI FOTO */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
   margin-top: 10px;
 }
-
 .gallery img {
   width: 100%;
   height: 150px;
@@ -164,12 +168,134 @@ html {
   border-radius: 10px;
   border: 1.5px solid #e0e0e0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 .gallery img:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.map-minimal {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.map-minimal iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.footer {
+  margin-top: 20px;
+  padding: 18px;
+  background: #0a7a3d;
+  color: white;
+  text-align: center;
+}
+
+.jadwal-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+#jadwal-sholat {
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .jadwal-row {
+    justify-content: center;
+  }
+}
+.analog-clock {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 6px 0;
+  margin-left: 60px;
+  margin-top: 6px;
+}
+
+.clock-face {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #ffffff 0 82%, transparent 82.5% 100%), repeating-conic-gradient(rgba(10, 122, 61, 0.35) 0deg 1.2deg, transparent 1.2deg 30deg);
+  box-shadow: 0 4px 16px rgba(10, 30, 20, 0.08), inset 0 0 0 1px #e3ece6;
+  border: 1px solid #e3ece6;
+}
+
+.clock-number {
+  position: absolute;
+  color: #0a7a3d;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.clock-number.n12 {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.clock-number.n3 {
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.clock-number.n6 {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.clock-number.n9 {
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(var(--deg, 0deg));
+  border-radius: 4px;
+}
+
+.hour-hand {
+  width: 5px;
+  height: 28%;
+  background: #1c2b22;
+}
+
+.minute-hand {
+  width: 3px;
+  height: 38%;
+  background: #1c2b22;
+}
+
+.second-hand {
+  width: 2px;
+  height: 42%;
+  background: #d64545;
+}
+
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #0a7a3d;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px rgba(10, 122, 61, 0.15);
 }

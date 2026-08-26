@@ -44,6 +44,36 @@ setInterval(updateJamDigital, 1000);
 updateJamDigital();
 
 // ===============================
+// JAM ANALOG REALTIME (jarum berjalan)
+// Rotasi tiap jarum diatur lewat custom property --deg
+// yang dibaca oleh style .hand di scss/components/_analog-clock.scss
+// ===============================
+function updateJamAnalog() {
+  const now = new Date();
+  const jam = now.getHours() % 12;
+  const menit = now.getMinutes();
+  const detik = now.getSeconds();
+
+  // Derajat jarum jam: 360deg / 12 jam, ditambah pergeseran halus dari menit
+  const hourDeg = jam * 30 + menit * 0.5;
+  // Derajat jarum menit: 360deg / 60 menit, ditambah pergeseran halus dari detik
+  const minuteDeg = menit * 6 + detik * 0.1;
+  // Derajat jarum detik: 360deg / 60 detik
+  const secondDeg = detik * 6;
+
+  const hourHand = document.getElementById("hourHand");
+  const minuteHand = document.getElementById("minuteHand");
+  const secondHand = document.getElementById("secondHand");
+
+  if (hourHand) hourHand.style.setProperty("--deg", `${hourDeg}deg`);
+  if (minuteHand) minuteHand.style.setProperty("--deg", `${minuteDeg}deg`);
+  if (secondHand) secondHand.style.setProperty("--deg", `${secondDeg}deg`);
+}
+
+setInterval(updateJamAnalog, 1000);
+updateJamAnalog();
+
+// ===============================
 // HITUNG MUNDUR SHOLAT BERIKUTNYA
 // ===============================
 function hitungMundur() {

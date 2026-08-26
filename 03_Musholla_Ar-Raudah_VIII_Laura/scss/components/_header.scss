@@ -1,0 +1,22 @@
+@use "../abstracts/variables" as v;
+
+.header {
+  padding: 55px 20px 60px;
+  background: linear-gradient(160deg, v.$color-primary, v.$color-primary-light);
+  color: white;
+  text-align: center;
+  border-bottom-left-radius: v.$radius-lg;
+  border-bottom-right-radius: v.$radius-lg;
+
+  h1 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    margin-top: 8px;
+    color: white;
+    opacity: 0.9;
+  }
+}
