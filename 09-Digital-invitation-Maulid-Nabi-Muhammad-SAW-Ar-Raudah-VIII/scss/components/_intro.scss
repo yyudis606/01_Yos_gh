@@ -1,0 +1,24 @@
+.section-width {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.intro {
+  padding: 110px 0 100px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 70px;
+  border-bottom: 1px solid var(--line);
+}
+
+h2 {
+  margin: 10px 0 15px;
+  font: 600 clamp(1.8rem, 3vw, 3rem)/1.1 var(--serif);
+  letter-spacing: -.025em;
+}
+
+.body-copy {
+  max-width: 580px;
+  color: var(--muted);
+  line-height: 1.8;
+}

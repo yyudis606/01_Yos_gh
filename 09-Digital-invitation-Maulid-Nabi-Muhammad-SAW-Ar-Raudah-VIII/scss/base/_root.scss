@@ -1,0 +1,15 @@
+@use "../abstracts/variables" as v;
+
+// Expose tokens as CSS custom properties for use outside Sass (e.g. inline styles)
+:root {
+  --ink: #{v.$color-ink};
+  --green: #{v.$color-green};
+  --cream: #{v.$color-cream};
+  --gold: #{v.$color-gold};
+  --muted: #{v.$color-muted};
+  --line: #{v.$color-line};
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+  --tracking-soft: #{v.$tracking-soft};
+  --tracking-wide: #{v.$tracking-wide};
+}

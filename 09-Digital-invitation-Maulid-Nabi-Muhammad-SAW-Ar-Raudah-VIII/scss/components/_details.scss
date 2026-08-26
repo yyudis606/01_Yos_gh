@@ -1,0 +1,62 @@
+.details {
+  padding: 100px 0;
+  scroll-margin-top: 20px;
+}
+
+.detail-lead {
+  max-width: 400px;
+  margin-bottom: 45px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+
+  article {
+    min-height: 185px;
+    padding: 25px;
+    background: var(--cream);
+
+    p:last-child {
+      color: var(--muted);
+      font-size: .83rem;
+      line-height: 1.55;
+    }
+  }
+
+  h3 {
+    margin: 9px 0 0;
+    font: 600 1.14rem/1.35 var(--serif);
+    letter-spacing: .01em;
+  }
+}
+
+.detail-icon {
+  display: block;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: 24px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(48%) sepia(100%) saturate(6) hue-rotate(25deg) brightness(0.95) contrast(1.15);
+}
+
+.detail-date,
+.detail-date-islamic {
+  margin: 10px 0 0;
+  line-height: 1.5;
+}
+
+.detail-date {
+  color: var(--ink);
+  font: 600 .82rem var(--sans);
+}
+
+.detail-date-islamic {
+  color: var(--gold);
+  font: 700 .68rem var(--sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}

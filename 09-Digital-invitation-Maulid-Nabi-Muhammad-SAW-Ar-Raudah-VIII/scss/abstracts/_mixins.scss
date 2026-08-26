@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "variables" as v;
+
+// Applies @content below the given breakpoint (max-width)
+@mixin respond-down($name) {
+  @media (max-width: map.get(v.$breakpoints, $name)) {
+    @content;
+  }
+}
+
+// Applies @content between two breakpoints (min-width / max-width)
+@mixin respond-between($min, $max) {
+  @media (min-width: map.get(v.$breakpoints, $min)) and (max-width: map.get(v.$breakpoints, $max)) {
+    @content;
+  }
+}

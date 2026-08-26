@@ -1,0 +1,70 @@
+@use "../abstracts/mixins" as *;
+
+@include respond-down(mobile) {
+  .hero {
+    min-height: 0;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .hero-image {
+    min-height: 52vh;
+  }
+
+  .hero-copy {
+    padding: 55px 24px 65px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+
+  .intro {
+    display: block;
+    padding: 75px 0;
+
+    .body-copy {
+      margin-top: 25px;
+    }
+  }
+
+  .details {
+    padding: 75px 0;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr 1fr;
+
+    article {
+      min-height: 160px;
+      padding: 20px;
+    }
+  }
+
+  .map-section {
+    padding-bottom: 75px;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .closing {
+    padding-bottom: 140px;
+  }
+}
+
+@include respond-down(small) {
+  .section-width {
+    width: calc(100% - 32px);
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image {
+    min-height: 45vh;
+  }
+}

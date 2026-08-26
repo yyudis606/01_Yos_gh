@@ -1,0 +1,42 @@
+.audio-gate {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: var(--green);
+  color: var(--cream);
+  text-align: center;
+  transition: opacity .35s, visibility .35s;
+
+  h2 {
+    max-width: 420px;
+    margin: 6px auto 10px;
+  }
+
+  button {
+    justify-self: center;
+    padding: 14px 22px;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: var(--cream);
+    cursor: pointer;
+    font: 700 .72rem var(--sans);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  p:last-child {
+    margin: 0;
+    color: rgba(245, 240, 230, .7);
+    font-size: .75rem;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

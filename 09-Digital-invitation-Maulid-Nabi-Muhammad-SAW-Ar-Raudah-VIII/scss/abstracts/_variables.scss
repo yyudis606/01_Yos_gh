@@ -1,0 +1,30 @@
+// ============================================================
+// DESIGN TOKENS
+// Ubah warna/font di sini untuk mengganti tampilan di semua
+// halaman sekaligus (dipakai lewat CSS var di scss/base/_root.scss).
+// ============================================================
+
+// --- WARNA ---
+$color-ink: #19251f;    // warna teks utama & ikon gelap
+$color-green: #244e3d;  // warna hijau tema (background hero, audio-gate, hero-copy)
+$color-cream: #f5f0e6;  // warna krem tema (background halaman & teks di atas hijau)
+$color-gold: #b68b4b;   // warna aksen emas (kicker, tombol, garis bawah, teks penting)
+$color-muted: #68736b;  // warna teks sekunder/deskripsi (lebih redup dari $color-ink)
+$color-line: rgba(25, 37, 31, .16); // warna garis pembatas/border tipis
+
+// --- FONT (ubah nama font di sini jika ganti Google Font) ---
+$font-serif: 'Playfair Display', Georgia, serif; // font judul (heading)
+$font-sans: 'DM Sans', sans-serif;               // font teks biasa (body)
+
+// --- JARAK ANTAR HURUF (letter-spacing) ---
+$tracking-soft: 0.08em;
+$tracking-wide: 0.14em;
+
+// Breakpoints used by @include respond-* mixins
+$breakpoints: (
+  small: 430px,
+  mobile: 760px,
+  mobile-up: 761px,
+  tablet: 1100px,
+);
+
