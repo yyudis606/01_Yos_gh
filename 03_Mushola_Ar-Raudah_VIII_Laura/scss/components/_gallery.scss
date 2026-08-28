@@ -1,5 +1,7 @@
 @use "../abstracts/variables" as v;
 
+// Grid galeri foto (section Galeri di index.html): tambah foto dengan
+// menambah tag <img> baru di dalam .gallery, layout grid menyesuaikan otomatis
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));

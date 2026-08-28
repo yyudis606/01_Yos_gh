@@ -1,6 +1,8 @@
 @use "../abstracts/variables" as v;
 @use "../abstracts/mixins" as m;
 
+// Bilah navigasi atas (sticky), menu hamburger dikontrol oleh toggleMenu()
+// di index.html; link menu diatur langsung lewat <ul class="nav-menu"> di HTML
 .navbar {
   position: sticky;
   top: 0;

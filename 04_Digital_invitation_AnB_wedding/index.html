@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <!-- Halaman pintu masuk: tamu mengetik nama sebelum diarahkan ke invitation.html -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Undangan Pernikahan | Batman & Batgirl</title>
@@ -8,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* Warna dasar halaman ini terpisah dari style.css karena halaman ini berdiri sendiri (tanpa invitation.html) */
     :root { --ink: #171b1a; --paper: #f5f1e9; --gold: #b78b4a; --muted: #66706b; }
 
     body {
@@ -113,10 +115,11 @@
     const goBtn = document.getElementById('goBtn');
     const resetBtn = document.getElementById('resetBtn');
 
-    // Prefill jika ada data tersimpan
+    // Isi otomatis input jika nama tamu sebelumnya masih tersimpan di browser ini
     const stored = localStorage.getItem('invitationGuest');
     if (stored) input.value = stored;
 
+    // Simpan nama lalu arahkan ke invitation.html?guest=<nama> (dibaca oleh script.js)
     goBtn.addEventListener('click', () => {
       const name = input.value.trim();
 
@@ -131,12 +134,13 @@
       window.location.href = url;
     });
 
+    // Hapus nama yang tersimpan agar form kembali kosong
     resetBtn.addEventListener('click', () => {
       input.value = "";
       localStorage.removeItem('invitationGuest');
     });
 
-    // Enter = klik tombol
+    // Enter = klik tombol Buka Undangan
     input.addEventListener('keydown', e => {
       if (e.key === "Enter") goBtn.click();
     });

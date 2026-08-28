@@ -12,13 +12,18 @@
   <link rel="stylesheet" href="visibility.css">
 </head>
 <body>
+  <!-- Semua teks & tanggal di bawah adalah placeholder awal, otomatis ditimpa oleh data/undangan.js saat halaman dimuat -->
   <div class="texture" aria-hidden="true"></div>
+
+  <!-- Layar pembuka: menahan autoplay musik sampai tamu menekan tombol -->
   <div class="audio-gate" id="audioGate">
     <p class="kicker">Undangan digital</p>
     <h2>Maulid Nabi Muhammad SAW</h2>
     <button id="openInvitation" type="button">Buka undangan</button>
     <p>Tekan untuk membuka undangan dengan musik.</p>
   </div>
+
+  <!-- Hero: judul, tema, tanggal, dan foto utama acara -->
   <header class="hero" id="top">
     <div class="hero-copy">
       <p class="kicker">Undangan pengajian</p>
@@ -32,12 +37,14 @@
   </header>
 
   <main>
+    <!-- Kalimat pembuka/sambutan, teks statis (tidak diambil dari data/undangan.js) -->
     <section class="intro section-width">
       <p class="kicker">Assalamu'alaikum warahmatullahi wabarakatuh</p>
       <h2>Dengan hormat, kami mengundang Bapak/Ibu untuk hadir</h2>
       <p class="body-copy">Mari bersama-sama memperingati kelahiran Nabi Muhammad SAW, mempererat silaturahmi, dan menumbuhkan cinta kepada Rasulullah SAW.</p>
     </section>
 
+    <!-- Detail acara: waktu, tempat, penceramah, busana + hitung mundur, semua diisi dari data/undangan.js -->
     <section class="details section-width" id="details">
       <div class="detail-lead"><p class="kicker">Catat waktunya</p><h2>Satu malam penuh keberkahan</h2></div>
       <div class="detail-grid">
@@ -53,6 +60,7 @@
         <article><img class="detail-icon" src="images/icon-guest.png" alt="Busana"><p class="kicker">Busana</p><h3 id="dressCode">Busana muslim terbaik</h3></article>
       </div>
 
+      <!-- Hitung mundur otomatis menuju eventDate/eventTime di data/undangan.js, dihitung oleh script.js -->
       <div class="countdown" aria-live="polite">
         <p class="kicker countdown-label">Menuju acara</p>
         <div class="countdown-grid">
@@ -64,11 +72,13 @@
       </div>
     </section>
 
+    <!-- Peta lokasi: link & iframe diisi dari mapsUrl/mapEmbedUrl di data/undangan.js -->
     <section class="map-section section-width" id="location">
       <div class="section-heading"><div><p class="kicker">Temukan lokasi</p><h2>Datang dan bersilaturahmi</h2></div><a class="text-link" id="mapsLink" href="#" target="_blank" rel="noreferrer">Buka Maps ↗</a></div>
       <div class="map-frame"><iframe id="mapFrame" title="Peta lokasi Musholla Ar-Raudah VIII" loading="lazy"></iframe></div>
     </section>
 
+    <!-- Penutup, teks statis (tidak diambil dari data/undangan.js) -->
     <section class="closing section-width" id="rsvp">
       <div class="closing-mark">﷽</div>
       <p class="kicker">Kehadiran Anda adalah kehormatan</p>
@@ -81,6 +91,7 @@
     </footer>
   </main>
 
+  <!-- Navigasi bawah: scroll ke section + tombol putar/matikan musik -->
   <nav class="bottom-nav" aria-label="Navigasi undangan">
     <a href="#top" aria-label="Kembali ke atas"><img src="images/icon-home.png" alt=""></a>
     <a href="#details" aria-label="Lihat detail acara"><img src="images/icon-event.png" alt=""></a>
@@ -88,6 +99,8 @@
     <button id="musicToggle" type="button" aria-label="Putar musik"><img src="images/icon-audio.png" alt=""></button>
   </nav>
   <audio id="bgMusic" autoplay loop preload="auto"></audio>
+
+  <!-- data/undangan.js wajib dimuat sebelum script.js karena berisi window.MAULID_DATA -->
   <script src="data/undangan.js"></script>
   <script src="script.js"></script>
 </body>

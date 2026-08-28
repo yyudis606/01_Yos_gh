@@ -18,7 +18,7 @@ Semua data utama ada di `data/undangan.js`. Cukup ubah nilai berikut:
 - `mapsUrl`, `mapEmbedUrl`: link Google Maps dan peta kecil
 - `speaker`: nama penceramah
 - `dressCode`: ketentuan busana
-- `heroImage`: nama file foto di folder `image/`
+- `heroImage`: nama file foto di folder `images/`
 - `musicFile`: nama file musik di folder `music/`
 - `musicTitle`, `musicArtist`: judul dan keterangan musik
 

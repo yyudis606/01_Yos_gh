@@ -1,9 +1,15 @@
+// data/undangan.js harus dimuat sebelum file ini, lihat window.MAULID_DATA
 const data = window.MAULID_DATA;
+
+// --- ISI TEKS: salin nilai data/undangan.js ke elemen HTML dengan id yang sama ---
 const textFields = { eventName: data.eventName, theme: data.theme, photoLabel: data.photoLabel, dateDetail: data.dateDetail, islamicDate: data.date, time: data.time, venue: data.venue, address: data.address, speaker: data.speaker, dressCode: data.dressCode };
 Object.entries(textFields).forEach(([id, value]) => { const field = document.getElementById(id); if (field) field.textContent = value; });
+
+// --- PETA: isi link "Buka Maps" dan iframe peta kecil ---
 document.getElementById('mapsLink').href = data.mapsUrl;
 document.getElementById('mapFrame').src = data.mapEmbedUrl || `${data.mapsUrl}&output=embed`;
 
+// --- HITUNG MUNDUR: gabungkan eventDate + eventTime jadi satu objek Date target ---
 function getEventDateTime() {
   const rawDate = data.eventDate || data.dateDetail;
   const rawTime = data.eventTime || (data.time.match(/(\d{1,2})\.(\d{2})/) || ['19:30', '19', '30']).slice(1).join(':');
@@ -37,6 +43,7 @@ function getEventDateTime() {
   );
 }
 
+// Menghitung sisa waktu ke target lalu menampilkannya di angka hari/jam/menit/detik
 function updateCountdown() {
   const countdownTarget = getEventDateTime();
   const timeLeft = countdownTarget.getTime() - Date.now();
@@ -64,12 +71,14 @@ function updateCountdown() {
   countdownEls.seconds.textContent = String(seconds).padStart(2, '0');
 }
 
+// --- FOTO HERO: cek dulu apakah heroImage bisa dimuat, baru tampilkan sebagai background ---
 const heroImage = document.getElementById('heroImage');
 const image = new Image();
 image.onload = () => { heroImage.style.backgroundImage = `url("${data.heroImage}")`; heroImage.classList.add('has-image'); };
 image.onerror = () => { heroImage.classList.add('image-placeholder'); };
 image.src = data.heroImage;
 
+// --- MUSIK: pemutaran otomatis + tombol play/pause di navigasi bawah ---
 const music = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 const audioGate = document.getElementById('audioGate');
@@ -81,9 +90,12 @@ musicToggle.addEventListener('click', async () => {
   else { music.pause(); }
   updateMusicState();
 });
+// Sinkronkan tampilan tombol musik (ikon/aria-label) dengan status audio saat ini
 function updateMusicState() { const playing = !music.paused; musicToggle.classList.toggle('is-playing', playing); musicToggle.setAttribute('aria-label', playing ? `Matikan ${data.musicTitle}` : `Putar ${data.musicTitle}`); }
 music.addEventListener('play', updateMusicState);
 music.addEventListener('pause', updateMusicState);
+
+// Browser sering memblokir autoplay bersuara, jadi coba lagi saat ada sentuhan/klik pertama
 function startMusic() {
   music.play().then(updateMusicState).catch(updateMusicState);
 }
@@ -94,6 +106,8 @@ openInvitation.addEventListener('click', () => {
   audioGate.classList.add('is-hidden');
 });
 music.addEventListener('playing', () => audioGate.classList.add('is-hidden'));
+
+// --- JALANKAN: mulai hitung mundur (update tiap detik) dan set status musik awal ---
 updateCountdown();
 setInterval(updateCountdown, 1000);
 updateMusicState();

@@ -1,5 +1,7 @@
 @use "../abstracts/variables" as v;
 
+// Kontak pengurus (section #pengurus di index.html): tambah/kurangi tombol
+// dengan menambah/menghapus tag <a class="wa-btn"> di HTML, style ikut otomatis
 .wa-buttons {
   display: flex;
   flex-direction: column;

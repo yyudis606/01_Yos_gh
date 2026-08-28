@@ -1,5 +1,6 @@
 @use "../abstracts/variables" as v;
 
+// Banner judul di bagian atas halaman (section #home di index.html)
 .header {
   padding: 55px 20px 60px;
   background: linear-gradient(160deg, v.$color-primary, v.$color-primary-light);

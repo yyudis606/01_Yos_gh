@@ -11,22 +11,28 @@
 <body>
   <div class="bg-overlay"></div>
   <div class="container">
+    <!-- Nama mempelai & tanggal acara, diisi otomatis oleh script.js dari data/undangan.js -->
     <header class="header" id="top">
       <p class="subtitle">The wedding celebration</p>
       <h1 class="names"><span id="groomName">Batman</span> <span class="amp">&</span> <span id="brideName">Batgirl</span></h1>
       <p class="date-label"><span id="eventDay">Selasa</span>, <span id="eventDate">15 Juni 2027</span> · <span id="eventTime">19.00 WIB</span></p>
     </header>
     <main class="card">
+      <!-- Nama tamu diambil dari parameter ?guest= di URL, lihat script.js -->
       <section class="guest-card section" id="guestSection">
         <p class="eyebrow">Dengan penuh sukacita</p>
         <h2>Kepada Yth.</h2>
         <p><strong id="guestName">Tamu Istimewa</strong></p>
       </section>
+
+      <!-- Foto mempelai, ganti file di folder image/ jika perlu -->
       <section class="photo-section section" id="photoSection" aria-label="Foto mempelai">
         <div class="photo-frame photo-frame-main"><img src="image/Mempelai_pria_&_wanita.jpeg" alt="Batman dan Batgirl"></div>
         <div class="photo-frame photo-frame-side"><img src="image/Mempelai_wanita.jpeg" alt="Batgirl"></div>
         <div class="photo-frame photo-frame-side"><img src="image/Mempelai_pria.jpeg" alt="Batman"></div>
       </section>
+
+      <!-- Hitung mundur ke event.eventDate, dihitung ulang tiap detik oleh script.js -->
       <section class="countdown-card section">
         <p class="eyebrow">Menuju hari bahagia</p>
         <h2>Hitung Mundur</h2>
@@ -37,16 +43,22 @@
           <div class="countdown-item"><span id="seconds">00</span><small>Detik</small></div>
         </div>
       </section>
+
+      <!-- Pemutar musik latar, judul/artis/file diatur lewat data/undangan.js -->
       <section class="section" id="musicSection">
         <div class="music-row"><span class="music-icon">♪</span><div><strong>Putar musik</strong><small><span id="musicTitle">Sempurna</span> · <span id="musicArtist">Andra & The Backbone</span></small></div><button id="musicBtn" class="music-btn" type="button">Play</button></div>
         <audio id="bgMusic" autoplay preload="auto" loop playsinline><source src="music/wedding-song.mp3" type="audio/mpeg"></audio>
       </section>
+
+      <!-- Detail tanggal, waktu, dan lokasi acara -->
       <section class="info-grid section" id="locationSection">
         <div class="info-item"><p class="eyebrow">Tanggal</p><p><span id="infoDay">Selasa</span>, <span id="infoDate">15 Juni 2027</span></p></div>
         <div class="info-item"><p class="eyebrow">Waktu</p><p id="infoTime">19.00 WIB</p></div>
         <div class="info-item"><p class="eyebrow">Lokasi</p><p><span id="venueName">Gedung Serbaguna</span><br><span id="venueAddress">Jalan Utama No. 123</span></p></div>
         <div class="info-item"><p class="eyebrow">Navigasi</p><a class="btn primary wide" id="mapsLink" href="https://www.google.com/maps?q=Gedung+Serbaguna+Jalan+Utama+123" target="_blank" rel="noreferrer">Lihat lokasi</a></div>
       </section>
+
+      <!-- Peta kecil (embed), tautan diisi oleh script.js dari mapEmbedUrl -->
       <section class="section location-map-section">
         <p class="eyebrow">Peta lokasi</p>
         <a class="map-preview" id="mapPreviewLink" href="https://www.google.com/maps?q=Gedung+Serbaguna+Jalan+Utama+123" target="_blank" rel="noreferrer" aria-label="Buka lokasi di Google Maps">
@@ -54,16 +66,22 @@
           <span class="map-overlay">Buka di Google Maps ↗</span>
         </a>
       </section>
+
+      <!-- Tombol hadiah digital (QRIS), disembunyikan/nonaktif otomatis jika qrisUrl kosong -->
       <section class="section qris-section" id="qrisSection">
         <div class="qris-icon"><img src="image/icon-QRIS- Black .svg" alt="QRIS"></div>
         <div class="qris-copy"><p class="eyebrow">Tanda kasih</p><h2>Berikan hadiah digital</h2><p>Scan dan buka QRIS untuk mengirim tanda kasih.</p></div>
         <a class="btn qris-btn" id="qrisLink" href="#" target="_blank" rel="noreferrer">Buka QRIS</a>
       </section>
+
+      <!-- Konfirmasi kehadiran tamu, tersimpan di localStorage (lihat script.js) -->
       <section class="section rsvp-section">
         <p class="eyebrow">Mohon konfirmasi</p><h2>Konfirmasi Kehadiran</h2>
         <div class="actions"><button class="btn outline attendance-btn" id="btnAttending">Hadir</button><button class="btn outline attendance-btn" id="btnMaybe">Ragu</button><button class="btn outline attendance-btn" id="btnNot">Tidak hadir</button></div>
         <div class="stats"><div class="stat"><div class="count" id="attendingCount">0</div><div>Hadir</div></div><div class="stat"><div class="count" id="maybeCount">0</div><div>Ragu</div></div><div class="stat"><div class="count" id="notCount">0</div><div>Tidak hadir</div></div></div>
       </section>
+
+      <!-- Form ucapan tamu, dikirim ke commentsApiUrl jika diisi, jika tidak disimpan di localStorage -->
       <section class="section wishes-section" id="wishesSection">
         <p class="eyebrow">Doa dan harapan</p><h2>Ucapan tamu</h2>
         <form class="wish-form" id="wishForm">
@@ -76,6 +94,8 @@
       </section>
     </main>
   </div>
+
+  <!-- Navigasi cepat ke tiap section + tombol play/pause musik -->
   <nav class="bottom-nav" aria-label="Navigasi undangan">
     <a class="nav-item" href="#top" aria-label="Kembali ke atas"><img src="image/icon-home.png" alt=""></a>
     <a class="nav-item" href="#guestSection" aria-label="Lihat jumlah tamu"><img src="image/icon-guest.png" alt=""></a>
@@ -83,6 +103,8 @@
     <a class="nav-item" href="#locationSection" aria-label="Lihat lokasi acara"><img src="image/icon-map.png" alt=""></a>
     <button class="nav-item nav-music" id="navMusicBtn" type="button" aria-label="Putar atau matikan musik"><img src="image/icon-audio.png" alt=""></button>
   </nav>
+
+  <!-- undangan.js berisi data (nama, tanggal, lokasi, dll), harus dimuat sebelum script.js -->
   <script src="data/undangan.js"></script>
   <script src="script.js"></script>
 </body>
