@@ -13,12 +13,12 @@ window.MAULID_DATA = {
   photoLabel: ' ',                           // label kecil di atas foto hero, kosongkan spasi jika tidak perlu
 
   // --- TANGGAL: ubah ketiga nilai ini bersamaan agar konsisten ---
-  dateDetail: 'Kamis, 10 September 2026',    // teks tanggal Masehi, format bebas: 'Hari, DD Bulan YYYY'
-  eventDate: '2026-09-10',                   // format ISO 'YYYY-MM-DD', dipakai countdown, wajib akurat
-  date: '28 Rabiul Awal 1448 Hijriah',        // teks tanggal Hijriah, tampil di bawah tanggal Masehi
+  dateDetail: "Jum'at, 11 September 2026",    // teks tanggal Masehi, format bebas: 'Hari, DD Bulan YYYY'
+  eventDate: '2026-09-11',                   // format ISO 'YYYY-MM-DD', dipakai countdown, wajib akurat
+  date: '30 Rabiul Awal 1448 Hijriah',        // teks tanggal Hijriah, tampil di bawah tanggal Masehi
 
   // --- WAKTU: ubah kedua nilai ini bersamaan agar konsisten ---
-  time: '19.30 WIT - selesai',                // teks jam acara yang tampil ke tamu, boleh pakai zona waktu
+  time: "Ba'da Isya, 19.30 WIT - selesai",                // teks jam acara yang tampil ke tamu, boleh pakai zona waktu
   eventTime: '19:30',                         // format 24 jam 'HH:MM', dipakai countdown, wajib akurat
 
   // --- TEMPAT: lokasi dan peta acara ---
@@ -28,7 +28,7 @@ window.MAULID_DATA = {
   mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.9182271599478!2d114.72343533200576!3d-3.425070713455525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de683004eead4fb%3A0x747e80a949d1abe5!2sMusholla%20Ar-Raudah!5e0!3m2!1sid!2sid!4v1787376237290!5m2!1sid!2sid', // link peta kecil, ambil dari menu Bagikan > Sematkan peta
 
   // --- TEKS: detail tamu/acara ---
-  speaker: 'Ustaz / Ustazah',                 // nama penceramah
+  speaker: 'Ustadz. Wardani, S.Pd.I, Gr.',                 // nama penceramah
   dressCode: 'Busana muslim',                 // ketentuan busana
 
   // --- FOTO: file gambar diletakkan di folder images/ ---
