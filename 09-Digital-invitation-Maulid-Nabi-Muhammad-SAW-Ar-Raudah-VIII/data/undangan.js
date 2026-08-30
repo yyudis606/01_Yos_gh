@@ -18,7 +18,7 @@ window.MAULID_DATA = {
   date: '30 Rabiul Awal 1448 Hijriah',        // teks tanggal Hijriah, tampil di bawah tanggal Masehi
 
   // --- WAKTU: ubah kedua nilai ini bersamaan agar konsisten ---
-  time: "Ba'da Isya, 19.30 WIT - selesai",                // teks jam acara yang tampil ke tamu, boleh pakai zona waktu
+  time: "19.30 WIT (Ba'da Isya) - selesai",   // teks jam acara yang tampil ke tamu, boleh pakai zona waktu
   eventTime: '19:30',                         // format 24 jam 'HH:MM', dipakai countdown, wajib akurat
 
   // --- TEMPAT: lokasi dan peta acara ---
