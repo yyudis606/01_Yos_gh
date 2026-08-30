@@ -78,6 +78,15 @@ image.onload = () => { heroImage.style.backgroundImage = `url("${data.heroImage}
 image.onerror = () => { heroImage.classList.add('image-placeholder'); };
 image.src = data.heroImage;
 
+// --- NAVIGASI BAWAH: pindahkan indikator ke menu yang terakhir dipilih ---
+const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+bottomNavItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    bottomNavItems.forEach((navItem) => navItem.classList.remove('is-active'));
+    item.classList.add('is-active');
+  });
+});
+
 // --- MUSIK: pemutaran otomatis + tombol play/pause di navigasi bawah ---
 const music = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
