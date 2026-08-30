@@ -2,7 +2,7 @@
 const data = window.MAULID_DATA;
 
 // --- ISI TEKS: salin nilai data/undangan.js ke elemen HTML dengan id yang sama ---
-const textFields = { eventName: data.eventName, theme: data.theme, photoLabel: data.photoLabel, dateDetail: data.dateDetail, islamicDate: data.date, time: data.time, venue: data.venue, address: data.address, speaker: data.speaker, dressCode: data.dressCode };
+const textFields = { eventName: data.eventName, theme: data.theme, photoLabel: data.photoLabel, dateDetail: data.dateDetail, islamicDate: data.date, detailDate: data.dateDetail, detailIslamicDate: data.date, time: data.time, venue: data.venue, address: data.address, speaker: data.speaker, dressCode: data.dressCode };
 Object.entries(textFields).forEach(([id, value]) => { const field = document.getElementById(id); if (field) field.textContent = value; });
 
 // --- PETA: isi link "Buka Maps" dan iframe peta kecil ---
