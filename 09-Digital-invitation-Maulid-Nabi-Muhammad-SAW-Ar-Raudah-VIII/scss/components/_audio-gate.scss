@@ -17,6 +17,26 @@
     margin: 6px auto 10px;
   }
 
+  &-location {
+    max-width: 420px;
+    margin: 0 auto 10px;
+
+    strong {
+      display: block;
+      color: var(--gold);
+      font: 700 .76rem var(--sans);
+      letter-spacing: var(--tracking-soft);
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 6px 0 0;
+      color: rgba(245, 240, 230, .78);
+      font-size: .78rem;
+      line-height: 1.5;
+    }
+  }
+
   button {
     justify-self: center;
     padding: 14px 22px;

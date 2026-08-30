@@ -19,6 +19,10 @@
   <div class="audio-gate" id="audioGate">
     <p class="kicker">Undangan digital</p>
     <h2>Maulid Nabi Muhammad SAW</h2>
+    <div class="audio-gate-location">
+      <strong id="gateVenue">Musholla Ar-Raudah VIII</strong>
+      <p id="gateAddress">Jalan Sukamaju Perumahan Ar-Raudah VIII, RT. 04/RW. 01, Landasan Ulin Utara, Banjarbaru, Kalimantan Selatan</p>
+    </div>
     <button id="openInvitation" type="button">Buka undangan</button>
     <p>Tekan untuk membuka undangan dengan musik.</p>
   </div>
@@ -99,7 +103,7 @@
     <button class="bottom-nav-item" id="musicToggle" type="button" aria-label="Putar musik"><span class="bottom-nav-icon"><img src="images/icon-audio.png" alt=""></span></button>
     <span class="bottom-nav-indicator" aria-hidden="true"></span>
   </nav>
-  <audio id="bgMusic" autoplay loop preload="auto"></audio>
+  <audio id="bgMusic" loop preload="auto"></audio>
 
   <!-- data/undangan.js wajib dimuat sebelum script.js karena berisi window.MAULID_DATA -->
   <script src="data/undangan.js"></script>
