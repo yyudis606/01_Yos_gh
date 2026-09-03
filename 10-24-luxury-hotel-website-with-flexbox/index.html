@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Hotel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/visibility.css">
+<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/button.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Header / Navigation -->
+  <header class="nav" role="banner">
+    <div class="row">
+      <div class="row__col row__col--sm-12">
+        <div class="nav__inner">
+          <img src="img/logo-luxury.svg" alt="Luxury hotel logo" class="nav__logo">
+
+          <div class="nav__content hide-for-sm">
+            <ul class="nav__list">
+              <li class="nav__item"><a href="#">About Us</a></li>
+              <li class="nav__item"><a href="#">Services</a></li>
+              <li class="nav__item"><a href="#">Special Offers</a></li>
+              <li class="nav__item"><a href="#">Gallery</a></li>
+            </ul>
+
+            <div class="nav__divider"></div>
+
+            <div class="nav__actions">
+              <a href="#" class="btn btn--sm btn--white">Contact</a>
+              <a href="#" class="btn btn--sm btn--black">Book a Stay</a>
+            </div>
+          </div>
+
+          <button class="btn btn--icon-sm btn--white hide-for-md" aria-label="Open navigation menu">
+            <img src="img/icon-hamburger.svg" alt="">
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero section -->
+    <section class="section-hero" aria-labelledby="hero-title">
+      <div class="row">
+        <div class="row__col row__col--sm-12">
+          <div class="section-hero__inner">
+            <div class="section-hero__content">
+              <p class="eyebrow eyebrow--white section-hero__eyebrow">Experience Luxury Stays</p>
+              <h1 id="hero-title" class="section-hero__title">Your Gateway to Unforgettable Hotel Experiences</h1>
+              <p class="section-hero__desc">
+                Discover why travelers choose us for exceptional comfort and unparalleled service.
+                Join thousands of satisfied guests today!
+              </p>
+              <a href="#" class="btn btn--md btn--white">Explore Our Rooms</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients section -->
+    <section class="section section--white section-clients" aria-label="Trusted by clients">
+      <div class="row">
+        <div class="row__col row__col--sm-12">
+          <p class="section-clients__title">Endorsed by over 250+ top-tier clients</p>
+
+          <div class="section-clients__logos">
+            <div class="section-clients__logo"><img src="img/logo-client-1.svg" alt="Logo client 1"></div>
+            <div class="section-clients__logo"><img src="img/logo-client-2.svg" alt="Logo client 2"></div>
+            <div class="section-clients__logo"><img src="img/logo-client-3.svg" alt="Logo client 3"></div>
+            <div class="section-clients__logo"><img src="img/logo-client-4.svg" alt="Logo client 4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services section -->
+    <section class="section section--white section-services" aria-labelledby="services-title">
+      <div class="row">
+        <div class="row__col row__col--sm-12 row__col--md-6">
+          <p class="eyebrow section-services__eyebrow">Hotel Services</p>
+          <h2 id="services-title" class="section-services__title">Experience Unforgettable Stays</h2>
+
+          <ul class="section-services__list">
+            <li class="section-services__item">
+              <img src="img/icon-check.svg" alt="Icon check" class="section-services__item-icon">
+              <span class="section-services__item-title">Luxurious Accommodations</span>
+            </li>
+            <li class="section-services__item">
+              <img src="img/icon-check.svg" alt="Icon check" class="section-services__item-icon">
+              <span class="section-services__item-title">Fine Dining Experiences</span>
+            </li>
+            <li class="section-services__item">
+              <img src="img/icon-check.svg" alt="Icon check" class="section-services__item-icon">
+              <span class="section-services__item-title">Relaxing Spa Treatments</span>
+            </li>
+          </ul>
+
+          <hr>
+
+          <p class="section-services__desc">
+            Personalized service and attention to detail for an exceptional stay.
+          </p>
+
+          <a href="#" class="btn btn--md btn--black section-services__btn">Book Now</a>
+        </div>
+
+        <div class="row__col row__col--sm-12 row__col--md-6">
+          <img src="img/photo-concierge.jpg" alt="Concierge" class="section-services__photo">
+        </div>
+      </div>
+    </section>
+
+    <!-- Features section -->
+    <section class="section section--muted section-features" aria-labelledby="features-title">
+      <div class="row">
+        <div class="row__col row__col--sm-12">
+          <div class="section__header">
+            <p class="eyebrow">Why stay with us</p>
+            <h2 id="features-title">Reasons to Choose Our Luxury Hotel</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row__col row__col--sm-12 row__col--md-4">
+          <div class="section-features__card">
+            <img src="img/icon-mail.svg" alt="Icon mail" class="section-features__card-icon">
+            <p class="section-features__card-title">Unparalleled Comfort</p>
+            <p class="section-features__card-desc">
+              Experience the epitome of relaxation with our plush bedding and serene ambiance.
+            </p>
+          </div>
+        </div>
+
+        <div class="row__col row__col--sm-12 row__col--md-4">
+          <div class="section-features__card">
+            <img src="img/icon-mail.svg" alt="Icon mail" class="section-features__card-icon">
+            <p class="section-features__card-title">Gourmet Dining</p>
+            <p class="section-features__card-desc">
+              Savor exquisite culinary creations prepared by our world-class chefs.
+            </p>
+          </div>
+        </div>
+
+        <div class="row__col row__col--sm-12 row__col--md-4">
+          <div class="section-features__card">
+            <img src="img/icon-mail.svg" alt="Icon mail" class="section-features__card-icon">
+            <p class="section-features__card-title">Rejuvenating Spa</p>
+            <p class="section-features__card-desc">
+              Indulge in revitalizing treatments and therapies at our luxurious spa facilities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rooms section -->
+    <section class="section section--white section-rooms" aria-labelledby="rooms-title">
+      <div class="row">
+        <div class="row__col row__col--sm-12">
+          <div class="section__header">
+            <p class="eyebrow">Explore Room Hotel</p>
+            <h2 id="rooms-title">Explore our premium hotel rooms</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row__col row__col--sm-12 row__col--md-4">
+          <div class="section-rooms__item">
+            <img src="img/photo-room-1.jpg" alt="Photo room 1" class="section-rooms__item-photo">
+            <p class="section-rooms__item-title">Experience our cozy single rooms.</p>
+            <p class="section-rooms__item-desc">
+              Enjoy a comfortable stay with modern amenities and a serene ambiance.
+            </p>
+            <a href="#" class="btn btn--md btn--black btn--expanded">Book Now</a>
+          </div>
+        </div>
+
+        <div class="row__col row__col--sm-12 row__col--md-4">
+          <div class="section-rooms__item">
+            <img src="img/photo-room-2.jpg" alt="Photo room 2" class="section-rooms__item-photo">
+            <p class="section-rooms__item-title">Indulge in our luxurious double rooms.</p>
+            <p class="section-rooms__item-desc">
+              Relax in style with spacious layouts and elegant decor.
+            </p>
+            <a href="#" class="btn btn--md btn--black btn--expanded">Book Now</a>
+          </div>
+        </div>
+
+        <div class="row__col row__col--sm-12 row__col--md-4">
+          <div class="section-rooms__item">
+            <img src="img/photo-room-3.jpg" alt="Photo room 3" class="section-rooms__item-photo">
+            <p class="section-rooms__item-title">Unwind in our exclusive suites.</p>
+            <p class="section-rooms__item-desc">
+              Experience the ultimate in comfort with premium features and personalized service.
+            </p>
+            <a href="#" class="btn btn--md btn--black btn--expanded">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ section -->
+    <section class="section section--white section-faq" aria-labelledby="faq-title">
+      <div class="row">
+        <div class="row__col row__col--sm-12 row__col--md-12">
+          <div class="faq__box">
+            <h2 id="faq-title" class="faq__title">Frequently Asked Questions</h2>
+            <div class="faq__list">
+              <details class="faq__item">
+                <summary>What types of rooms are available at the hotel?</summary>
+                <div class="faq__content">We offer a variety of rooms including single, double, and suites—each designed for comfort and style.</div>
+              </details>
+
+              <details class="faq__item">
+                <summary>Is there a fitness center or spa on the premises?</summary>
+                <div class="faq__content">Yes — our property includes a fully equipped fitness center and a luxury spa offering multiple treatments and packages.</div>
+              </details>
+
+              <details class="faq__item">
+                <summary>What are the check-in and check-out times?</summary>
+                <div class="faq__content">Check-in is from 3:00 PM and check-out is until 11:00 AM. Early check-in or late check-out can be requested subject to availability.</div>
+              </details>
+
+              <details class="faq__item" open>
+                <summary>Is parking available, and is there a fee?</summary>
+                <div class="faq__content">Our hotel offers a variety of rooms, including single, double, and suites. We also have a fitness center and spa, and parking is available for a fee.</div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discover section -->
+    <section class="section section--muted section-discover" aria-labelledby="discover-title">
+      <div class="row">
+        <div class="row__col row__col--sm-12">
+          <div class="section-discover__inner">
+            <div class="section-discover__content">
+              <h2 id="discover-title" class="section-discover__title">Discover Unmatched Luxury and Comfort</h2>
+              <p class="section-discover__desc">Experience unparalleled luxury with our world-class amenities and exceptional service. Your unforgettable stay begins here.</p>
+              <a href="#" class="btn btn--md btn--white">Explore Rooms</a>
+            </div>
+
+            <div class="section-discover__card">
+              <div class="card-badge">Hotel Amenities</div>
+              <ul class="section-discover__amenities">
+                <li><img src="img/icon-check.svg" alt=""><span>High-Speed Wi-Fi</span></li>
+                <li><img src="img/icon-check.svg" alt=""><span>Gourmet Dining</span></li>
+                <li><img src="img/icon-check.svg" alt=""><span>Spa & Wellness</span></li>
+                <li><img src="img/icon-check.svg" alt=""><span>Concierge Service</span></li>
+                <li><img src="img/icon-check.svg" alt=""><span>Valet Parking</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="section section--white section-footer-menu">
+    <div class="row">
+      <div class="row__col row__col--sm-12 row__col--md-3">
+        <div class="footer-logo">
+          <img src="img/icon-luxury.svg" alt="Luxury Hotels" class="footer-logo__img">
+          <h3 class="footer-logo__title">Luxury Hotels</h3>
+        </div>
+        <p class="muted footer-copy">© Copyright 2026 Luxury Hotels. All rights reserved.</p>
+
+        <div class="lang-selector">
+          <button class="lang-btn" aria-label="Select language">
+            <img src="img/flag-eng.svg" alt="English (US)" class="lang-flag">
+            <span class="lang-text">English (US)</span>
+            <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9l6 6 6-6" stroke="#1f2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="row__col row__col--sm-12 row__col--md-3">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="#">Rooms</a></li>
+          <li><a href="#">Suites</a></li>
+          <li><a href="#">Dining</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Spa</a></li>
+          <li><a href="#">Local</a></li>
+        </ul>
+      </div>
+
+      <div class="row__col row__col--sm-12 row__col--md-3">
+        <h4>Policies</h4>
+        <ul class="footer-links">
+          <li><a href="#">Site Notice</a></li>
+          <li><a href="#">Data Security</a></li>
+          <li><a href="#">Service Terms</a></li>
+          <li><a href="#">GDPR</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+
+      <div class="row__col row__col--sm-12 row__col--md-3">
+        <h4>Connect</h4>
+        <div class="socials">
+          <span class="social-icon"><img src="img/icon-facebook.svg" alt="facebook"></span>
+          <span class="social-icon"><img src="img/icon-twitter.svg" alt="twitter"></span>
+          <span class="social-icon"><img src="img/icon-instagram.svg" alt="instagram"></span>
+          <span class="social-icon"><img src="img/icon-linkedin.svg" alt="linkedin"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
