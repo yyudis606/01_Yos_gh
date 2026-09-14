@@ -8,3 +8,4 @@ Thumbs.db
 # Cache SASS
 .sass-cache/
 *.css.map
+.vercel
