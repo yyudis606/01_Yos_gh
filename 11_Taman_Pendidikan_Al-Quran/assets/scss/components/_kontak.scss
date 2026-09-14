@@ -1,0 +1,130 @@
+// =========================================================================
+// _kontak.scss — KONTAK, PETA, TOMBOL MENGAMBANG
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.kontak__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: $jarak-6;
+  align-items: start;
+
+  @include layar(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kontak__item {
+  display: flex;
+  align-items: flex-start;
+  gap: $jarak-4;
+  padding: $jarak-4;
+  border-radius: $radius-lg;
+  transition: background $transisi;
+
+  & + & { margin-top: $jarak-2; }
+
+  &:hover { background: $hijau-050; }
+
+  small {
+    display: block;
+    font-size: $teks-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $abu-400;
+  }
+
+  a,
+  span {
+    font-size: $teks-sm;
+    color: $warna-teks;
+  }
+
+  a:hover { color: $warna-brand; }
+}
+
+.kontak__ikon {
+  @include kotak-ikon(44px, $warna-brand);
+  flex: none;
+}
+
+// Peta lokasi
+.kontak__map {
+  overflow: hidden;
+  border-radius: $radius-lg;
+  border: 1px solid $warna-garis;
+  box-shadow: $bayangan-sm;
+
+  iframe {
+    width: 100%;
+    height: 420px;
+    border: 0;
+
+    @include layar(md) {
+      height: 300px;
+    }
+  }
+}
+
+// -------- Tombol WhatsApp mengambang ------------------------------------
+.wa-float {
+  position: fixed;
+  right: $jarak-5;
+  bottom: $jarak-5;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: $putih;
+  box-shadow: 0 10px 26px rgba(#25d366, 0.45);
+  transition: transform $transisi;
+
+  svg { width: 30px; height: 30px; }
+
+  &:hover { transform: scale(1.08); }
+
+  @include layar(sm) {
+    right: $jarak-4;
+    bottom: $jarak-4;
+  }
+}
+
+// -------- Tombol kembali ke atas ----------------------------------------
+.to-top {
+  position: fixed;
+  right: $jarak-5;
+  bottom: calc(#{$jarak-5} + 68px);
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $warna-brand;
+  color: $putih;
+  box-shadow: $bayangan-md;
+
+  // Tersembunyi sampai halaman digulir cukup jauh
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity $transisi, transform $transisi, visibility $transisi;
+
+  svg { width: 20px; height: 20px; }
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  @include layar(sm) {
+    right: $jarak-4;
+    bottom: calc(#{$jarak-4} + 64px);
+  }
+}

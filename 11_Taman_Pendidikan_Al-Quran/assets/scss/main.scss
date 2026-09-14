@@ -1,0 +1,36 @@
+// =========================================================================
+// main.scss — FILE INDUK SASS
+// -------------------------------------------------------------------------
+// File inilah yang di-compile menjadi assets/css/main.css.
+// Perintah compile (lihat README.md):
+//   npm run sass        -> compile sekali
+//   npm run sass:watch  -> compile otomatis setiap file SCSS disimpan
+//
+// URUTAN IMPORT PENTING: variabel & mixin harus dimuat lebih dulu.
+// Menambah komponen baru: buat file assets/scss/components/_nama.scss
+// lalu daftarkan dengan @use di bagian "KOMPONEN" di bawah.
+// =========================================================================
+
+// -------- DASAR ----------------------------------------------------------
+@use "base/variables";
+@use "base/mixins";
+@use "base/base";
+
+// -------- KERANGKA HALAMAN ----------------------------------------------
+@use "layout/layout";
+@use "layout/header";
+@use "layout/footer";
+
+// -------- KOMPONEN -------------------------------------------------------
+@use "components/buttons";
+@use "components/photo";
+@use "components/hero";
+@use "components/statistik";
+@use "components/tentang";
+@use "components/program";
+@use "components/orang";
+@use "components/jadwal";
+@use "components/galeri";
+@use "components/testimoni";
+@use "components/daftar";
+@use "components/kontak";

@@ -1,0 +1,110 @@
+// =========================================================================
+// _footer.scss — BAGIAN PALING BAWAH HALAMAN
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.footer {
+  background: $hijau-900;
+  color: rgba($putih, 0.75);
+
+  // Motif dekoratif lembut di latar footer
+  background-image: radial-gradient(circle at 15% 0%, rgba($hijau-500, 0.25), transparent 45%),
+    radial-gradient(circle at 85% 100%, rgba($emas-500, 0.12), transparent 40%);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr;
+  gap: $jarak-6;
+  padding-block: $jarak-7;
+
+  @include layar(md) {
+    grid-template-columns: 1fr;
+    gap: $jarak-5;
+  }
+}
+
+.footer__brand {
+  p {
+    margin-top: $jarak-4;
+    max-width: 38ch;
+    font-size: $teks-sm;
+  }
+
+  .brand__logo {
+    background: rgba($putih, 0.12);
+    color: $putih;
+  }
+}
+
+.footer h4 {
+  margin-bottom: $jarak-4;
+  color: $putih;
+  font-size: $teks-base;
+}
+
+.footer__nav ul li + li {
+  margin-top: $jarak-2;
+}
+
+.footer__nav a {
+  font-size: $teks-sm;
+  transition: color $transisi-cepat, padding-left $transisi-cepat;
+
+  &:hover {
+    color: $putih;
+    padding-left: 4px;
+  }
+}
+
+.footer__kontak ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: $jarak-3;
+  font-size: $teks-sm;
+
+  & + li { margin-top: $jarak-3; }
+
+  svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    color: $hijau-300;
+  }
+}
+
+// Baris hak cipta
+.footer__bottom {
+  border-top: 1px solid rgba($putih, 0.1);
+  padding-block: $jarak-4;
+  font-size: $teks-sm;
+  text-align: center;
+}
+
+// -------- Ikon media sosial (dipakai di kontak & footer) -----------------
+.sosial {
+  display: flex;
+  gap: $jarak-3;
+  margin-top: $jarak-5;
+}
+
+.sosial__link {
+  @include kotak-ikon(40px, $warna-brand);
+  transition: transform $transisi-cepat, background $transisi-cepat, color $transisi-cepat;
+
+  &:hover {
+    transform: translateY(-3px);
+    background: $warna-brand;
+    color: $putih;
+  }
+
+  // Versi di dalam footer
+  .footer & {
+    background: rgba($putih, 0.1);
+    color: $putih;
+
+    &:hover { background: $warna-aksen; color: $hijau-900; }
+  }
+}

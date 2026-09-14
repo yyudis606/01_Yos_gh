@@ -1,0 +1,91 @@
+// =========================================================================
+// _variables.scss — SEMUA PENGATURAN TAMPILAN DASAR
+// -------------------------------------------------------------------------
+// Ubah warna, font, jarak, dan radius di sini — otomatis berlaku
+// ke seluruh website. Tidak perlu mengubah file SCSS lain.
+// =========================================================================
+
+// -------- WARNA UTAMA (tema hijau islami modern) -------------------------
+$hijau-900: #063d35;
+$hijau-800: #0a5a4e;
+$hijau-700: #0f7b6c; // warna utama / brand
+$hijau-500: #16a08c;
+$hijau-300: #6fd3c2;
+$hijau-050: #e7f6f2; // latar lembut
+
+// Warna aksen (emas) untuk detail dekoratif
+$emas-600: #b8860b;
+$emas-500: #d4a017;
+$emas-200: #f6e6bd;
+
+// Warna netral
+$putih: #ffffff;
+$abu-050: #f7f9f9;
+$abu-100: #eef2f2;
+$abu-200: #dfe6e5;
+$abu-400: #9aa8a6;
+$abu-600: #5c6b69;
+$abu-800: #24332f;
+$hitam: #0c1513;
+
+// Warna status (form)
+$merah: #d94848;
+$hijau-sukses: #1f9d55;
+
+// -------- PERAN WARNA (dipakai di komponen) ------------------------------
+$warna-brand: $hijau-700;
+$warna-brand-gelap: $hijau-800;
+$warna-aksen: $emas-500;
+$warna-teks: $abu-800;
+$warna-teks-lembut: $abu-600;
+$warna-latar: $putih;
+$warna-latar-alt: $abu-050;
+$warna-garis: $abu-200;
+
+// -------- TIPOGRAFI ------------------------------------------------------
+$font-utama: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-aksen: "Amiri", Georgia, serif; // untuk kutipan / sentuhan klasik
+
+$teks-xs: 0.78rem;
+$teks-sm: 0.875rem;
+$teks-base: 1rem;
+$teks-lg: 1.125rem;
+$teks-xl: 1.375rem;
+$teks-2xl: 1.75rem;
+$teks-3xl: 2.25rem;
+$teks-4xl: 3rem;
+
+// -------- JARAK & UKURAN -------------------------------------------------
+$lebar-container: 1180px;
+$tinggi-header: 76px;
+
+$jarak-1: 0.25rem;
+$jarak-2: 0.5rem;
+$jarak-3: 0.75rem;
+$jarak-4: 1rem;
+$jarak-5: 1.5rem;
+$jarak-6: 2rem;
+$jarak-7: 3rem;
+$jarak-8: 4.5rem;
+
+// -------- SUDUT MELENGKUNG (radius) --------------------------------------
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 22px;
+$radius-xl: 32px;
+$radius-bulat: 999px;
+
+// -------- BAYANGAN -------------------------------------------------------
+$bayangan-sm: 0 2px 8px rgba(6, 61, 53, 0.06);
+$bayangan-md: 0 10px 30px rgba(6, 61, 53, 0.08);
+$bayangan-lg: 0 24px 60px rgba(6, 61, 53, 0.12);
+
+// -------- TRANSISI -------------------------------------------------------
+$transisi: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transisi-cepat: 0.18s ease;
+
+// -------- TITIK PUTUS RESPONSIF (breakpoint) -----------------------------
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;

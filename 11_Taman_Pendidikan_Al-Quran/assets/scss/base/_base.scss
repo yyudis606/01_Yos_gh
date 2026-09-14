@@ -1,0 +1,119 @@
+// =========================================================================
+// _base.scss — RESET & GAYA DASAR ELEMEN HTML
+// =========================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+// -------- Reset ringan ---------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-utama;
+  font-size: $teks-base;
+  line-height: 1.7;
+  color: $warna-teks;
+  background: $warna-latar;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+// -------- Tipografi ------------------------------------------------------
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $abu-800;
+}
+
+h1 { font-size: $teks-4xl; }
+h2 { font-size: $teks-3xl; }
+h3 { font-size: $teks-xl; }
+
+@include layar(md) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.75rem; }
+}
+
+code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.85em;
+  background: $hijau-050;
+  color: $hijau-800;
+  padding: 0.1em 0.4em;
+  border-radius: $radius-sm;
+}
+
+// -------- Tautan lompat konten (aksesibilitas) ---------------------------
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  background: $warna-brand;
+  color: $putih;
+  padding: $jarak-3 $jarak-4;
+  border-radius: 0 0 $radius-md 0;
+
+  &:focus {
+    left: 0;
+  }
+}
+
+// -------- Fokus keyboard yang terlihat jelas -----------------------------
+:focus-visible {
+  outline: 3px solid rgba($warna-brand, 0.5);
+  outline-offset: 2px;
+}
+
+// -------- Hormati preferensi "kurangi animasi" ---------------------------
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

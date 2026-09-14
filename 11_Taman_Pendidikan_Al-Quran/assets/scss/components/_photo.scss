@@ -1,0 +1,95 @@
+// =========================================================================
+// _photo.scss — "SLOT FOTO"
+// -------------------------------------------------------------------------
+// Semua tempat foto di website memakai gaya ini.
+// - Bila foto SUDAH diisi di data.js  -> tampil gambar (.photo__img)
+// - Bila foto MASIH KOSONG            -> tampil placeholder rapi
+//   (.photo__placeholder) dengan pola garis miring + ikon kamera.
+// Jadi tata letak tidak berubah saat foto ditambahkan nanti.
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  background: $hijau-050;
+
+  // Gambar asli
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  // Tampilan saat foto belum tersedia
+  &__placeholder {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: $jarak-3;
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    padding: $jarak-4;
+    text-align: center;
+    color: rgba($hijau-800, 0.55);
+    background-color: $hijau-050;
+    // Pola garis miring lembut sebagai penanda "slot kosong"
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba($hijau-700, 0.05) 0,
+      rgba($hijau-700, 0.05) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+
+  &__ph-ikon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba($hijau-700, 0.12);
+    color: $hijau-700;
+    font-size: $teks-xl;
+    font-weight: 800;
+
+    svg { width: 26px; height: 26px; }
+  }
+
+  &__ph-teks {
+    font-size: $teks-sm;
+    font-weight: 600;
+  }
+
+  // ---- Ukuran khusus per lokasi ----------------------------------------
+
+  // Foto besar pada hero
+  &--hero {
+    aspect-ratio: 4 / 3;
+    border-radius: $radius-xl;
+    box-shadow: $bayangan-lg;
+
+    .photo__placeholder { min-height: 340px; }
+  }
+
+  // Foto pada bagian "Tentang"
+  &--tentang {
+    aspect-ratio: 1 / 1;
+    box-shadow: $bayangan-md;
+
+    .photo__placeholder { min-height: 300px; }
+  }
+
+  // Foto pada kartu program
+  &--program {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+
+    .photo__placeholder { min-height: 150px; }
+  }
+}

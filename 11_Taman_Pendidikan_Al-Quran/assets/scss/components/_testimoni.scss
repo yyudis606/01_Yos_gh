@@ -1,0 +1,84 @@
+// =========================================================================
+// _testimoni.scss — KARTU TESTIMONI WALI SANTRI
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.testimoni__grid {
+  @include grid-auto(300px, $jarak-5);
+}
+
+.testimoni {
+  @include kartu($jarak-6);
+  @include kartu-hover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  // Tanda kutip dekoratif
+  &__quote {
+    color: rgba($warna-brand, 0.18);
+    margin-bottom: $jarak-3;
+
+    svg { width: 36px; height: 36px; }
+  }
+
+  &__pesan {
+    flex: 1;
+    font-family: $font-aksen;
+    font-size: $teks-lg;
+    line-height: 1.75;
+    color: $warna-teks;
+    margin-bottom: $jarak-5;
+  }
+
+  // Identitas pemberi testimoni
+  &__orang {
+    display: flex;
+    align-items: center;
+    gap: $jarak-3;
+    padding-top: $jarak-4;
+    border-top: 1px solid $warna-garis;
+
+    strong {
+      display: block;
+      font-size: $teks-sm;
+    }
+
+    small {
+      font-size: $teks-xs;
+      color: $warna-teks-lembut;
+    }
+  }
+
+  // Slot foto kecil (inisial bila foto belum ada)
+  &__foto {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: $hijau-050;
+
+    .photo__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo__placeholder {
+      min-height: 100%;
+      padding: 0;
+      background-image: none;
+      @include gradasi-brand;
+    }
+
+    .photo__ph-ikon {
+      width: auto;
+      height: auto;
+      background: none;
+      color: $putih;
+      font-size: $teks-base;
+    }
+  }
+}

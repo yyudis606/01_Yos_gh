@@ -1,0 +1,45 @@
+// =========================================================================
+// _statistik.scss — KARTU ANGKA (santri, pengajar, dll)
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.statistik__grid {
+  @include grid-auto(200px, $jarak-4);
+  padding: $jarak-5;
+  border-radius: $radius-xl;
+  border: 1px solid $warna-garis;
+  background: $putih;
+  box-shadow: $bayangan-md;
+}
+
+.stat {
+  display: grid;
+  justify-items: center;
+  gap: $jarak-2;
+  padding: $jarak-4;
+  border-radius: $radius-lg;
+  text-align: center;
+  transition: background $transisi;
+
+  &:hover {
+    background: $hijau-050;
+  }
+
+  &__ikon {
+    @include kotak-ikon(46px, $warna-brand);
+  }
+
+  &__angka {
+    font-size: $teks-3xl;
+    font-weight: 800;
+    color: $hijau-900;
+    line-height: 1.1;
+  }
+
+  &__label {
+    font-size: $teks-sm;
+    font-weight: 600;
+    color: $warna-teks-lembut;
+  }
+}

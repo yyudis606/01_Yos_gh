@@ -1,0 +1,80 @@
+// =========================================================================
+// _mixins.scss — POTONGAN GAYA YANG DIPAKAI BERULANG
+// Menulis @include <nama> di file lain akan menyalin gaya di bawah ini.
+// =========================================================================
+@use "variables" as *;
+
+// Responsif: berlaku pada layar <= ukuran tertentu.
+// Contoh: @include layar(md) { ... }  -> untuk layar <= 768px
+@mixin layar($ukuran) {
+  @if $ukuran == sm {
+    @media (max-width: $bp-sm) { @content; }
+  } @else if $ukuran == md {
+    @media (max-width: $bp-md) { @content; }
+  } @else if $ukuran == lg {
+    @media (max-width: $bp-lg) { @content; }
+  } @else if $ukuran == xl {
+    @media (max-width: $bp-xl) { @content; }
+  }
+}
+
+// Grid otomatis: kolom menyesuaikan lebar layar.
+// Contoh: @include grid-auto(280px, $jarak-5);
+@mixin grid-auto($lebar-min, $jarak: $jarak-5) {
+  display: grid;
+  gap: $jarak;
+  grid-template-columns: repeat(auto-fit, minmax($lebar-min, 1fr));
+}
+
+// Kartu putih standar (dipakai hampir di semua komponen).
+@mixin kartu($padding: $jarak-5) {
+  background: $putih;
+  border: 1px solid $warna-garis;
+  border-radius: $radius-lg;
+  padding: $padding;
+  box-shadow: $bayangan-sm;
+  transition: transform $transisi, box-shadow $transisi, border-color $transisi;
+}
+
+// Efek saat kartu disentuh kursor.
+@mixin kartu-hover {
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $bayangan-md;
+    border-color: rgba($warna-brand, 0.35);
+  }
+}
+
+// Kotak ikon bulat dengan latar lembut.
+@mixin kotak-ikon($ukuran: 48px, $warna: $warna-brand) {
+  display: inline-grid;
+  flex-shrink: 0; // cegah ikon gepeng saat berada di dalam flex/grid sempit
+  place-items: center;
+  width: $ukuran;
+  height: $ukuran;
+  border-radius: $radius-md;
+  background: rgba($warna, 0.1);
+  color: $warna;
+
+  svg,
+  img {
+    flex-shrink: 0;
+    width: $ukuran * 0.5;
+    height: $ukuran * 0.5;
+    object-fit: contain; // khusus img: jaga rasio gambar tidak gepeng
+  }
+}
+
+// Potong teks setelah sekian baris.
+@mixin batas-baris($baris: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $baris;
+  line-clamp: $baris;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Gradasi khas brand.
+@mixin gradasi-brand {
+  background: linear-gradient(135deg, $hijau-800 0%, $hijau-700 55%, $hijau-500 100%);
+}

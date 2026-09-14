@@ -1,0 +1,93 @@
+// =========================================================================
+// _program.scss — KARTU PROGRAM PEMBELAJARAN
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.program__grid {
+  @include grid-auto(280px, $jarak-5);
+}
+
+.program {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid $warna-garis;
+  border-radius: $radius-lg;
+  background: $putih;
+  box-shadow: $bayangan-sm;
+  transition: transform $transisi, box-shadow $transisi, border-color $transisi;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $bayangan-md;
+    border-color: rgba($warna-brand, 0.35);
+
+    // Foto sedikit membesar saat kartu disentuh kursor
+    .photo__img { transform: scale(1.06); }
+  }
+
+  &__isi {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: $jarak-5;
+  }
+
+  &__ikon {
+    @include kotak-ikon(46px, $warna-brand);
+    position: relative;              // wajib: .photo di atasnya juga "position: relative",
+    z-index: 1;                      // tanpa ini ikon tertutup/terpotong oleh foto (stacking order)
+    flex-shrink: 0;                  // cegah ikon gepeng di dalam flex column
+    margin-top: -$jarak-7;           // sedikit menumpuk di atas foto
+    margin-bottom: $jarak-4;
+    background: $putih;
+    border: 1px solid $warna-garis;
+    box-shadow: $bayangan-sm;
+  }
+
+  &__nama {
+    font-size: $teks-lg;
+    margin-bottom: $jarak-2;
+  }
+
+  // Label usia
+  &__usia {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    padding: 0.25rem 0.7rem;
+    margin-bottom: $jarak-3;
+    border-radius: $radius-bulat;
+    background: rgba($emas-500, 0.14);
+    color: $emas-600;
+    font-size: $teks-xs;
+    font-weight: 700;
+
+    svg { width: 14px; height: 14px; }
+  }
+
+  &__desc {
+    font-size: $teks-sm;
+    color: $warna-teks-lembut;
+    margin-bottom: $jarak-4;
+  }
+
+  // Daftar materi berbentuk label kecil
+  &__materi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $jarak-2;
+    margin-top: auto;
+
+    li {
+      padding: 0.25rem 0.65rem;
+      border-radius: $radius-sm;
+      background: $hijau-050;
+      color: $hijau-800;
+      font-size: $teks-xs;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# Dependensi
+node_modules/
+
+# Berkas sistem
+.DS_Store
+Thumbs.db
+
+# Cache SASS
+.sass-cache/
+*.css.map

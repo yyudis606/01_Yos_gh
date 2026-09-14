@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<!--
+  =========================================================================
+  index.html — Halaman utama website Taman Pendidikan Al-Qur'an
+  -------------------------------------------------------------------------
+  CATATAN PENTING UNTUK PEMELIHARAAN:
+  - Struktur halaman (kerangka section) ada di file ini.
+  - ISI DATA (nama pengurus, pengajar, program, galeri, kontak, dll)
+    TIDAK ditulis di sini, melainkan di: assets/js/data.js
+  - Tampilan diatur lewat SASS di: assets/scss/  (hasil compile: assets/css/main.css)
+  - Logika render & interaksi ada di: assets/js/main.js
+  =========================================================================
+-->
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO dasar: ganti sesuai kebutuhan -->
+    <title>Raudhatul Ulum — Taman Pendidikan Al-Qur'an</title>
+    <meta
+      name="description"
+      content="Taman Pendidikan Al-Qur'an Raudhatul Ulum — membimbing anak membaca Al-Qur'an dengan tajwid yang benar, program tahsin, tahfidz, dan pembinaan akhlak."
+    />
+    <meta name="theme-color" content="#0f7b6c" />
+
+    <!-- Ikon tab browser. Ganti dengan favicon lembaga bila sudah ada. -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+
+    <!-- Font Google: Plus Jakarta Sans (teks) + Amiri (aksen arabic/serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheet hasil compile SASS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+  <body>
+    <!-- Tautan aksesibilitas: lompat langsung ke konten utama -->
+    <a class="skip-link" href="#beranda">Lompat ke konten utama</a>
+
+    <!-- ===================================================================
+         HEADER / NAVIGASI
+         Teks nama lembaga diisi otomatis oleh main.js dari DATA_LEMBAGA.
+         Untuk menambah menu: tambahkan <li> baru di dalam .nav__list.
+         =================================================================== -->
+    <header class="header" id="header">
+      <div class="container header__inner">
+        <!-- Logo + nama lembaga -->
+        <a class="brand" href="#beranda" aria-label="Beranda">
+          <span class="brand__logo" data-logo><!-- diisi oleh JS --></span>
+          <span class="brand__text">
+            <strong data-lembaga="namaPendek">TPQ</strong>
+            <small>Taman Pendidikan Al-Qur'an</small>
+          </span>
+        </a>
+
+        <!-- Menu navigasi -->
+        <nav class="nav" id="nav" aria-label="Navigasi utama">
+          <ul class="nav__list">
+            <li><a class="nav__link is-active" href="#beranda">Beranda</a></li>
+            <li><a class="nav__link" href="#tentang">Tentang</a></li>
+            <li><a class="nav__link" href="#program">Program</a></li>
+            <li><a class="nav__link" href="#pengurus">Pengurus</a></li>
+            <li><a class="nav__link" href="#pengajar">Pengajar</a></li>
+            <li><a class="nav__link" href="#galeri">Galeri</a></li>
+            <li><a class="nav__link" href="#kontak">Kontak</a></li>
+          </ul>
+          <!-- Tombol aksi utama di navbar -->
+          <a class="btn btn--primary btn--sm nav__cta" href="#pendaftaran">Daftar Sekarang</a>
+        </nav>
+
+        <!-- Tombol menu untuk tampilan mobile -->
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===============================================================
+           1. HERO — bagian paling atas
+           Foto hero diatur di data.js -> DATA_LEMBAGA.fotoHero
+           =============================================================== -->
+      <section class="hero" id="beranda">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <div class="hero__content" data-reveal>
+            <span class="badge">
+              <span class="badge__dot"></span>
+              <span data-pendaftaran="status">Pendaftaran Dibuka</span>
+            </span>
+
+            <h1 class="hero__title">
+              <span class="hero__title-line1" data-lembaga="judulBaris1"></span>
+              <span class="hero__title-line2" data-lembaga="judulBaris2"></span>
+            </h1>
+
+            <p class="hero__tagline" data-lembaga="tagline"></p>
+            <p class="hero__desc" data-lembaga="deskripsiSingkat"></p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#pendaftaran">Daftar Santri Baru</a>
+              <a class="btn btn--ghost" href="#program">Lihat Program</a>
+            </div>
+          </div>
+
+          <!-- Tempat foto hero (otomatis placeholder bila foto belum ada) -->
+          <div class="hero__media" data-reveal>
+            <figure class="photo photo--hero" data-photo="hero">
+              <!-- diisi oleh JS -->
+            </figure>
+            <!-- Kartu kecil mengambang di atas foto -->
+            <div class="hero__float">
+              <span class="hero__float-ikon">
+                <img src="assets/img/icon/quran-black-white.png" alt="" />
+              </span>
+              <div>
+                <strong data-lembaga="tahunBerdiri"></strong>
+                <small>Tahun Berdiri</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           2. STATISTIK — kartu angka (data: DATA_STATISTIK)
+           =============================================================== -->
+      <section class="section section--tight statistik">
+        <div class="container">
+          <div class="statistik__grid" id="statistikGrid" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           3. TENTANG KAMI (data: DATA_TENTANG)
+           =============================================================== -->
+      <section class="section" id="tentang">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Tentang Kami</span>
+            <h2 class="section__title">Mengenal lebih dekat, kami</h2>
+            <h2 class="section__title">Taman Pendidikan Al-Qur'an</h2>
+            <h2 class="section__title"><code>Raudhatul Ulum</code></h2>
+            <p class="section__sub">
+              Membina santri dengan kurikulum terstruktur, pengajar berpengalaman, dan lingkungan belajar yang hangat.
+            </p>
+          </div>
+
+          <div class="tentang__grid">
+            <!-- Tempat foto bagian tentang -->
+            <div class="tentang__media" data-reveal>
+              <figure class="photo photo--tentang" data-photo="tentang">
+                <!-- diisi oleh JS -->
+              </figure>
+            </div>
+
+            <div class="tentang__teks" data-reveal>
+              <p class="tentang__sejarah" data-tentang="sejarah"></p>
+
+              <!-- Visi & Misi -->
+              <div class="visimisi">
+                <article class="visimisi__item">
+                  <h3><span data-icon="star"></span> Visi</h3>
+                  <p data-tentang="visi"></p>
+                </article>
+                <article class="visimisi__item">
+                  <h3><span data-icon="check"></span> Misi</h3>
+                  <ul id="misiList"><!-- diisi oleh JS --></ul>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kartu keunggulan -->
+          <div class="keunggulan__grid" id="keunggulanGrid" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           4. PROGRAM PEMBELAJARAN (data: DATA_PROGRAM)
+           =============================================================== -->
+      <section class="section section--alt" id="program">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Program</span>
+            <h2 class="section__title">Program Pembelajaran</h2>
+            <p class="section__sub">
+              Disusun bertahap sesuai usia dan kemampuan santri, dari pengenalan huruf hingga tahfidz.
+            </p>
+          </div>
+
+          <div class="program__grid" id="programGrid" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           5. STRUKTUR PENGURUS (data: DATA_PENGURUS)
+           =============================================================== -->
+      <section class="section" id="pengurus">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Struktur Organisasi</span>
+            <h2 class="section__title">Pengurus,</h2>
+            <h3 class="section__sub">Taman Pendidikan Al-Qur'an</h3>
+            <h3><code>Raudhatul Ulum</code></h3>
+            <p class="section__sub">
+              Tim pengurus yang mengelola penyelenggaraan pendidikan dan kegiatan Taman Pendidikan Al-Qur'an.
+            </p>
+          </div>
+
+          <div class="orang__grid orang__grid--pengurus" id="pengurusGrid" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           6. TENAGA PENGAJAR (data: DATA_PENGAJAR)
+           =============================================================== -->
+      <section class="section section--alt" id="pengajar">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Tenaga Pendidik</span>
+            <h2 class="section__title">Ustadz &amp; Ustadzah</h2>
+            <p class="section__sub">
+              Dibimbing pengajar berpengalaman yang sabar dan telaten mendampingi santri.
+            </p>
+          </div>
+
+          <div class="orang__grid orang__grid--pengajar" id="pengajarGrid" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           7. JADWAL KEGIATAN (data: DATA_JADWAL)
+           =============================================================== -->
+      <section class="section" id="jadwal">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Jadwal</span>
+            <h2 class="section__title">Jadwal Kegiatan</h2>
+            <p class="section__sub">Waktu belajar rutin santri dan kegiatan pendukung lainnya.</p>
+          </div>
+
+          <div class="jadwal" id="jadwalList" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           8. GALERI (data: DATA_GALERI)
+           Klik foto membuka tampilan besar (lightbox).
+           =============================================================== -->
+      <section class="section section--alt" id="galeri">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Dokumentasi</span>
+            <h2 class="section__title">Galeri Kegiatan</h2>
+            <p class="section__sub">
+              Rekam jejak kegiatan santri,
+              Taman Pendidikan Al-Qur'an.
+            </p>
+            <h3><code>Raudhatul Ulum</code></h3>
+          </div>
+
+          <!-- Tombol filter kategori (dibuat otomatis dari data) -->
+          <div class="galeri__filter" id="galeriFilter" data-reveal></div>
+
+          <div class="galeri__grid" id="galeriGrid" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           9. TESTIMONI (data: DATA_TESTIMONI)
+           =============================================================== -->
+      <section class="section" id="testimoni">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Testimoni</span>
+            <h2 class="section__title">Kata Wali Santri</h2>
+          </div>
+
+          <div class="testimoni__grid" id="testimoniGrid" data-reveal>
+            <!-- diisi oleh JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           10. PENDAFTARAN (data: DATA_PENDAFTARAN)
+           =============================================================== -->
+      <section class="section section--alt" id="pendaftaran">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Penerimaan Santri Baru</span>
+            <h2 class="section__title">Informasi Pendaftaran</h2>
+            <p class="section__sub" data-pendaftaran="periode"></p>
+          </div>
+
+          <div class="daftar__grid">
+            <!-- Syarat pendaftaran -->
+            <article class="card daftar__card" data-reveal>
+              <h3><span data-icon="check"></span> Syarat Pendaftaran</h3>
+              <ul class="list-check" id="syaratList"><!-- diisi oleh JS --></ul>
+            </article>
+
+            <!-- Rincian biaya -->
+            <article class="card daftar__card" data-reveal>
+              <h3><span data-icon="wallet"></span> Rincian Biaya</h3>
+              <ul class="list-biaya" id="biayaList"><!-- diisi oleh JS --></ul>
+              <p class="note" data-pendaftaran="catatan"></p>
+            </article>
+
+            <!-- Formulir pendaftaran (dikirim via WhatsApp) -->
+            <article class="card daftar__card daftar__form" data-reveal>
+              <h3><span data-icon="edit"></span> Formulir Pendaftaran</h3>
+              <p class="note">
+                Isi data berikut, lalu klik kirim. Data akan diteruskan ke WhatsApp pengurus.
+              </p>
+
+              <form id="formDaftar" novalidate>
+                <div class="field">
+                  <label for="namaAnak">Nama Lengkap Calon Santri</label>
+                  <input type="text" id="namaAnak" name="namaAnak" placeholder="Nama anak" required />
+                </div>
+                <div class="field field--row">
+                  <div>
+                    <label for="usiaAnak">Usia</label>
+                    <input type="number" id="usiaAnak" name="usiaAnak" min="3" max="20" placeholder="7" required />
+                  </div>
+                  <div>
+                    <label for="programPilih">Program</label>
+                    <select id="programPilih" name="programPilih" required>
+                      <!-- opsi diisi otomatis dari DATA_PROGRAM -->
+                    </select>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="namaWali">Nama Orang Tua / Wali</label>
+                  <input type="text" id="namaWali" name="namaWali" placeholder="Nama wali" required />
+                </div>
+                <div class="field">
+                  <label for="noHp">Nomor WhatsApp</label>
+                  <input type="tel" id="noHp" name="noHp" placeholder="08xxxxxxxxxx" required />
+                </div>
+                <div class="field">
+                  <label for="pesanDaftar">Catatan (opsional)</label>
+                  <textarea id="pesanDaftar" name="pesanDaftar" rows="3" placeholder="Pertanyaan atau catatan tambahan"></textarea>
+                </div>
+
+                <button class="btn btn--primary btn--block" type="submit">
+                  Kirim via WhatsApp
+                </button>
+                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           11. KONTAK & LOKASI (data: DATA_LEMBAGA.kontak)
+           =============================================================== -->
+      <section class="section" id="kontak">
+        <div class="container">
+          <div class="section__head" data-reveal>
+            <span class="eyebrow">Hubungi Kami</span>
+            <h2 class="section__title">Kontak &amp; Lokasi</h2>
+          </div>
+
+          <div class="kontak__grid">
+            <div class="kontak__info" data-reveal>
+              <ul class="kontak__list" id="kontakList"><!-- diisi oleh JS --></ul>
+              <div class="sosial" id="sosialList"><!-- diisi oleh JS --></div>
+            </div>
+
+            <!-- Peta lokasi (link embed diatur di data.js) -->
+            <div class="kontak__map" data-reveal>
+              <iframe
+                id="mapFrame"
+                title="Peta lokasi TPQ"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================================================================
+         FOOTER
+         =================================================================== -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <a class="brand brand--footer" href="#beranda">
+            <span class="brand__logo" data-logo></span>
+            <span class="brand__text">
+              <strong data-lembaga="namaPendek"></strong>
+              <small>Taman Pendidikan Al-Qur'an</small>
+            </span>
+          </a>
+          <p data-lembaga="deskripsiSingkat"></p>
+          <div class="sosial" id="sosialFooter"><!-- diisi oleh JS --></div>
+        </div>
+
+        <nav class="footer__nav" aria-label="Navigasi footer">
+          <h4>Menu</h4>
+          <ul>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#pengurus">Pengurus</a></li>
+            <li><a href="#pengajar">Pengajar</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__kontak">
+          <h4>Kontak</h4>
+          <ul id="kontakFooter"><!-- diisi oleh JS --></ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container">
+          <p>
+            &copy; <span id="tahunSekarang"></span>
+            <span data-lembaga="namaPanjang"></span>. Seluruh hak cipta dilindungi.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Tombol WhatsApp mengambang (link diisi oleh JS) -->
+    <a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="Hubungi via WhatsApp">
+      <span data-icon="whatsapp"></span>
+    </a>
+
+    <!-- Tombol kembali ke atas -->
+    <button class="to-top" id="toTop" aria-label="Kembali ke atas">
+      <span data-icon="arrow-up"></span>
+    </button>
+
+    <!-- Lightbox galeri (muncul saat foto galeri diklik) -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau foto" hidden>
+      <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">&times;</button>
+      <figure class="lightbox__content">
+        <img id="lightboxImg" src="" alt="" />
+        <figcaption id="lightboxCap"></figcaption>
+      </figure>
+    </div>
+
+    <!-- ===================================================================
+         SCRIPT
+         Urutan penting: data.js dimuat lebih dulu, baru main.js.
+         =================================================================== -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

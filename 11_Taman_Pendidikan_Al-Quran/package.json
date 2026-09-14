@@ -1,0 +1,15 @@
+{
+  "name": "tpq-raudhatul-ulum",
+  "version": "1.0.0",
+  "description": "Website Taman Pendidikan Al-Qur'an Raudhatul Ulum — HTML, SASS/CSS, JavaScript",
+  "private": true,
+  "scripts": {
+    "sass": "sass assets/scss/main.scss assets/css/main.css --no-source-map --style=expanded",
+    "sass:watch": "sass --watch assets/scss/main.scss assets/css/main.css --no-source-map --style=expanded",
+    "sass:build": "sass assets/scss/main.scss assets/css/main.css --no-source-map --style=compressed",
+    "serve": "npx --yes serve . -l 5173"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

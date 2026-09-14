@@ -1,0 +1,146 @@
+// =========================================================================
+// _galeri.scss — GALERI FOTO + FILTER + LIGHTBOX
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.galeri__filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $jarak-3;
+  margin-bottom: $jarak-6;
+}
+
+.galeri__grid {
+  @include grid-auto(260px, $jarak-4);
+}
+
+.galeri__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  background: $hijau-050;
+  border: 1px solid $warna-garis;
+  cursor: pointer;
+  transition: transform $transisi, box-shadow $transisi, opacity $transisi;
+
+  .photo__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $bayangan-md;
+
+    .photo__img { transform: scale(1.08); }
+    .galeri__cap { opacity: 1; transform: none; }
+  }
+
+  // Item yang belum ada fotonya: tidak bisa diklik
+  &.is-empty {
+    cursor: default;
+
+    .photo__placeholder { min-height: 100%; }
+    .galeri__cap {
+      position: static;
+      opacity: 1;
+      transform: none;
+      background: none;
+      color: $warna-teks-lembut;
+      padding-top: 0;
+    }
+  }
+
+  // Disembunyikan oleh filter kategori
+  &.is-hidden {
+    display: none;
+  }
+}
+
+// Keterangan foto (muncul saat disentuh kursor)
+.galeri__cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: $jarak-5 $jarak-4 $jarak-4;
+  color: $putih;
+  background: linear-gradient(to top, rgba($hijau-900, 0.92), transparent);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity $transisi, transform $transisi;
+}
+
+.galeri__kategori {
+  font-size: $teks-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $emas-200;
+}
+
+.galeri__judul {
+  font-size: $teks-sm;
+  font-weight: 600;
+}
+
+// -------- Lightbox (pratinjau foto ukuran besar) -------------------------
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: $jarak-5;
+  background: rgba($hitam, 0.88);
+  backdrop-filter: blur(6px);
+  animation: muncul 0.25s ease;
+
+  &[hidden] { display: none; }
+
+  &__content {
+    max-width: min(1000px, 92vw);
+    text-align: center;
+
+    img {
+      max-height: 80vh;
+      width: auto;
+      margin-inline: auto;
+      border-radius: $radius-lg;
+      box-shadow: $bayangan-lg;
+    }
+
+    figcaption {
+      margin-top: $jarak-4;
+      color: rgba($putih, 0.85);
+      font-size: $teks-sm;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: $jarak-5;
+    right: $jarak-5;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba($putih, 0.15);
+    color: $putih;
+    font-size: 1.75rem;
+    line-height: 1;
+    transition: background $transisi-cepat;
+
+    &:hover { background: rgba($putih, 0.3); }
+  }
+}
+
+@keyframes muncul {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

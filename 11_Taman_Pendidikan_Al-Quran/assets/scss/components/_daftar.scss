@@ -1,0 +1,128 @@
+// =========================================================================
+// _daftar.scss — INFORMASI PENDAFTARAN & FORMULIR
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.daftar__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: $jarak-5;
+
+  @include layar(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.daftar__card {
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: $jarak-3;
+    margin-bottom: $jarak-5;
+    font-size: $teks-lg;
+
+    span {
+      @include kotak-ikon(38px, $warna-brand);
+    }
+  }
+}
+
+// Daftar syarat dengan tanda centang
+.list-check li {
+  display: flex;
+  align-items: flex-start;
+  gap: $jarak-3;
+  font-size: $teks-sm;
+  color: $warna-teks-lembut;
+
+  & + li { margin-top: $jarak-3; }
+
+  svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+    padding: 2px;
+    border-radius: 50%;
+    background: rgba($hijau-sukses, 0.14);
+    color: $hijau-sukses;
+  }
+}
+
+// Daftar biaya (item di kiri, nominal di kanan)
+.list-biaya li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $jarak-3;
+  padding-block: $jarak-3;
+  font-size: $teks-sm;
+  color: $warna-teks-lembut;
+
+  & + li { border-top: 1px dashed $warna-garis; }
+
+  strong {
+    color: $hijau-800;
+    white-space: nowrap;
+  }
+}
+
+// -------- Formulir -------------------------------------------------------
+.field {
+  margin-bottom: $jarak-4;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: $teks-xs;
+    font-weight: 700;
+    color: $abu-800;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid $warna-garis;
+    border-radius: $radius-md;
+    background: $abu-050;
+    font-size: $teks-sm;
+    transition: border-color $transisi-cepat, background $transisi-cepat, box-shadow $transisi-cepat;
+
+    &::placeholder { color: $abu-400; }
+
+    &:focus {
+      outline: none;
+      background: $putih;
+      border-color: $warna-brand;
+      box-shadow: 0 0 0 3px rgba($warna-brand, 0.15);
+    }
+  }
+
+  textarea { resize: vertical; }
+
+  // Dua kolom sejajar (usia + program)
+  &--row {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: $jarak-3;
+
+    @include layar(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Pesan status setelah tombol kirim ditekan
+.form-status {
+  margin-top: $jarak-3;
+  font-size: $teks-xs;
+  font-weight: 600;
+  min-height: 1.2em;
+
+  &.is-error { color: $merah; }
+  &.is-success { color: $hijau-sukses; }
+}

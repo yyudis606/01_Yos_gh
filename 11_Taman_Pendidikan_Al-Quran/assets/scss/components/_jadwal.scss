@@ -1,0 +1,65 @@
+// =========================================================================
+// _jadwal.scss — DAFTAR JADWAL KEGIATAN
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.jadwal {
+  display: grid;
+  gap: $jarak-3;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.jadwal__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.6fr;
+  align-items: center;
+  gap: $jarak-4;
+  padding: $jarak-4 $jarak-5;
+  border: 1px solid $warna-garis;
+  border-radius: $radius-lg;
+  background: $putih;
+  transition: border-color $transisi, transform $transisi, box-shadow $transisi;
+
+  &:hover {
+    border-color: rgba($warna-brand, 0.4);
+    transform: translateX(4px);
+    box-shadow: $bayangan-sm;
+  }
+
+  @include layar(md) {
+    grid-template-columns: 1fr;
+    gap: $jarak-2;
+  }
+}
+
+.jadwal__hari,
+.jadwal__waktu {
+  display: flex;
+  align-items: center;
+  gap: $jarak-3;
+  font-size: $teks-sm;
+  font-weight: 700;
+
+  svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    color: $warna-brand;
+  }
+}
+
+.jadwal__waktu {
+  color: $warna-teks-lembut;
+  font-weight: 600;
+}
+
+.jadwal__kegiatan {
+  font-size: $teks-sm;
+  color: $warna-teks-lembut;
+
+  @include layar(md) {
+    padding-left: calc(18px + #{$jarak-3});
+  }
+}

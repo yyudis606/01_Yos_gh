@@ -1,0 +1,126 @@
+// =========================================================================
+// _tentang.scss — BAGIAN TENTANG, VISI MISI, & KEUNGGULAN
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.tentang__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: start;
+  gap: $jarak-7;
+
+  @include layar(lg) {
+    grid-template-columns: 1fr;
+    gap: $jarak-6;
+  }
+}
+
+.tentang__media {
+  position: relative;
+
+  // Bingkai dekoratif di belakang foto
+  &::after {
+    content: "";
+    position: absolute;
+    inset: $jarak-4 (-$jarak-4) (-$jarak-4) $jarak-4;
+    z-index: -1;
+    border-radius: $radius-lg;
+    border: 2px solid rgba($warna-aksen, 0.4);
+  }
+}
+
+.tentang__sejarah {
+  color: $warna-teks-lembut;
+  margin-bottom: $jarak-5;
+}
+
+// -------- Visi & Misi ----------------------------------------------------
+.visimisi {
+  display: grid;
+  gap: $jarak-4;
+
+  &__item {
+    padding: $jarak-5;
+    border-radius: $radius-lg;
+    background: $hijau-050;
+    border-left: 4px solid $warna-brand;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: $jarak-3;
+      margin-bottom: $jarak-3;
+      font-size: $teks-lg;
+      color: $hijau-900;
+
+      // Ikon kecil di depan judul
+      span {
+        @include kotak-ikon(32px, $warna-brand);
+        background: $putih;
+      }
+    }
+
+    p {
+      color: $warna-teks-lembut;
+    }
+
+    // Daftar misi bernomor otomatis
+    ul {
+      counter-reset: misi;
+
+      li {
+        position: relative;
+        counter-increment: misi;
+        padding-left: 2rem;
+        color: $warna-teks-lembut;
+        font-size: $teks-sm;
+
+        & + li { margin-top: $jarak-2; }
+
+        &::before {
+          content: counter(misi);
+          position: absolute;
+          left: 0;
+          top: 0.25rem;
+          display: grid;
+          place-items: center;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: $warna-brand;
+          color: $putih;
+          font-size: 0.7rem;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+// -------- Kartu keunggulan ----------------------------------------------
+.keunggulan__grid {
+  @include grid-auto(240px, $jarak-5);
+  margin-top: $jarak-7;
+}
+
+.fitur {
+  @include kartu($jarak-5);
+  @include kartu-hover;
+  text-align: center;
+
+  &__ikon {
+    @include kotak-ikon(52px, $warna-brand);
+    margin-bottom: $jarak-4;
+  }
+
+  &__judul {
+    font-size: $teks-base;
+    margin-bottom: $jarak-2;
+  }
+
+  &__teks {
+    font-size: $teks-sm;
+    color: $warna-teks-lembut;
+  }
+}

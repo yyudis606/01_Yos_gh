@@ -1,0 +1,162 @@
+// =========================================================================
+// _hero.scss — BAGIAN PEMBUKA HALAMAN
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.hero {
+  position: relative;
+  padding-top: calc(#{$tinggi-header} + #{$jarak-8});
+  padding-bottom: $jarak-8;
+  overflow: hidden;
+
+  @include layar(md) {
+    padding-top: calc(#{$tinggi-header} + #{$jarak-6});
+    padding-bottom: $jarak-6;
+  }
+}
+
+// Latar dekoratif hero (gradasi + pola lembut)
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, $hijau-050 0%, rgba($hijau-050, 0.35) 60%, $putih 100%);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+
+  // Bulatan hijau kiri atas
+  &::before {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -100px;
+    background: rgba($hijau-500, 0.25);
+  }
+
+  // Bulatan emas kanan
+  &::after {
+    width: 340px;
+    height: 340px;
+    right: -80px;
+    top: 120px;
+    background: rgba($emas-500, 0.16);
+  }
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: $jarak-7;
+
+  @include layar(lg) {
+    grid-template-columns: 1fr;
+    gap: $jarak-6;
+    text-align: center;
+  }
+}
+
+.hero__title {
+  margin-block: $jarak-4 $jarak-3;
+  color: $hijau-900;
+}
+
+// Baris 1: jenis lembaga (ukuran sedang, warna gelap netral)
+.hero__title-line1 {
+  display: block;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  font-weight: 700;
+  color: $abu-800;
+}
+
+// Baris 2: nama khas lembaga (ukuran besar & mencolok, warna brand)
+.hero__title-line2 {
+  display: block;
+  margin-top: 2px;
+  font-size: clamp(2.4rem, 5.6vw, 3.6rem);
+  font-weight: 800;
+  color: $warna-brand;
+}
+
+.hero__tagline {
+  font-family: $font-aksen;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 700;
+  color: $warna-brand;
+  margin-bottom: $jarak-4;
+}
+
+.hero__desc {
+  max-width: 52ch;
+  color: $warna-teks-lembut;
+  font-size: $teks-lg;
+
+  @include layar(lg) {
+    margin-inline: auto;
+  }
+
+  @include layar(md) {
+    font-size: $teks-base;
+  }
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $jarak-4;
+  margin-top: $jarak-6;
+
+  @include layar(lg) {
+    justify-content: center;
+  }
+}
+
+// Pembungkus foto hero
+.hero__media {
+  position: relative;
+}
+
+// Kartu kecil mengambang di sudut foto hero
+.hero__float {
+  position: absolute;
+  left: -$jarak-4;
+  bottom: $jarak-5;
+  display: flex;
+  align-items: center;
+  gap: $jarak-3;
+  padding: $jarak-4 $jarak-5;
+  border-radius: $radius-lg;
+  background: rgba($putih, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: $bayangan-md;
+  text-align: left;
+
+  &-ikon {
+    @include kotak-ikon(42px, $warna-aksen);
+  }
+
+  strong {
+    display: block;
+    font-size: $teks-xl;
+    color: $hijau-900;
+    line-height: 1.2;
+  }
+
+  small {
+    font-size: $teks-xs;
+    color: $warna-teks-lembut;
+  }
+
+  @include layar(sm) {
+    left: $jarak-3;
+    bottom: $jarak-3;
+    padding: $jarak-3 $jarak-4;
+  }
+}

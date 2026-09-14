@@ -1,0 +1,122 @@
+// =========================================================================
+// _buttons.scss — TOMBOL & ELEMEN KECIL (badge, chip, kartu dasar)
+// =========================================================================
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $jarak-2;
+  padding: 0.85rem 1.6rem;
+  border-radius: $radius-bulat;
+  font-size: $teks-sm;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform $transisi-cepat, box-shadow $transisi, background $transisi,
+    color $transisi, border-color $transisi;
+
+  &:active { transform: translateY(1px); }
+
+  // Tombol utama (hijau)
+  &--primary {
+    background: $warna-brand;
+    color: $putih;
+    box-shadow: 0 8px 20px rgba($warna-brand, 0.28);
+
+    &:hover {
+      background: $warna-brand-gelap;
+      box-shadow: 0 12px 26px rgba($warna-brand, 0.35);
+      transform: translateY(-2px);
+    }
+  }
+
+  // Tombol sekunder (garis tepi)
+  &--ghost {
+    border: 1.5px solid rgba($warna-brand, 0.35);
+    color: $warna-brand-gelap;
+    background: rgba($putih, 0.6);
+
+    &:hover {
+      background: $warna-brand;
+      color: $putih;
+      border-color: $warna-brand;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Ukuran kecil (dipakai di navbar)
+  &--sm {
+    padding: 0.6rem 1.1rem;
+    font-size: $teks-xs;
+  }
+
+  // Selebar wadahnya (dipakai di formulir)
+  &--block {
+    width: 100%;
+  }
+}
+
+// Label status kecil, mis. "Pendaftaran Dibuka"
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $jarak-2;
+  padding: 0.4rem 0.9rem;
+  border-radius: $radius-bulat;
+  background: rgba($emas-500, 0.15);
+  border: 1px solid rgba($emas-500, 0.35);
+  color: $emas-600;
+  font-size: $teks-sm;
+  font-weight: 700;
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $emas-500;
+    // Titik berkedip halus
+    animation: denyut 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes denyut {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+// Tombol filter galeri
+.chip {
+  padding: 0.5rem 1.1rem;
+  border-radius: $radius-bulat;
+  border: 1px solid $warna-garis;
+  background: $putih;
+  font-size: $teks-sm;
+  font-weight: 600;
+  color: $warna-teks-lembut;
+  transition: all $transisi-cepat;
+
+  &:hover {
+    border-color: $warna-brand;
+    color: $warna-brand;
+  }
+
+  &.is-active {
+    background: $warna-brand;
+    border-color: $warna-brand;
+    color: $putih;
+  }
+}
+
+// Kartu dasar yang dipakai ulang
+.card {
+  @include kartu($jarak-6);
+}
+
+// Teks catatan kecil
+.note {
+  margin-top: $jarak-4;
+  font-size: $teks-sm;
+  color: $warna-teks-lembut;
+}
