@@ -42,7 +42,7 @@ const DATA_LEMBAGA = {
 
   // Data kontak — tampil di bagian Kontak & Footer.
   kontak: {
-    alamat: "Jl. Komp. Arraudah VIII No.34, Landasan Ulin Bar., Kec. Liang Anggang, Kota Banjar Baru, Kalimantan Selatan 70723",
+    alamat: "Jl. Komp. Arraudah VIII No.35, Landasan Ulin Bar., Kec. Liang Anggang, Kota Banjar Baru, Kalimantan Selatan 70723",
     telepon: "+62 853-1033-3373", // format tampil
     teleponWa: "6285310333373", // format internasional untuk link WhatsApp
     email: "info@tpqraudhatululum.sch.id",
