@@ -55,7 +55,7 @@ const DATA_LEMBAGA = {
     // karena kode embed iframe di bawah ini sudah mengandung banyak
     // tanda kutip ganda (") di dalam atribut src/width/height, dsb.
     mapsEmbed:
-      `<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d248.91825425679582!2d114.7236256731633!3d-3.4249664993156066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1789449309306!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>`,
+      `<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d497.836508773243!2d114.723626!3d-3.424966!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de683004eead4fb%3A0x747e80a949d1abe5!2sMusholla%20Ar-Raudah!5e0!3m2!1sid!2sid!4v1789449685238!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>`,
   },
 
   // Media sosial. Kosongkan ("") bila tidak dipakai — otomatis disembunyikan.
