@@ -296,6 +296,10 @@ p {
 }
 
 .wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 12px;
   background: #25d366;
   color: white;
@@ -308,6 +312,12 @@ p {
 .wa-btn:hover {
   background: #1ebe5d;
   transform: translateY(-1px);
+}
+
+.wa-icon {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
 }
 
 .gallery {
