@@ -45,8 +45,9 @@ Website profil **Taman Pendidikan Al-Qur'an Raudhatul Ulum** — dibangun dengan
 Cukup buka `index.html` di browser. Namun agar semua fitur berjalan normal, disarankan memakai server lokal:
 
 ```bash
-# Opsi 1 — Node.js
-npx serve .
+# Opsi 1 — pnpm (compile SASS lalu jalankan server)
+pnpm install
+pnpm dev
 
 # Opsi 2 — Python
 python3 -m http.server 5173

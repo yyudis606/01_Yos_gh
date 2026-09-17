@@ -4,6 +4,7 @@
   "description": "Website Taman Pendidikan Al-Qur'an Raudhatul Ulum — HTML, SASS/CSS, JavaScript",
   "private": true,
   "scripts": {
+    "dev": "pnpm run sass && pnpm run serve",
     "sass": "sass assets/scss/main.scss assets/css/main.css --no-source-map --style=expanded",
     "sass:watch": "sass --watch assets/scss/main.scss assets/css/main.css --no-source-map --style=expanded",
     "sass:build": "sass assets/scss/main.scss assets/css/main.css --no-source-map --style=compressed",
