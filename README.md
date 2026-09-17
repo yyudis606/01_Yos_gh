@@ -11,6 +11,8 @@
 | 01 | 07 | Print calender | ✅ |
 | 01 | 08 | Calculate age | ✅ |
 | 01 | 09 | Digital Invitation Maulid | ✅ |
+| 10 | 24 | luxury-hotel-website-with-flexbox | ✅ |
+| 11 | -- | Taman Pendidikan Al-Quran | ✅ |
 | -- | -- | images | ✅ |
 | -- | -- | -- | -- |
 | -- | -- | -- | -- |
