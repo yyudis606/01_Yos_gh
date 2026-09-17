@@ -91,6 +91,43 @@
         </p>
       </div>
 
+      <!-- KALENDER MASEHI DAN HIJRIYAH -->
+      <div class="card" id="kalender">
+        <div class="calendar-header">
+          <h2>Kalender</h2>
+          <button class="calendar-today-btn" type="button" id="tombol-hari-ini">Hari ini</button>
+        </div>
+        <div class="calendar-grid">
+          <section class="calendar-panel" aria-labelledby="judul-kalender-masehi">
+            <h3 id="judul-kalender-masehi">Kalender Masehi</h3>
+            <div id="kalender-masehi"></div>
+          </section>
+          <section class="calendar-panel" aria-labelledby="judul-kalender-hijriyah">
+            <h3 id="judul-kalender-hijriyah">Kalender Hijriyah</h3>
+            <div id="kalender-hijriyah"></div>
+          </section>
+        </div>
+      </div>
+
+      <!-- PUASA & IDUL FITRI -->
+      <div class="card" id="puasa-idul-fitri">
+        <h2>Puasa & Idul Fitri</h2>
+        <div class="event-row">
+          <div class="event-info">
+            <span class="event-label">Puasa selanjutnya</span>
+            <span class="event-date" id="tanggal-puasa">menghitung...</span>
+          </div>
+          <span class="event-countdown" id="countdown-puasa">menghitung...</span>
+        </div>
+        <div class="event-row">
+          <div class="event-info">
+            <span class="event-label">Idul Fitri selanjutnya</span>
+            <span class="event-date" id="tanggal-idul-fitri">menghitung...</span>
+          </div>
+          <span class="event-countdown" id="countdown-idul-fitri">menghitung...</span>
+        </div>
+      </div>
+
       <!-- PENGURUS -->
       <div class="card" id="pengurus">
         <h2>Pengurus Musholla</h2>
