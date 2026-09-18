@@ -151,20 +151,93 @@ const namaHariIslami = [
   "Jumu'ah",
   "Sabt",
 ];
-const namaBulanHijriyah = {
-  rabiulawal: "Rabiul Awal",
-  rabiulakhir: "Rabiul Akhir",
-  jumadilawal: "Jumadil Awal",
-  jumadilakhir: "Jumadil Akhir",
+const NAMA_BULAN_HIJRIYAH = {
+  1: "Muharram",
+  2: "Safar",
+  3: "Rabiul Awal",
+  4: "Rabiul Akhir",
+  5: "Jumadil Awal",
+  6: "Jumadil Akhir",
+  7: "Rajab",
+  8: "Sya'ban",
+  9: "Ramadan",
+  10: "Syawal",
+  11: "Dzulqaidah",
+  12: "Dzulhijjah",
 };
 
-function formatNamaBulanHijriyah(tanggal) {
-  const bagian = formatHijriyah.formatToParts(tanggal);
-  const bulan = bagian.find(({ type }) => type === "month")?.value ?? "";
-  const tahun = bagian.find(({ type }) => type === "year")?.value ?? "";
-  const namaBulan = namaBulanHijriyah[bulan.toLowerCase()] ?? bulan;
+function dapatkanKomponenHijriyah(tanggal) {
+  const date = new Date(tanggal);
+  const hasil = window.hijriConverter.toHijri(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    date.getDate(),
+  );
 
-  return `${namaBulan} ${tahun}`;
+  return {
+    day: Number(hasil.hd),
+    month: Number(hasil.hm),
+    year: Number(hasil.hy),
+  };
+}
+
+function formatNamaBulanHijriyah(tanggal) {
+  const bagian = dapatkanKomponenHijriyah(tanggal);
+  return `${NAMA_BULAN_HIJRIYAH[bagian.month]} ${bagian.year}`;
+}
+
+function awalBulanHijriyah(tanggal) {
+  const bagian = dapatkanKomponenHijriyah(tanggal);
+  const hasil = window.hijriConverter.toGregorian(bagian.year, bagian.month, 1);
+  return new Date(hasil.gy, hasil.gm - 1, hasil.gd);
+}
+
+function jumlahHariBulanHijriyah(awal) {
+  const bagian = dapatkanKomponenHijriyah(awal);
+  const tahunBerikutnya = bagian.month === 12 ? bagian.year + 1 : bagian.year;
+  const bulanBerikutnya = bagian.month === 12 ? 1 : bagian.month + 1;
+  const tanggalAwal = window.hijriConverter.toGregorian(
+    bagian.year,
+    bagian.month,
+    1,
+  );
+  const tanggalBerikutnya = window.hijriConverter.toGregorian(
+    tahunBerikutnya,
+    bulanBerikutnya,
+    1,
+  );
+
+  const mulai = new Date(
+    tanggalAwal.gy,
+    tanggalAwal.gm - 1,
+    tanggalAwal.gd,
+  );
+  const akhir = new Date(
+    tanggalBerikutnya.gy,
+    tanggalBerikutnya.gm - 1,
+    tanggalBerikutnya.gd,
+  );
+
+  return Math.round((akhir - mulai) / (1000 * 60 * 60 * 24));
+}
+
+function geserBulanHijriyah(awal, arah) {
+  const bagian = dapatkanKomponenHijriyah(awal);
+  let bulan = bagian.month + arah;
+  let tahun = bagian.year;
+
+  while (bulan > 12) {
+    bulan -= 12;
+    tahun += 1;
+  }
+
+  while (bulan < 1) {
+    bulan += 12;
+    tahun -= 1;
+  }
+
+  const hasil = window.hijriConverter.toGregorian(tahun, bulan, 1);
+  return new Date(hasil.gy, hasil.gm - 1, hasil.gd);
 }
 
 function buatKalender(
@@ -233,47 +306,6 @@ function buatKalender(
   target.replaceChildren(tabel);
 }
 
-function dapatkanKomponenHijriyah(tanggal) {
-  return Object.fromEntries(
-    formatBagianHijriyah
-      .formatToParts(tanggal)
-      .filter(({ type }) => ["day", "month", "year"].includes(type))
-      .map(({ type, value }) => [type, Number(value)]),
-  );
-}
-
-function awalBulanHijriyah(tanggal) {
-  const awal = new Date(tanggal);
-  while (dapatkanKomponenHijriyah(awal).day !== 1) {
-    awal.setDate(awal.getDate() - 1);
-  }
-  return awal;
-}
-
-function jumlahHariBulanHijriyah(awal) {
-  const bulan = dapatkanKomponenHijriyah(awal).month;
-  const tahun = dapatkanKomponenHijriyah(awal).year;
-  const akhir = new Date(awal);
-  akhir.setDate(akhir.getDate() + 1);
-
-  while (
-    dapatkanKomponenHijriyah(akhir).month === bulan &&
-    dapatkanKomponenHijriyah(akhir).year === tahun
-  ) {
-    akhir.setDate(akhir.getDate() + 1);
-  }
-
-  return Math.round((akhir - awal) / (1000 * 60 * 60 * 24));
-}
-
-function geserBulanHijriyah(awal, arah) {
-  const tanggalPencarian = new Date(awal);
-  tanggalPencarian.setDate(
-    tanggalPencarian.getDate() + (arah > 0 ? 35 : -1),
-  );
-  return awalBulanHijriyah(tanggalPencarian);
-}
-
 function tampilkanKalender() {
   const hariIni = new Date();
   let awalMasehi = new Date(hariIni.getFullYear(), hariIni.getMonth(), 1);
@@ -304,10 +336,13 @@ function tampilkanKalender() {
   }
 
   function tampilkanKalenderHijriyah() {
+    const judul = formatNamaBulanHijriyah(awalHijriyah);
+    const jumlahHari = jumlahHariBulanHijriyah(awalHijriyah);
+
     buatKalender(
       awalHijriyah,
-      jumlahHariBulanHijriyah(awalHijriyah),
-      formatNamaBulanHijriyah(awalHijriyah),
+      jumlahHari,
+      judul,
       "kalender-hijriyah",
       hariIni,
       namaHariIslami,
@@ -315,7 +350,6 @@ function tampilkanKalender() {
         awalHijriyah = geserBulanHijriyah(awalHijriyah, arah);
         tampilkanKalenderHijriyah();
       },
-      (tanggal) => dapatkanKomponenHijriyah(tanggal).day,
     );
   }
 
@@ -353,10 +387,13 @@ const formatTanggalLengkap = new Intl.DateTimeFormat("id-ID", {
 // akan datang berikutnya, dihitung mulai dari bulan setelah tanggal acuan
 // agar hasilnya selalu di masa depan.
 function cariAwalBulanHijriyahBerikutnya(bulanTarget, tanggalAcuan) {
-  let awal = geserBulanHijriyah(awalBulanHijriyah(tanggalAcuan), 1);
+  let awal = awalBulanHijriyah(tanggalAcuan);
+  awal = geserBulanHijriyah(awal, 1);
+
   while (dapatkanKomponenHijriyah(awal).month !== bulanTarget) {
     awal = geserBulanHijriyah(awal, 1);
   }
+
   return awal;
 }
 
