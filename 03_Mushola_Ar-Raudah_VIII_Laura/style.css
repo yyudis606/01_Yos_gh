@@ -378,8 +378,8 @@ p {
 @media (max-width: 700px) {
   .jadwal-row {
     flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: flex-start;
+    gap: 4px;
   }
 
   #jadwal-sholat {
